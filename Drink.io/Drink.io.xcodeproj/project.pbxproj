@@ -19,6 +19,7 @@
 		27421F7517FDE57E00B38156 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27421F5D17FDE57E00B38156 /* UIKit.framework */; };
 		27421F7D17FDE57F00B38156 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27421F7B17FDE57F00B38156 /* InfoPlist.strings */; };
 		27421F7F17FDE57F00B38156 /* Drink_ioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27421F7E17FDE57F00B38156 /* Drink_ioTests.m */; };
+		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		27421F7A17FDE57E00B38156 /* Drink.ioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Drink.ioTests-Info.plist"; sourceTree = "<group>"; };
 		27421F7C17FDE57F00B38156 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27421F7E17FDE57F00B38156 /* Drink_ioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Drink_ioTests.m; sourceTree = "<group>"; };
+		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				27421F6917FDE57E00B38156 /* RUAppDelegate.m */,
 				27421F6B17FDE57E00B38156 /* Images.xcassets */,
 				27421F6017FDE57E00B38156 /* Supporting Files */,
+				27DECA9B18200699004CDF52 /* Storyboard.storyboard */,
 			);
 			path = Drink.io;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				27421F6417FDE57E00B38156 /* InfoPlist.strings in Resources */,
 				27421F6C17FDE57E00B38156 /* Images.xcassets in Resources */,
+				27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +448,7 @@
 				27421F8417FDE57F00B38156 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27421F8517FDE57F00B38156 /* Build configuration list for PBXNativeTarget "Drink.ioTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +457,7 @@
 				27421F8717FDE57F00B38156 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
