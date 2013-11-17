@@ -8,6 +8,7 @@
 
 #import "RUDWFRootViewController.h"
 #import <AddressBook/AddressBook.h>
+#import <MapKit/MapKit.h>
 
 @implementation RUDWFRootViewController
 
@@ -58,6 +59,21 @@
 }
 -(IBAction)importBarsTapped:(id)sender {
     NSLog(@"Import bars tapped.\n");
+    
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Bars";
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse
+                                         *response, NSError *error) {
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else
+            for (MKMapItem *item in response.mapItems)
+            {
+                NSLog(@"name = %@", item.name);
+                NSLog(@"Phone = %@", item.phoneNumber);
+            }
+    }];
     
 }
 -(IBAction)drinkTapped:(id)sender {
