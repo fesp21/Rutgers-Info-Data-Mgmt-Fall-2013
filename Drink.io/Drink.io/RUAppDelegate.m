@@ -7,6 +7,7 @@
 //
 
 #import "RUAppDelegate.h"
+#import "RUDWFRootViewController.h"
 
 @implementation RUAppDelegate
 
@@ -14,7 +15,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     
-    UIViewController *mainViewController = [storyboard instantiateInitialViewController];
+    RUDWFRootViewController *mainViewController = [storyboard instantiateInitialViewController];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = mainViewController;

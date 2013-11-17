@@ -19,6 +19,7 @@
 		27421F7517FDE57E00B38156 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27421F5D17FDE57E00B38156 /* UIKit.framework */; };
 		27421F7D17FDE57F00B38156 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27421F7B17FDE57F00B38156 /* InfoPlist.strings */; };
 		27421F7F17FDE57F00B38156 /* Drink_ioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27421F7E17FDE57F00B38156 /* Drink_ioTests.m */; };
+		2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		27421F7A17FDE57E00B38156 /* Drink.ioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Drink.ioTests-Info.plist"; sourceTree = "<group>"; };
 		27421F7C17FDE57F00B38156 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27421F7E17FDE57F00B38156 /* Drink_ioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Drink_ioTests.m; sourceTree = "<group>"; };
+		2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDWFRootViewController.h; sourceTree = "<group>"; };
+		2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDWFRootViewController.m; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +117,8 @@
 				27421F6B17FDE57E00B38156 /* Images.xcassets */,
 				27421F6017FDE57E00B38156 /* Supporting Files */,
 				27DECA9B18200699004CDF52 /* Storyboard.storyboard */,
+				2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */,
+				2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */,
 			);
 			path = Drink.io;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */,
 				27421F6617FDE57E00B38156 /* main.m in Sources */,
 				27421F6A17FDE57E00B38156 /* RUAppDelegate.m in Sources */,
 			);
