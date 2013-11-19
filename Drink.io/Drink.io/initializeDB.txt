@@ -5,7 +5,7 @@ manf char(128)
 
 create table bars (
 name char(128),
-phoneNumber char(128),
+phoneNumber char(128) primary key not null,
 url char(128),
 thoroughfare char(128),
 subThoroughfare char(128),
@@ -15,8 +15,8 @@ administrativeArea char(128),
 subAdministrativeArea char(128),
 postalCode char(128),
 ISOcountryCode char(128),
-country char(128)
-
+country char(128),
+int favorite = 0
 );
 
 create table distance (
@@ -32,15 +32,18 @@ price real
 );
 
 create table drinkers (
-firstname char(128),
-lastname char(128),
-phone char(20),
+primary key (
+    firstname char(128),
+    lastname char(128),
+    phone char(20)
+    ) not null,
 addrStreet char(128),
 addrCity char(128),
 addrState char(128),
 addrZip char(128),
 addrCountry char(128),
-addrCountryCode char(128)
+addrCountryCode char(128),
+int favorite = 0
 );
 
 create table likes (

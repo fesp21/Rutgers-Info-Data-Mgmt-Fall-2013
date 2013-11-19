@@ -25,26 +25,41 @@ static sqlite3_stmt *statement = nil;
 
 - (BOOL) addFriendWithFirstName: (NSString *) firstName
                    withLastName: (NSString *) lastName
-                 andWithAddress: (NSString *) address {
+                      withPhone: (NSString *) phone
+                     withStreet: (NSString *) street
+                       withCity: (NSString *) city
+                      withState: (NSString *) state
+                        withZip: (NSString *) zip
+                    withCountry: (NSString *) country
+                withCountryCode: (NSString *) countryCode
+                andWithFavorite: (NSInteger *) favorite {
     return false;
 }
 
-- (BOOL) addBarWithName: (NSString *) bar
-        withPhoneNumber: (NSString *) phoneNumber
-         andWithAddress: (NSString *) address {
+- (BOOL)   addBarWithName: (NSString *) bar
+          withPhoneNumber: (NSString *) phoneNumber
+                  withURL: (NSString *) URL
+         withThoroughfare: (NSString *) thoroughfare
+      withSubThoroughfare: (NSString *) subThoroughfare
+             withLocality: (NSString *) locality
+          withSubLocality: (NSString *) subLocality
+   withAdministrativeArea: (NSString *) administrativeArea
+withSubAdministrativeArea: (NSString *) subAdministrativeArea
+           withPostalCode: (NSString *) postalCode
+       withISOcountryCode: (NSString *) ISOcountryCode
+              withCountry: (NSString *) country
+          andWithFavorite: (NSInteger *) favorite {
     return false;
 }
 
-- (BOOL) addBestFriendWithFirstName: (NSString *) firstName
-                       withLastName: (NSString *) lastName
-                     andWithAddress: (NSString *) address {
+- (BOOL) makeBestFriendWithFirstName: (NSString *) firstName
+                        withLastName: (NSString *) lastName
+                        andWithPhone: (NSString *) phone {
     
     return false;
 }
 
-- (BOOL) addFavoriteBarWithName: (NSString *) bar
-                withPhoneNumber: (NSString *) phoneNumber
-                 andWithAddress: (NSString *) address {
+- (BOOL) makeFavoriteBarWithPhone: (NSString *) phone {
     
     return false;
 }
