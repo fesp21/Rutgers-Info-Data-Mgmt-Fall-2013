@@ -15,8 +15,28 @@
 }
 
 + (RUDBManager *) getSharedInstance;
+
 - (BOOL) createDB;
-- (BOOL) saveData: (NSString*) registerNumber name:(NSString*)name department:(NSString*)department year:(NSString*)year;
-- (NSArray*) findByRegisterNumber:(NSString*)registerNumber;
+
+- (BOOL) addFriendWithFirstName: (NSString *) firstName
+                   withLastName: (NSString *) lastName
+                 andWithAddress: (NSString *) address;
+
+- (BOOL) addBarWithName: (NSString *) bar
+        withPhoneNumber: (NSString *) phoneNumber
+         andWithAddress: (NSString *) address;
+
+- (BOOL) addBestFriendWithFirstName: (NSString *) firstName
+                       withLastName: (NSString *) lastName
+                     andWithAddress: (NSString *) address;
+
+- (BOOL) addFavoriteBarWithName: (NSString *) bar
+                withPhoneNumber: (NSString *) phoneNumber
+                 andWithAddress: (NSString *) address;
+
+- (NSArray *) getFriends;
+- (NSArray *) getBestFriends;
+- (NSArray *) getBars;
+- (NSArray *) getFavoriteBars;
 
 @end
