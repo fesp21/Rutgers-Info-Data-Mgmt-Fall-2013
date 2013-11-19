@@ -66,7 +66,7 @@
 		27AFC847183AE5A40042FB97 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkAtViewController.h; sourceTree = "<group>"; };
 		27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkAtViewController.m; sourceTree = "<group>"; };
-		27AFC84E183B0B7D0042FB97 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
+		27AFC84E183B0B7D0042FB97 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = default.gpx; path = ../default.gpx; sourceTree = "<group>"; };
 		27AFC850183B138D0042FB97 /* RUDrinkNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkNowViewController.h; sourceTree = "<group>"; };
 		27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkNowViewController.m; sourceTree = "<group>"; };
 		27AFC859183B1CC10042FB97 /* initializeDB.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = initializeDB.txt; sourceTree = "<group>"; };
@@ -101,7 +101,6 @@
 		27421F4D17FDE57E00B38156 = {
 			isa = PBXGroup;
 			children = (
-				27AFC84E183B0B7D0042FB97 /* default.gpx */,
 				27421F5F17FDE57E00B38156 /* Drink.io */,
 				27421F7817FDE57E00B38156 /* Drink.ioTests */,
 				27421F5817FDE57E00B38156 /* Frameworks */,
@@ -179,6 +178,7 @@
 		27AFC853183B13970042FB97 /* Local Bars View */ = {
 			isa = PBXGroup;
 			children = (
+				27AFC84E183B0B7D0042FB97 /* default.gpx */,
 				27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */,
 				27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */,
 			);

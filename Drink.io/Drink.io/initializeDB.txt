@@ -18,6 +18,12 @@ ISOcountryCode char(128),
 country char(128)
 );
 
+create table distance (
+firstFriend char(128),
+secondFriend char(128),
+distanceFrome real
+)
+
 create table sells (
 bar char(128),
 beer char(128),

@@ -86,22 +86,45 @@
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
-    selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    // TODO: finish this for realz.
+    if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        selectedCell.accessoryType = UITableViewCellAccessoryNone;
+    } else if (selectedCell.accessoryType == UITableViewCellAccessoryNone) {
+        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)
+    section {
+    NSString * titleForHeader;
+    
+    if (section == 0) {
+        titleForHeader = @"Favorites";
+    }else {
+        titleForHeader = @"Local";
+    }
+    
+    return titleForHeader;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@" sandkjnsa %i", [localBars count]);
-    return [localBars count];
+    NSInteger numberOfRows;
+    
+    if (section == 0) {
+        numberOfRows = 3;
+    } else {
+        numberOfRows = [localBars count];
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,7 +132,12 @@
     static NSString *CellIdentifier = @"Cell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    [cell.textLabel setText:[localBars objectAtIndex:indexPath.row]];
+    if (indexPath.section == 0) {
+        cell.textLabel.text = @"Favorite Bar";
+    } else if (indexPath.section == 1) {
+        cell.textLabel.text = [localBars objectAtIndex:indexPath.row];
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

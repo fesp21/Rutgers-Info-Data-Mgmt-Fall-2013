@@ -80,9 +80,18 @@
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
-    selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    // TODO: finish this for realz.
+    if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        selectedCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        // taking out of current excursion
+        
+    } else if (selectedCell.accessoryType == UITableViewCellAccessoryNone) {
+        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        // the contact is not yet in the DB, so put it in
+        
+        // the contact is in the DB, so retrieve
+    }
 }
 
 #pragma mark - Table view data source
@@ -90,13 +99,32 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString * titleForHeader;
+    
+    if (section == 0) {
+        titleForHeader = @"Best Friends";
+    } else {
+        titleForHeader = @"Contacts";
+    }
+    
+    return titleForHeader;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [people count];
+    NSInteger numberOfRows;
+    
+    if (section == 0) {
+        numberOfRows = 3;
+    } else {
+        numberOfRows = [people count];
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,7 +132,12 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [people objectAtIndex:indexPath.row];
+    if (indexPath.section == 0) {
+        cell.textLabel.text = @"Best Friend!";
+    } else if (indexPath.section == 1) {
+        cell.textLabel.text = [people objectAtIndex:indexPath.row];
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
