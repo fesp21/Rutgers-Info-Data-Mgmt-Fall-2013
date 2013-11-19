@@ -42,6 +42,15 @@
                                     <action selector="drinkTapped:" destination="8Uj-sW-eEM" eventType="touchUpInside" id="pWL-VL-XNY"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DZR-5T-La2">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Local Bars" id="Nec-x3-pWR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9Eu-HU-dVu"/>
+                                    <barButtonItem title="My Friend's Likes" id="I1n-9o-Pgj"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -77,9 +86,15 @@
                             <outlet property="delegate" destination="6wX-M1-ilw" id="j9o-YX-yd3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Drink With ..." id="sQA-4T-i4e"/>
+                    <navigationItem key="navigationItem" title="Drink With ..." id="sQA-4T-i4e">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Nxg-e3-gmU">
+                            <connections>
+                                <action selector="doneTapped:" destination="6wX-M1-ilw" id="aCp-Xj-uKu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="vZN-vp-6mF" kind="push" id="vSR-sr-VB2"/>
+                        <segue destination="vZN-vp-6mF" kind="push" identifier="drink_at" id="vSR-sr-VB2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4M-N5-cKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,7 +124,9 @@
                             <outlet property="delegate" destination="vZN-vp-6mF" id="pCi-On-ySe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Drink At ..." id="fWS-79-3vI"/>
+                    <navigationItem key="navigationItem" title="Drink At ..." id="fWS-79-3vI">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="545-Ug-Kvd"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40W-42-Idk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

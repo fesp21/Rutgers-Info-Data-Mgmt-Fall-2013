@@ -10,8 +10,6 @@
 
 @interface RUDWFRootViewController : UIViewController
 
--(IBAction)importFriendsTapped:(id)sender;
--(IBAction)importBarsTapped:(id)sender;
 -(IBAction)drinkTapped:(id)sender;
 
 @end

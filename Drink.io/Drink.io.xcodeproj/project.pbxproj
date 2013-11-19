@@ -23,6 +23,7 @@
 		27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */; };
 		27AFC846183AE5420042FB97 /* RUDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC845183AE5420042FB97 /* RUDBManager.m */; };
 		27AFC848183AE5A40042FB97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AFC847183AE5A40042FB97 /* libsqlite3.dylib */; };
+		27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 		27AFC844183AE5420042FB97 /* RUDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDBManager.h; sourceTree = "<group>"; };
 		27AFC845183AE5420042FB97 /* RUDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDBManager.m; sourceTree = "<group>"; };
 		27AFC847183AE5A40042FB97 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkAtViewController.h; sourceTree = "<group>"; };
+		27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkAtViewController.m; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +136,8 @@
 				27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */,
 				27AFC844183AE5420042FB97 /* RUDBManager.h */,
 				27AFC845183AE5420042FB97 /* RUDBManager.m */,
+				27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */,
+				27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */,
 			);
 			path = Drink.io;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */,
 				2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */,
 				27AFC846183AE5420042FB97 /* RUDBManager.m in Sources */,
+				27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */,
 				27421F6617FDE57E00B38156 /* main.m in Sources */,
 				27421F6A17FDE57E00B38156 /* RUAppDelegate.m in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  RUDrinkWithViewController.h
+//  RUDrinkAtViewController.h
 //  Drink.io
 //
 //  Created by Paul Jones on 11/18/13.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUDrinkWithViewController : UITableViewController {
-    NSMutableArray * people;
-}
-
-- (IBAction) doneTapped: (id) sender;
+@interface RUDrinkAtViewController : UITableViewController
 
 @end

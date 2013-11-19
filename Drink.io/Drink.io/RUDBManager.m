@@ -57,59 +57,61 @@ static sqlite3_stmt *statement = nil;
     return isSuccess;
 }
 
-- (BOOL) saveData:(NSString*)registerNumber name:(NSString*)name
-       department:(NSString*)department year:(NSString*)year;
+- (BOOL) saveData:(NSString*)registerNumber name:(NSString*)name department:(NSString*)department year:(NSString*)year;
 {
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
         NSString *insertSQL = [NSString stringWithFormat:@"insert into studentsDetail (regno,name, department, year) values (\"%d\",\"%@\", \"%@\", \"%@\")",[registerNumber integerValue],
-                                name, department, year];
-                                const char *insert_stmt = [insertSQL UTF8String];
-                                sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
-                                if (sqlite3_step(statement) == SQLITE_DONE)
-                                {
-                                    return YES;
-                                }
-                                else {
-                                    return NO;
-                                }
-                                sqlite3_reset(statement);
-                                }
-                                return NO;
-                                }
-                                
-                                - (NSArray*) findByRegisterNumber:(NSString*)registerNumber
+                               name, department, year];
+        const char *insert_stmt = [insertSQL UTF8String];
+        sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
+        if (sqlite3_step(statement) == SQLITE_DONE)
         {
-            const char *dbpath = [databasePath UTF8String];
-            if (sqlite3_open(dbpath, &database) == SQLITE_OK)
-            {
-                NSString *querySQL = [NSString stringWithFormat:
-                                      @"select name, department, year from studentsDetail where regno=\"%@\"",registerNumber];
-                const char *query_stmt = [querySQL UTF8String];
-                NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-                if (sqlite3_prepare_v2(database,
-                                       query_stmt, -1, &statement, NULL) == SQLITE_OK)
-                {
-                    if (sqlite3_step(statement) == SQLITE_ROW)
-                    {
-                        NSString *name = [[NSString alloc] initWithUTF8String:
-                                          (const char *) sqlite3_column_text(statement, 0)];
-                        [resultArray addObject:name];
-                        NSString *department = [[NSString alloc] initWithUTF8String:
-                                                (const char *) sqlite3_column_text(statement, 1)];
-                        [resultArray addObject:department];
-                        NSString *year = [[NSString alloc]initWithUTF8String:
-                                          (const char *) sqlite3_column_text(statement, 2)];
-                        [resultArray addObject:year];
-                        return resultArray;
-                    }
-                    else{
-                        NSLog(@"Not found");
-                        return nil;
-                    }
-                    sqlite3_reset(statement);
-                }
-            }
-            return nil;
+            return YES;
         }
+        else {
+            return NO;
+        }
+        sqlite3_reset(statement);
+    }
+    return NO;
+}
+
+- (NSArray*) findByRegisterNumber:(NSString*)registerNumber
+{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"select name, department, year from studentsDetail where regno=\"%@\"",registerNumber];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *name = [[NSString alloc] initWithUTF8String:
+                                  (const char *) sqlite3_column_text(statement, 0)];
+                [resultArray addObject:name];
+                NSString *department = [[NSString alloc] initWithUTF8String:
+                                        (const char *) sqlite3_column_text(statement, 1)];
+                [resultArray addObject:department];
+                NSString *year = [[NSString alloc]initWithUTF8String:
+                                  (const char *) sqlite3_column_text(statement, 2)];
+                [resultArray addObject:year];
+                return resultArray;
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
+}
+
+@end
+

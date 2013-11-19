@@ -1,25 +1,25 @@
 //
-//  RUDrinkWithViewController.m
+//  RUDrinkAtViewController.m
 //  Drink.io
 //
 //  Created by Paul Jones on 11/18/13.
 //  Copyright (c) 2013 Principles of Informations and Data Management. All rights reserved.
 //
 
-#import "RUDrinkWithViewController.h"
-#import <AddressBook/AddressBook.h>
+#import "RUDrinkAtViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface RUDrinkWithViewController ()
+@interface RUDrinkAtViewController ()
 
 @end
 
-@implementation RUDrinkWithViewController
+@implementation RUDrinkAtViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        
+        // Custom initialization
     }
     return self;
 }
@@ -28,49 +28,22 @@
 {
     [super viewDidLoad];
 
-    people = [[NSMutableArray alloc ] init];
+    NSLog(@"Import bars tapped.\n");
     
-    ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
-    
-    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-        ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-            ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-        });
-    }
-    else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
-        
-        CFErrorRef *error = NULL;
-        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-        NSString * addressBookNum;
-        
-        for(int i = 0; i < numberOfPeople; i++) {
-            
-            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-            
-            NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-            NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
-            
-            NSString * fullName = [firstName stringByAppendingString:[@" " stringByAppendingString:lastName]];
-            
-            [people addObject:fullName];
-            
-            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-            [[UIDevice currentDevice] name];
-            
-            NSLog(@"\n%@\n", [[UIDevice currentDevice] name]);
-            
-            for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-                NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-                
-                addressBookNum = [addressBookNum stringByAppendingFormat: @":%@",phoneNumber];
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Bars";
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse
+                                         *response, NSError *error) {
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else
+            for (MKMapItem *item in response.mapItems)
+            {
+                NSLog(@"name = %@", item.name);
+                NSLog(@"Phone = %@", item.phoneNumber);
             }
-        }
-    }
-    else {
-        // Send an alert telling user to change privacy setting in settings app
-    }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,14 +56,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [people count];
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,13 +73,9 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [people objectAtIndex:indexPath.row];
+    // Configure the cell...
     
     return cell;
-}
-
-- (IBAction) doneTapped: (id) sender {
-    [self performSegueWithIdentifier:@"drink_at" sender:self];
 }
 
 /*
