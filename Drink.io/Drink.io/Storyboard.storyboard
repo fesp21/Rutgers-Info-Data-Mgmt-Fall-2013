@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="-99" y="-50"/>
         </scene>
-        <!--Drink With View Controller - Drink With ...-->
+        <!--Drink With View Controller - With?-->
         <scene sceneID="PV9-PZ-27Q">
             <objects>
                 <tableViewController id="6wX-M1-ilw" customClass="RUDrinkWithViewController" sceneMemberID="viewController">
@@ -86,7 +86,7 @@
                             <outlet property="delegate" destination="6wX-M1-ilw" id="j9o-YX-yd3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Drink With ..." id="sQA-4T-i4e">
+                    <navigationItem key="navigationItem" title="With?" id="sQA-4T-i4e">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Nxg-e3-gmU">
                             <connections>
                                 <action selector="doneTapped:" destination="6wX-M1-ilw" id="aCp-Xj-uKu"/>
@@ -101,7 +101,7 @@
             </objects>
             <point key="canvasLocation" x="370" y="-50"/>
         </scene>
-        <!--Drink At View Controller - Drink At ...-->
+        <!--Drink At View Controller - Where?-->
         <scene sceneID="6Ib-rX-wEh">
             <objects>
                 <tableViewController id="vZN-vp-6mF" customClass="RUDrinkAtViewController" sceneMemberID="viewController">
@@ -124,7 +124,7 @@
                             <outlet property="delegate" destination="vZN-vp-6mF" id="pCi-On-ySe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Drink At ..." id="fWS-79-3vI">
+                    <navigationItem key="navigationItem" title="Where?" id="fWS-79-3vI">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="545-Ug-Kvd">
                             <connections>
                                 <action selector="doneTapped:" destination="vZN-vp-6mF" id="f89-1z-0eY"/>
@@ -168,7 +168,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Drink With Friends!" id="ROa-Hc-cdJ"/>
+                    <navigationItem key="navigationItem" title="Drink!" id="ROa-Hc-cdJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9g-uH-Ti2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
