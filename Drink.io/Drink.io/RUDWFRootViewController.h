@@ -10,6 +10,7 @@
 
 @interface RUDWFRootViewController : UIViewController 
 
--(IBAction)drinkTapped:(id)sender;
+- (IBAction) drinkTapped: (id) sender;
+- (IBAction) sqlTapped: (id) sender;
 
 @end

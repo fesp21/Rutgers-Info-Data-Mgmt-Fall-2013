@@ -21,9 +21,12 @@
 
 -(IBAction)drinkTapped:(id)sender
 {
-    NSLog(@"Drink tapped.\n");
-    
     [self performSegueWithIdentifier:@"drink_with" sender:self];
+}
+
+- (IBAction) sqlTapped: (id) sender
+{
+    [self performSegueWithIdentifier:@"sql" sender:self];
 }
 
 @end

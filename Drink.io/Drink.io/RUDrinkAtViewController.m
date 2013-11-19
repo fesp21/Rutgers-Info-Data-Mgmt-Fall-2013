@@ -105,16 +105,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    NSInteger numberOfSections;
+    
+    if ([favoriteBars count] > 0) {
+        numberOfSections = 2;
+    } else {
+        numberOfSections = 1;
+    }
+    
+    return numberOfSections;
 }
 
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)
-    section {
+- (NSString *) tableView: (UITableView *) tableView titleForHeaderInSection: (NSInteger) section
+{
     NSString * titleForHeader;
     
-    if (section == 0) {
+    if (section == 0 && [favoriteBars count] > 0) {
         titleForHeader = @"Favorites";
-    }else {
+    } else {
         titleForHeader = @"Local";
     }
     
@@ -126,8 +134,8 @@
 {
     NSInteger numberOfRows;
     
-    if (section == 0) {
-        numberOfRows = 3;
+    if (section == 0 && [favoriteBars count] > 0) {
+        numberOfRows = [favoriteBars count];
     } else {
         numberOfRows = [localBars count];
     }
@@ -140,9 +148,9 @@
     static NSString *CellIdentifier = @"Cell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
-        cell.textLabel.text = @"Favorite Bar";
-    } else if (indexPath.section == 1) {
+    if (indexPath.section == 0 && [favoriteBars count] > 0) {
+        cell.textLabel.text = [favoriteBars objectAtIndex:indexPath.row];
+    } else {
         cell.textLabel.text = [localBars objectAtIndex:indexPath.row];
     }
     

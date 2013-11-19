@@ -124,6 +124,28 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
     }
 }
 
+- (NSString *) query: (NSString *) querySQL {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *name = [[NSString alloc] initWithUTF8String: (const char *) sqlite3_column_text(statement, 0)];
+                return name;
+            }
+            else{
+                return @"Failed";
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    
+    return @"Failed";
+}
+
 - (BOOL) saveData:(NSString*)registerNumber name:(NSString*)name department:(NSString*)department year:(NSString*)year;
 {
     const char *dbpath = [databasePath UTF8String];

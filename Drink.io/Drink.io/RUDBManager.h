@@ -54,4 +54,6 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
 - (NSArray *) getBars;
 - (NSArray *) getFavoriteBars;
 
+- (NSString *) query: (NSString *) querySQL;
+
 @end
