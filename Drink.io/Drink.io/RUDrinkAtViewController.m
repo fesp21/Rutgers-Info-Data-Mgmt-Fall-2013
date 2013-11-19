@@ -10,6 +10,7 @@
 
 @interface RUDrinkAtViewController () {
     CLLocationManager * locationManager;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @end
@@ -61,6 +62,7 @@
                 [localBars addObject:item.name];
             }
             [self.tableView reloadData];
+            [activityIndicator removeFromSuperview];
         }
     }];
 }
@@ -68,11 +70,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSLog(@"Import bars tapped.\n");
     
     localBars = [[NSMutableArray alloc] init];
     [self startStandardUpdates];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [self.view addSubview: activityIndicator];
+    
+    [activityIndicator startAnimating];
+    
 }
 
 - (void)didReceiveMemoryWarning
