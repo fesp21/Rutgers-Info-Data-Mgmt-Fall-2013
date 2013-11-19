@@ -8,6 +8,7 @@
 
 #import "RUDrinkWithViewController.h"
 #import <AddressBook/AddressBook.h>
+#import "RUDBManager.h"
 
 @interface RUDrinkWithViewController ()
 
