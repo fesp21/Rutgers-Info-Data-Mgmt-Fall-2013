@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface RUDrinkAtViewController : UITableViewController
+@interface RUDrinkAtViewController : UITableViewController <CLLocationManagerDelegate> {
+    NSMutableArray * localBars;
+}
 
 @end

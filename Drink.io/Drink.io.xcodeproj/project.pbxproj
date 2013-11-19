@@ -24,6 +24,7 @@
 		27AFC846183AE5420042FB97 /* RUDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC845183AE5420042FB97 /* RUDBManager.m */; };
 		27AFC848183AE5A40042FB97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AFC847183AE5A40042FB97 /* libsqlite3.dylib */; };
 		27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */; };
+		27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC84E183B0B7D0042FB97 /* default.gpx */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		27AFC847183AE5A40042FB97 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkAtViewController.h; sourceTree = "<group>"; };
 		27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkAtViewController.m; sourceTree = "<group>"; };
+		27AFC84E183B0B7D0042FB97 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 		27421F4D17FDE57E00B38156 = {
 			isa = PBXGroup;
 			children = (
+				27AFC84E183B0B7D0042FB97 /* default.gpx */,
 				27421F5F17FDE57E00B38156 /* Drink.io */,
 				27421F7817FDE57E00B38156 /* Drink.ioTests */,
 				27421F5817FDE57E00B38156 /* Frameworks */,
@@ -125,19 +128,19 @@
 		27421F5F17FDE57E00B38156 /* Drink.io */ = {
 			isa = PBXGroup;
 			children = (
+				27421F6B17FDE57E00B38156 /* Images.xcassets */,
 				27421F6817FDE57E00B38156 /* RUAppDelegate.h */,
 				27421F6917FDE57E00B38156 /* RUAppDelegate.m */,
-				27421F6B17FDE57E00B38156 /* Images.xcassets */,
-				27421F6017FDE57E00B38156 /* Supporting Files */,
-				27DECA9B18200699004CDF52 /* Storyboard.storyboard */,
-				2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */,
-				2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */,
-				27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */,
-				27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */,
 				27AFC844183AE5420042FB97 /* RUDBManager.h */,
 				27AFC845183AE5420042FB97 /* RUDBManager.m */,
 				27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */,
 				27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */,
+				27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */,
+				27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */,
+				2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */,
+				2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */,
+				27DECA9B18200699004CDF52 /* Storyboard.storyboard */,
+				27421F6017FDE57E00B38156 /* Supporting Files */,
 			);
 			path = Drink.io;
 			sourceTree = "<group>";
@@ -221,6 +224,11 @@
 				TargetAttributes = {
 					27421F5517FDE57E00B38156 = {
 						DevelopmentTeam = 77A67CC8CK;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					27421F7017FDE57E00B38156 = {
 						TestTargetID = 27421F5517FDE57E00B38156;
@@ -251,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27421F6417FDE57E00B38156 /* InfoPlist.strings in Resources */,
+				27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */,
 				27421F6C17FDE57E00B38156 /* Images.xcassets in Resources */,
 				27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */,
 			);

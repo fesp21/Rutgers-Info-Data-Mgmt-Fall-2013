@@ -7,9 +7,10 @@
 //
 
 #import "RUDrinkAtViewController.h"
-#import <MapKit/MapKit.h>
 
-@interface RUDrinkAtViewController ()
+@interface RUDrinkAtViewController () {
+    CLLocationManager * locationManager;
+}
 
 @end
 
@@ -19,9 +20,49 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
+}
+
+- (void)startStandardUpdates
+{
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    
+    // Set a movement threshold for new events.
+    locationManager.distanceFilter = 500; // meters
+    
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Bars";
+    CLLocation* location = [locations lastObject];
+    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    
+    [localBars removeAllObjects];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse
+                                         *response, NSError *error) {
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else {
+            for (MKMapItem *item in response.mapItems)
+            {
+                NSLog(@"%@ %@", item.placemark.thoroughfare, item.placemark.title);
+                [localBars addObject:item.name];
+            }
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (void)viewDidLoad
@@ -30,20 +71,8 @@
 
     NSLog(@"Import bars tapped.\n");
     
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"Bars";
-    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse
-                                         *response, NSError *error) {
-        if (response.mapItems.count == 0)
-            NSLog(@"No Matches");
-        else
-            for (MKMapItem *item in response.mapItems)
-            {
-                NSLog(@"name = %@", item.name);
-                NSLog(@"Phone = %@", item.phoneNumber);
-            }
-    }];
+    localBars = [[NSMutableArray alloc] init];
+    [self startStandardUpdates];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,24 +85,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSLog(@" sandkjnsa %i", [localBars count]);
+    return [localBars count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Cell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    [cell.textLabel setText:[localBars objectAtIndex:indexPath.row]];
     
     return cell;
 }
