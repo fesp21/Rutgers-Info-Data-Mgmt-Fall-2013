@@ -16,13 +16,14 @@ subAdministrativeArea char(128),
 postalCode char(128),
 ISOcountryCode char(128),
 country char(128)
+
 );
 
 create table distance (
 firstFriend char(128),
 secondFriend char(128),
 distanceFrome real
-)
+);
 
 create table sells (
 bar char(128),
