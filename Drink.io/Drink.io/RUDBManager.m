@@ -70,7 +70,7 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
     return friends;
 }
 - (NSArray *) getBestFriends {
-    NSArray * bestFriends = [[NSArray alloc] init];
+    NSArray * bestFriends = [[NSArray alloc] initWithObjects:@"Paul Jones",@"Frank Porco", @"Tomasz Imielinski", nil];
     
     return bestFriends;
 }
@@ -80,7 +80,7 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
     return bars;
 }
 - (NSArray *) getFavoriteBars {
-    NSArray * favoriteBars = [[NSArray alloc] init];
+    NSArray * favoriteBars = [[NSArray alloc] initWithObjects:@"Clydz",@"Harvest Moon", @"Stuff Yer Face", nil];
     
     return favoriteBars;
 }

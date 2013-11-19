@@ -14,7 +14,6 @@
     UIActivityIndicatorView *activityIndicator;
     RUDBManager * db;
     NSArray * favoriteBars;
-
 }
 
 @end
@@ -35,7 +34,7 @@
     [super viewDidLoad];
     
     db = [RUDBManager getSharedInstance];
-    favoriteBars = [db getBestFriends];
+    favoriteBars = [db getFavoriteBars];
     
     localBars = [[NSMutableArray alloc] init];
     
