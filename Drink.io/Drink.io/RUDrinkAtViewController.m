@@ -7,10 +7,14 @@
 //
 
 #import "RUDrinkAtViewController.h"
+#import "RUDBManager.h"
 
 @interface RUDrinkAtViewController () {
     CLLocationManager * locationManager;
     UIActivityIndicatorView *activityIndicator;
+    RUDBManager * db;
+    NSArray * favoriteBars;
+
 }
 
 @end
@@ -26,35 +30,12 @@
     return self;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"Bars";
-    CLLocation* location = [locations lastObject];
-    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
-    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-    
-    [localBars removeAllObjects];
-    
-    [search startWithCompletionHandler:^(MKLocalSearchResponse
-                                         *response, NSError *error) {
-        if (response.mapItems.count == 0)
-            NSLog(@"No Matches");
-        else {
-            for (MKMapItem *item in response.mapItems)
-            {
-                NSLog(@"%@ %@", item.placemark.thoroughfare, item.placemark.title);
-                
-                [localBars addObject:item.name];
-            }
-            [self.tableView reloadData];
-            [activityIndicator removeFromSuperview];
-        }
-    }];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    db = [RUDBManager getSharedInstance];
+    favoriteBars = [db getBestFriends];
     
     localBars = [[NSMutableArray alloc] init];
     
@@ -78,7 +59,34 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Location Services 
+
+- (void) locationManager: (CLLocationManager *) manager didUpdateLocations: (NSArray *) locations {
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Bars";
+    CLLocation* location = [locations lastObject];
+    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    
+    [localBars removeAllObjects];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse
+                                         *response, NSError *error) {
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else {
+            for (MKMapItem *item in response.mapItems)
+            {
+                NSLog(@"%@ %@", item.placemark.thoroughfare, item.placemark.title);
+                
+                [localBars addObject:item.name];
+            }
+            [self.tableView reloadData];
+            [activityIndicator removeFromSuperview];
+        }
+    }];
 }
 
 #pragma mark - Table view delegate
@@ -145,11 +153,9 @@
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
 
 #pragma mark - IBActions

@@ -46,22 +46,77 @@
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Favorite Bars" id="Nec-x3-pWR"/>
+                                    <barButtonItem title="Favorite Bars" id="Nec-x3-pWR">
+                                        <connections>
+                                            <segue destination="1Yy-jJ-zL5" kind="push" id="3X0-Fi-ofr"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9Eu-HU-dVu"/>
-                                    <barButtonItem title="Best Friends" id="I1n-9o-Pgj"/>
+                                    <barButtonItem title="Best Friends" id="I1n-9o-Pgj">
+                                        <connections>
+                                            <segue destination="Iir-VC-gbG" kind="push" id="Zbt-IZ-v3y"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Drink With Friends" id="RAU-2h-bhH"/>
+                    <navigationItem key="navigationItem" title="Drink With Friends" id="RAU-2h-bhH">
+                        <barButtonItem key="rightBarButtonItem" title="SQL" id="lpg-UR-fd0">
+                            <connections>
+                                <segue destination="Abi-ce-Cu7" kind="push" id="IjV-5q-b6B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="6wX-M1-ilw" kind="push" identifier="drink_with" id="hnX-mN-M5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLR-4m-IpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99" y="-50"/>
+            <point key="canvasLocation" x="-115" y="-50"/>
+        </scene>
+        <!--View Controller - Run Query-->
+        <scene sceneID="kRO-tX-hTX">
+            <objects>
+                <viewController id="Abi-ce-Cu7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ur7-HG-BiM"/>
+                        <viewControllerLayoutGuide type="bottom" id="RoE-2e-YAl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5bi-rN-rTh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yse-9M-LzT">
+                                <rect key="frame" x="270" y="73" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Run">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgS-Ei-7W8">
+                                <rect key="frame" x="20" y="73" width="242" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ciI-BP-B1U">
+                                <rect key="frame" x="20" y="111" width="280" height="349"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Run Query" id="fdw-w0-xcT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mww-d3-z5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="370" y="-627"/>
         </scene>
         <!--Drink With View Controller - With?-->
         <scene sceneID="PV9-PZ-27Q">
@@ -100,6 +155,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4M-N5-cKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="370" y="-50"/>
+        </scene>
+        <!--Table View Controller - Best Friends-->
+        <scene sceneID="sb6-Z8-aoG">
+            <objects>
+                <tableViewController id="Iir-VC-gbG" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ke3-O0-vow">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="j1E-wR-N4Q">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j1E-wR-N4Q" id="d98-mP-Dc1">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Iir-VC-gbG" id="lso-uf-7aL"/>
+                            <outlet property="delegate" destination="Iir-VC-gbG" id="tu3-se-Hhf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Best Friends" id="zgN-rR-d3i"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ls-Ba-NSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="370" y="538"/>
+        </scene>
+        <!--Table View Controller - Favorite Bars-->
+        <scene sceneID="S5y-kG-Yc8">
+            <objects>
+                <tableViewController id="1Yy-jJ-zL5" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0tm-Qi-ynq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oDM-S3-bAO">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oDM-S3-bAO" id="5LZ-Fb-35y">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1Yy-jJ-zL5" id="Edk-Ew-nJY"/>
+                            <outlet property="delegate" destination="1Yy-jJ-zL5" id="vbZ-Ht-PPO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorite Bars" id="Ans-tk-Qgb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="njL-gS-pQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="370" y="1119"/>
         </scene>
         <!--Drink At View Controller - Where?-->
         <scene sceneID="6Ib-rX-wEh">

@@ -8,8 +8,12 @@
 
 #import "RUDrinkWithViewController.h"
 #import <AddressBook/AddressBook.h>
+#import "RUDBManager.h"
 
-@interface RUDrinkWithViewController ()
+@interface RUDrinkWithViewController () {
+    RUDBManager * db;
+    NSArray * bestFriends;
+}
 
 @end
 
@@ -27,7 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    db = [RUDBManager getSharedInstance];
+    bestFriends = [db getBestFriends];
+    
     people = [[NSMutableArray alloc ] init];
     
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -72,12 +79,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view delegate
 
-- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
@@ -98,14 +105,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 2;
+    if ([bestFriends count] > 0) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
     NSString * titleForHeader;
     
-    if (section == 0) {
+    if (section == 0 && [bestFriends count] > 0) {
         titleForHeader = @"Best Friends";
     } else {
         titleForHeader = @"Contacts";
@@ -118,10 +129,8 @@
 {
     NSInteger numberOfRows;
     
-    RUDBManager * db = [RUDBManager getSharedInstance];
-    
-    if (section == 0) {
-        numberOfRows = 3;
+    if (section == 0 && [bestFriends count] > 0) {
+        numberOfRows = [bestFriends count];
     } else {
         numberOfRows = [people count];
     }
@@ -134,9 +143,9 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
-        cell.textLabel.text = @"Best Friend!";
-    } else if (indexPath.section == 1) {
+    if (indexPath.section == 0 && [bestFriends count] > 0) {
+        cell.textLabel.text = [bestFriends objectAtIndex:indexPath.row];
+    } else {
         cell.textLabel.text = [people objectAtIndex:indexPath.row];
     }
     
@@ -147,16 +156,15 @@
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
 
 #pragma mark - IBActions
 
-- (IBAction) doneTapped: (id) sender {
+- (IBAction) doneTapped: (id) sender
+{
     [self performSegueWithIdentifier:@"drink_at" sender:self];
 }
 
