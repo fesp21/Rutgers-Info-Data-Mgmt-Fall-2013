@@ -26,6 +26,7 @@
 		27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */; };
 		27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC84E183B0B7D0042FB97 /* default.gpx */; };
 		27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */; };
+		27AFC85A183B1CC10042FB97 /* initializeDB.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC859183B1CC10042FB97 /* initializeDB.txt */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		27AFC84E183B0B7D0042FB97 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		27AFC850183B138D0042FB97 /* RUDrinkNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkNowViewController.h; sourceTree = "<group>"; };
 		27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkNowViewController.m; sourceTree = "<group>"; };
+		27AFC859183B1CC10042FB97 /* initializeDB.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = initializeDB.txt; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +133,7 @@
 		27421F5F17FDE57E00B38156 /* Drink.io */ = {
 			isa = PBXGroup;
 			children = (
-				27AFC858183B13DE0042FB97 /* Database Singleton */,
+				27AFC858183B13DE0042FB97 /* Database Stuff */,
 				27AFC856183B13C30042FB97 /* End View */,
 				27AFC857183B13D50042FB97 /* First View */,
 				27AFC855183B13AE0042FB97 /* Friends View */,
@@ -210,13 +212,14 @@
 			name = "First View";
 			sourceTree = "<group>";
 		};
-		27AFC858183B13DE0042FB97 /* Database Singleton */ = {
+		27AFC858183B13DE0042FB97 /* Database Stuff */ = {
 			isa = PBXGroup;
 			children = (
 				27AFC844183AE5420042FB97 /* RUDBManager.h */,
 				27AFC845183AE5420042FB97 /* RUDBManager.m */,
+				27AFC859183B1CC10042FB97 /* initializeDB.txt */,
 			);
-			name = "Database Singleton";
+			name = "Database Stuff";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +308,7 @@
 			files = (
 				27421F6417FDE57E00B38156 /* InfoPlist.strings in Resources */,
 				27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */,
+				27AFC85A183B1CC10042FB97 /* initializeDB.txt in Resources */,
 				27421F6C17FDE57E00B38156 /* Images.xcassets in Resources */,
 				27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */,
 			);

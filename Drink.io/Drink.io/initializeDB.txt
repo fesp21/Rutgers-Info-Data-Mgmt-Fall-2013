@@ -1,0 +1,32 @@
+create table beers (
+name char(20),
+manf char(20)
+);
+
+create table bars (
+name char(20),
+city char(20),
+owner char(20)
+);
+
+create table sells (
+bar char(20),
+beer char(20),
+price real
+);
+
+create table drinkers (
+name char(20),
+city char(20),
+phone char(20)
+);
+
+create table likes (
+drinker char(20),
+beer char(20)
+);
+
+create table frequents (
+drinker char(20),
+bar char(20)
+);

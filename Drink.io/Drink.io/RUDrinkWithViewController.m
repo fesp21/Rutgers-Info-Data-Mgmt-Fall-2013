@@ -36,8 +36,7 @@
         ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
             ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
         });
-    }
-    else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         
         CFErrorRef *error = NULL;
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
@@ -45,7 +44,7 @@
         CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
         NSString * addressBookNum;
         
-        for(int i = 0; i < numberOfPeople; i++) {
+        for (int i = 0; i < numberOfPeople; i++) {
             
             ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
             

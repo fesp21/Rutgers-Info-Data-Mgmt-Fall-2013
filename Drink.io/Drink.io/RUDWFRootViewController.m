@@ -7,12 +7,22 @@
 //
 
 #import "RUDWFRootViewController.h"
+#import "RUDBManager.h"
 
 @implementation RUDWFRootViewController
 
--(IBAction)drinkTapped:(id)sender {
-    NSLog(@"Drink tapped.\n");
+- (void) viewWillAppear:(BOOL)animated
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    BOOL worked = [db createDB];
+    NSLog(@"%@", worked ? @"yes" : @"No");
+}
 
+-(IBAction)drinkTapped:(id)sender
+{
+    NSLog(@"Drink tapped.\n");
+    
     [self performSegueWithIdentifier:@"drink_with" sender:self];
 }
 
