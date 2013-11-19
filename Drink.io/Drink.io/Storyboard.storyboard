@@ -125,12 +125,38 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Drink At ..." id="fWS-79-3vI">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="545-Ug-Kvd"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="545-Ug-Kvd">
+                            <connections>
+                                <action selector="doneTapped:" destination="vZN-vp-6mF" id="f89-1z-0eY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="gUj-53-Sbf" kind="push" identifier="drink_with_friends" id="wNy-gs-DrA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40W-42-Idk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="-50"/>
+            <point key="canvasLocation" x="824" y="-50"/>
+        </scene>
+        <!--Drink Now View Controller - Drink With Friends!-->
+        <scene sceneID="Jbc-l3-y8B">
+            <objects>
+                <viewController title="Drink With Friends!" id="gUj-53-Sbf" customClass="RUDrinkNowViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Knh-TF-vlE"/>
+                        <viewControllerLayoutGuide type="bottom" id="SzA-xv-4KT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5pO-Ca-5io">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Drink With Friends!" id="ROa-Hc-cdJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U9g-uH-Ti2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1268" y="-50"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

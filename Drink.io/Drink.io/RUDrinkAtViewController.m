@@ -17,6 +17,10 @@
 
 @implementation RUDrinkAtViewController
 
+- (IBAction)doneTapped:(id)sender {
+    [self performSegueWithIdentifier:@"drink_with_friends" sender:self];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -24,22 +28,6 @@
         
     }
     return self;
-}
-
-- (void)startStandardUpdates
-{
-    // Create the location manager if this object does not
-    // already have one.
-    if (nil == locationManager)
-        locationManager = [[CLLocationManager alloc] init];
-    
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    
-    // Set a movement threshold for new events.
-    locationManager.distanceFilter = 500; // meters
-    
-    [locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -72,7 +60,15 @@
     [super viewDidLoad];
     
     localBars = [[NSMutableArray alloc] init];
-    [self startStandardUpdates];
+    
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.distanceFilter = 500;
+    
+    [locationManager startUpdatingLocation];
     
     activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);

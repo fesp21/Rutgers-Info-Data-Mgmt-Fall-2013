@@ -13,4 +13,6 @@
     NSMutableArray * localBars;
 }
 
+- (IBAction)doneTapped:(id)sender;
+
 @end

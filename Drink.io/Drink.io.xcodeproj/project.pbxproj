@@ -25,6 +25,7 @@
 		27AFC848183AE5A40042FB97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AFC847183AE5A40042FB97 /* libsqlite3.dylib */; };
 		27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */; };
 		27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC84E183B0B7D0042FB97 /* default.gpx */; };
+		27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkAtViewController.h; sourceTree = "<group>"; };
 		27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkAtViewController.m; sourceTree = "<group>"; };
 		27AFC84E183B0B7D0042FB97 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
+		27AFC850183B138D0042FB97 /* RUDrinkNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkNowViewController.h; sourceTree = "<group>"; };
+		27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkNowViewController.m; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,17 +131,14 @@
 		27421F5F17FDE57E00B38156 /* Drink.io */ = {
 			isa = PBXGroup;
 			children = (
+				27AFC858183B13DE0042FB97 /* Database Singleton */,
+				27AFC856183B13C30042FB97 /* End View */,
+				27AFC857183B13D50042FB97 /* First View */,
+				27AFC855183B13AE0042FB97 /* Friends View */,
 				27421F6B17FDE57E00B38156 /* Images.xcassets */,
+				27AFC853183B13970042FB97 /* Local Bars View */,
 				27421F6817FDE57E00B38156 /* RUAppDelegate.h */,
 				27421F6917FDE57E00B38156 /* RUAppDelegate.m */,
-				27AFC844183AE5420042FB97 /* RUDBManager.h */,
-				27AFC845183AE5420042FB97 /* RUDBManager.m */,
-				27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */,
-				27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */,
-				27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */,
-				27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */,
-				2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */,
-				2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */,
 				27DECA9B18200699004CDF52 /* Storyboard.storyboard */,
 				27421F6017FDE57E00B38156 /* Supporting Files */,
 			);
@@ -172,6 +172,51 @@
 				27421F7B17FDE57F00B38156 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27AFC853183B13970042FB97 /* Local Bars View */ = {
+			isa = PBXGroup;
+			children = (
+				27AFC849183AE7510042FB97 /* RUDrinkAtViewController.h */,
+				27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */,
+			);
+			name = "Local Bars View";
+			sourceTree = "<group>";
+		};
+		27AFC855183B13AE0042FB97 /* Friends View */ = {
+			isa = PBXGroup;
+			children = (
+				27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */,
+				27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */,
+			);
+			name = "Friends View";
+			sourceTree = "<group>";
+		};
+		27AFC856183B13C30042FB97 /* End View */ = {
+			isa = PBXGroup;
+			children = (
+				27AFC850183B138D0042FB97 /* RUDrinkNowViewController.h */,
+				27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */,
+			);
+			name = "End View";
+			sourceTree = "<group>";
+		};
+		27AFC857183B13D50042FB97 /* First View */ = {
+			isa = PBXGroup;
+			children = (
+				2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */,
+				2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */,
+			);
+			name = "First View";
+			sourceTree = "<group>";
+		};
+		27AFC858183B13DE0042FB97 /* Database Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				27AFC844183AE5420042FB97 /* RUDBManager.h */,
+				27AFC845183AE5420042FB97 /* RUDBManager.m */,
+			);
+			name = "Database Singleton";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +330,7 @@
 				27AFC846183AE5420042FB97 /* RUDBManager.m in Sources */,
 				27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */,
 				27421F6617FDE57E00B38156 /* main.m in Sources */,
+				27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */,
 				27421F6A17FDE57E00B38156 /* RUAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
