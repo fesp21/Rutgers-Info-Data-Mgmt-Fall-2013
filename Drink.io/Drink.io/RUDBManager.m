@@ -48,8 +48,34 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
            withPostalCode: (NSString *) postalCode
        withISOcountryCode: (NSString *) ISOcountryCode
               withCountry: (NSString *) country
-          andWithFavorite: (NSInteger *) favorite {
-    return false;
+          andWithFavorite: (NSInteger) favorite {
+    
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into bars"
+                               "(bar,phoneNumber,URL,throughfare,subThroughfare,locality,subLocality,"
+                               "administrativeArea, subAdministrativeArea, postalCode, ISOcountryCode,"
+                               "country, favorite)"
+                               "values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\")",
+                               bar, phoneNumber, URL, thoroughfare, subThoroughfare, locality, subLocality, administrativeArea,
+                               subAdministrativeArea, postalCode, ISOcountryCode, country, favorite];
+        
+        NSLog(@"%@", insertSQL);
+        
+        const char *insert_stmt = [insertSQL UTF8String];
+        sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
+        if (sqlite3_step(statement) == SQLITE_DONE)
+        {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+        sqlite3_reset(statement);
+    }
+    return NO;
 }
 
 - (BOOL) makeBestFriendWithFirstName: (NSString *) firstName

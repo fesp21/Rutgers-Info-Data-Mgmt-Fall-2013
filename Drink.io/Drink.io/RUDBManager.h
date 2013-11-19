@@ -41,7 +41,7 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
            withPostalCode: (NSString *) postalCode
        withISOcountryCode: (NSString *) ISOcountryCode
               withCountry: (NSString *) country
-          andWithFavorite: (NSInteger *) favorite;
+          andWithFavorite: (NSInteger) favorite;
 
 - (BOOL) makeBestFriendWithFirstName: (NSString *) firstName
                         withLastName: (NSString *) lastName
