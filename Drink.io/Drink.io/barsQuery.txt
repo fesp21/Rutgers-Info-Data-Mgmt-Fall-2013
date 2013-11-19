@@ -1,0 +1,4 @@
+/*
+ * This should grab all bars the user has
+ * been to that ARE NOT their favorite.
+ */

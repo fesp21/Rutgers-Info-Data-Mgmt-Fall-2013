@@ -52,3 +52,15 @@ Path route can be gotten from MapKit or Google Maps.
 
 http://stackoverflow.com/questions/12002179/finding-path-route-between-two-points-on-mapkit-in-iphone
 
+November 19th, 2013
+-------------------
+
+-   Friends view
+	-   Likes w/ beers
+	-   Frequents w/ bars
+
+-   Bars view
+	-   Sells w/ beers
+
+-   Beers view
+	-   Add/takeaway 

@@ -46,13 +46,15 @@
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Favorite Bars" id="Nec-x3-pWR">
+                                    <barButtonItem title="Bars" id="Nec-x3-pWR">
                                         <connections>
                                             <segue destination="1Yy-jJ-zL5" kind="push" identifier="favorite_bars" id="3X0-Fi-ofr"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9Eu-HU-dVu"/>
-                                    <barButtonItem title="Best Friends" id="I1n-9o-Pgj">
+                                    <barButtonItem title="Beers" id="CBm-mX-g5s"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="K3g-cN-Fl8"/>
+                                    <barButtonItem title="Friends" id="I1n-9o-Pgj">
                                         <connections>
                                             <segue destination="Iir-VC-gbG" kind="push" id="Zbt-IZ-v3y"/>
                                         </connections>
@@ -64,6 +66,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Drink With Friends" id="RAU-2h-bhH">
                         <barButtonItem key="rightBarButtonItem" title="SQL" id="lpg-UR-fd0">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="sqlTapped:" destination="8Uj-sW-eEM" id="U4F-WP-Dr4"/>
                                 <segue destination="Abi-ce-Cu7" kind="modal" id="IjV-5q-b6B"/>
@@ -138,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mww-d3-z5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324" y="-667"/>
+            <point key="canvasLocation" x="370" y="-657"/>
         </scene>
         <!--Drink With View Controller - With?-->
         <scene sceneID="PV9-PZ-27Q">
@@ -178,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="370" y="-50"/>
         </scene>
-        <!--Best Friends View Controller - Best Friends-->
+        <!--Best Friends View Controller - Friends-->
         <scene sceneID="sb6-Z8-aoG">
             <objects>
                 <tableViewController id="Iir-VC-gbG" customClass="RUBestFriendsViewController" sceneMemberID="viewController">
@@ -187,13 +190,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" id="j1E-wR-N4Q">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" id="j1E-wR-N4Q">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j1E-wR-N4Q" id="d98-mP-Dc1">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KR5-eb-bJg" kind="push" id="HRB-vC-xFq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -201,7 +207,7 @@
                             <outlet property="delegate" destination="Iir-VC-gbG" id="tu3-se-Hhf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Best Friends" id="zgN-rR-d3i">
+                    <navigationItem key="navigationItem" title="Friends" id="zgN-rR-d3i">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TvY-Uy-Jkb"/>
                     </navigationItem>
                 </tableViewController>
@@ -209,7 +215,26 @@
             </objects>
             <point key="canvasLocation" x="370" y="538"/>
         </scene>
-        <!--Favorite Bars View Controller - Favorite Bars-->
+        <!--View Controller - Friend Detail View-->
+        <scene sceneID="yod-hd-zJ3">
+            <objects>
+                <viewController id="KR5-eb-bJg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NuU-H6-EHv"/>
+                        <viewControllerLayoutGuide type="bottom" id="OhT-87-i4V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eiO-WM-jsF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Friend Detail View" id="cwD-aE-Jtq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0PG-Mk-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="540"/>
+        </scene>
+        <!--Favorite Bars View Controller - Bars-->
         <scene sceneID="S5y-kG-Yc8">
             <objects>
                 <tableViewController id="1Yy-jJ-zL5" customClass="RUFavoriteBarsViewController" sceneMemberID="viewController">
@@ -218,13 +243,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" id="oDM-S3-bAO">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" id="oDM-S3-bAO">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oDM-S3-bAO" id="5LZ-Fb-35y">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="lrH-6I-YX3" kind="push" id="eWT-iR-RwG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -232,13 +260,32 @@
                             <outlet property="delegate" destination="1Yy-jJ-zL5" id="vbZ-Ht-PPO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorite Bars" id="Ans-tk-Qgb">
+                    <navigationItem key="navigationItem" title="Bars" id="Ans-tk-Qgb">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Dnm-Tk-h0w"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njL-gS-pQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="370" y="1119"/>
+        </scene>
+        <!--View Controller - Bar Detail View-->
+        <scene sceneID="EWu-dA-PCQ">
+            <objects>
+                <viewController id="lrH-6I-YX3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2U2-J9-AWI"/>
+                        <viewControllerLayoutGuide type="bottom" id="aZo-ep-fla"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dnf-EY-OoV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bar Detail View" id="PNe-u7-Oq2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUS-zr-Gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="1119"/>
         </scene>
         <!--Drink At View Controller - Where?-->
         <scene sceneID="6Ib-rX-wEh">
