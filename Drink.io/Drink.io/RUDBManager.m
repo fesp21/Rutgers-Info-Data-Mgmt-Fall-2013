@@ -14,12 +14,60 @@ static sqlite3_stmt *statement = nil;
 
 @implementation RUDBManager
 
-+(RUDBManager*)getSharedInstance{
++ (RUDBManager *) getSharedInstance {
     if (!sharedInstance) {
         sharedInstance = [[super allocWithZone:NULL]init];
         [sharedInstance createDB];
     }
+    
     return sharedInstance;
+}
+
+- (BOOL) addFriendWithFirstName: (NSString *) firstName
+                   withLastName: (NSString *) lastName
+                 andWithAddress: (NSString *) address {
+    return false;
+}
+
+- (BOOL) addBarWithName: (NSString *) bar
+        withPhoneNumber: (NSString *) phoneNumber
+         andWithAddress: (NSString *) address {
+    return false;
+}
+
+- (BOOL) addBestFriendWithFirstName: (NSString *) firstName
+                       withLastName: (NSString *) lastName
+                     andWithAddress: (NSString *) address {
+    
+    return false;
+}
+
+- (BOOL) addFavoriteBarWithName: (NSString *) bar
+                withPhoneNumber: (NSString *) phoneNumber
+                 andWithAddress: (NSString *) address {
+    
+    return false;
+}
+
+- (NSArray *) getFriends {
+    NSArray * friends = [[NSArray alloc] init];
+    
+    return friends;
+}
+- (NSArray *) getBestFriends {
+    NSArray * bestFriends = [[NSArray alloc] init];
+    
+    return bestFriends;
+}
+- (NSArray *) getBars {
+    NSArray * bars = [[NSArray alloc] init];
+    
+    return bars;
+}
+- (NSArray *) getFavoriteBars {
+    NSArray * favoriteBars = [[NSArray alloc] init];
+    
+    return favoriteBars;
 }
 
 - (BOOL) createDB {

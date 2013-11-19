@@ -118,6 +118,8 @@
 {
     NSInteger numberOfRows;
     
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
     if (section == 0) {
         numberOfRows = 3;
     } else {
