@@ -56,9 +56,6 @@
             [people addObject:fullName];
             
             ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-            [[UIDevice currentDevice] name];
-            
-            NSLog(@"\n%@\n", [[UIDevice currentDevice] name]);
             
             for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
                 NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);

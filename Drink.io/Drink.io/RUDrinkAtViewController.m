@@ -47,6 +47,7 @@
             for (MKMapItem *item in response.mapItems)
             {
                 NSLog(@"%@ %@", item.placemark.thoroughfare, item.placemark.title);
+                
                 [localBars addObject:item.name];
             }
             [self.tableView reloadData];

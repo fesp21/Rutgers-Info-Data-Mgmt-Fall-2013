@@ -1,32 +1,47 @@
 create table beers (
-name char(20),
-manf char(20)
+name char(128),
+manf char(128)
 );
 
 create table bars (
-name char(20),
-city char(20),
-owner char(20)
+name char(128),
+phoneNumber char(128),
+url char(128),
+thoroughfare char(128),
+subThoroughfare char(128),
+locality char(128),
+subLocality char(128),
+administrativeArea char(128),
+subAdministrativeArea char(128),
+postalCode char(128),
+ISOcountryCode char(128),
+country char(128)
 );
 
 create table sells (
-bar char(20),
-beer char(20),
+bar char(128),
+beer char(128),
 price real
 );
 
 create table drinkers (
-name char(20),
-city char(20),
-phone char(20)
+firstname char(128),
+lastname char(128),
+phone char(20),
+addrStreet char(128),
+addrCity char(128),
+addrState char(128),
+addrZip char(128),
+addrCountry char(128),
+addrCountryCode char(128)
 );
 
 create table likes (
-drinker char(20),
-beer char(20)
+drinker char(128),
+beer char(128)
 );
 
 create table frequents (
-drinker char(20),
-bar char(20)
+drinker char(128),
+bar char(128)
 );
