@@ -7,18 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <sqlite3.h>
+#import "FMDatabase.h"
 
 @interface RUDBManager : NSObject
 {
     NSString *databasePath;
+    FMDatabase *db;
 }
 
 + (RUDBManager *) getSharedInstance;
 
-- (BOOL) createDB;
-
-- (BOOL) addFriendWithFirstName: (NSString *) firstName
+- (void) addFriendWithFirstName: (NSString *) firstName
                    withLastName: (NSString *) lastName
                       withPhone: (NSString *) phone
                      withStreet: (NSString *) street
@@ -27,9 +26,9 @@
                         withZip: (NSString *) zip
                     withCountry: (NSString *) country
                 withCountryCode: (NSString *) countryCode
-                andWithFavorite: (NSInteger *) favorite;
+                andWithFavorite: (NSInteger) favorite;
 
-- (BOOL)   addBarWithName: (NSString *) bar
+- (void)   addBarWithName: (NSString *) bar
           withPhoneNumber: (NSString *) phoneNumber
                   withURL: (NSString *) URL
          withThoroughfare: (NSString *) thoroughfare
@@ -43,11 +42,11 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
               withCountry: (NSString *) country
           andWithFavorite: (NSInteger) favorite;
 
-- (BOOL) makeBestFriendWithFirstName: (NSString *) firstName
+- (void) makeBestFriendWithFirstName: (NSString *) firstName
                         withLastName: (NSString *) lastName
                         andWithPhone: (NSString *) phone;
 
-- (BOOL) makeFavoriteBarWithPhone: (NSString *) phone;
+- (void) makeFavoriteBarWithPhone: (NSString *) phone;
 
 - (NSArray *) getFriends;
 - (NSArray *) getBestFriends;

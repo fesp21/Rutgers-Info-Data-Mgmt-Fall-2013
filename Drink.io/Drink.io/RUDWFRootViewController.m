@@ -14,12 +14,6 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
-    
-    BOOL worked = [db createDB];
-    
-    worked = [db addBarWithName:@"Testing" withPhoneNumber:@"7489198238" withURL:@"http://asnjdkjnsa.com" withThoroughfare:@"me" withSubThoroughfare:@"here" withLocality:@"now" withSubLocality:@"later" withAdministrativeArea:@"because" withSubAdministrativeArea:@"frege" withPostalCode:@"logic" withISOcountryCode:@"scholar" withCountry:@"love" andWithFavorite:0];
-    
-    NSLog(@"%@", worked ? @"yes" : @"No");
 }
 
 -(IBAction)drinkTapped:(id)sender

@@ -44,7 +44,7 @@
 #pragma mark IBActions 
 
 - (IBAction) runTapped: (id) sender {
-    textViewForResults.text = [db query:textFieldForQuery.text];
+    [textViewForResults setText: [db query:textFieldForQuery.text]];
 }
 
 - (IBAction) doneTapped: (id) sender
