@@ -36,10 +36,6 @@
 		27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */; };
 		27AFC85A183B1CC10042FB97 /* initializeDB.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC859183B1CC10042FB97 /* initializeDB.txt */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
-		27ECE822183C1B8500AE754C /* friendsQuery.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27ECE821183C1B8500AE754C /* friendsQuery.txt */; };
-		27ECE824183C1C2F00AE754C /* bestfriendsQuery.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27ECE823183C1C2F00AE754C /* bestfriendsQuery.txt */; };
-		27ECE826183C1C4300AE754C /* barsQuery.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27ECE825183C1C4300AE754C /* barsQuery.txt */; };
-		27ECE828183C1C5900AE754C /* favoritebarQuery.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27ECE827183C1C5900AE754C /* favoritebarQuery.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +95,6 @@
 		27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkNowViewController.m; sourceTree = "<group>"; };
 		27AFC859183B1CC10042FB97 /* initializeDB.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = initializeDB.txt; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		27ECE821183C1B8500AE754C /* friendsQuery.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = friendsQuery.txt; sourceTree = "<group>"; };
-		27ECE823183C1C2F00AE754C /* bestfriendsQuery.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bestfriendsQuery.txt; sourceTree = "<group>"; };
-		27ECE825183C1C4300AE754C /* barsQuery.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = barsQuery.txt; sourceTree = "<group>"; };
-		27ECE827183C1C5900AE754C /* favoritebarQuery.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = favoritebarQuery.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,10 +298,6 @@
 				274900C8183D51C700846E74 /* FMResultSet.h */,
 				274900C9183D51C700846E74 /* FMResultSet.m */,
 				27AFC859183B1CC10042FB97 /* initializeDB.txt */,
-				27ECE821183C1B8500AE754C /* friendsQuery.txt */,
-				27ECE823183C1C2F00AE754C /* bestfriendsQuery.txt */,
-				27ECE825183C1C4300AE754C /* barsQuery.txt */,
-				27ECE827183C1C5900AE754C /* favoritebarQuery.txt */,
 			);
 			name = "Database Stuff";
 			sourceTree = "<group>";
@@ -399,12 +387,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27421F6417FDE57E00B38156 /* InfoPlist.strings in Resources */,
-				27ECE828183C1C5900AE754C /* favoritebarQuery.txt in Resources */,
-				27ECE826183C1C4300AE754C /* barsQuery.txt in Resources */,
 				27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */,
 				27AFC85A183B1CC10042FB97 /* initializeDB.txt in Resources */,
-				27ECE824183C1C2F00AE754C /* bestfriendsQuery.txt in Resources */,
-				27ECE822183C1B8500AE754C /* friendsQuery.txt in Resources */,
 				27421F6C17FDE57E00B38156 /* Images.xcassets in Resources */,
 				27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */,
 			);

@@ -8,6 +8,14 @@
 
 #import "RUDBManager.h"
 
+#define BARS_TABLE_NAME @"bars"
+#define BEERS_TABLE_NAME @"beers"
+#define DRINKER_TABLE_NAME @"drinker"
+#define DISTANCE_TABLE_NAME @"distance"
+#define SELLS_TABLE_NAME @"sells"
+#define LIKES_TABLE_NAME @"likes"
+#define FREQUENTS_TABLE_NAME @"frequents"
+
 static RUDBManager *sharedInstance = nil;
 
 @implementation RUDBManager
@@ -23,13 +31,126 @@ static RUDBManager *sharedInstance = nil;
 
 - (void) createDatabase {
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *dbPath   = [docsPath stringByAppendingPathComponent:@"barbeerdrinker.db"];
-    db     = [FMDatabase databaseWithPath:dbPath];
+    NSString *dbPath   = [docsPath stringByAppendingPathComponent:@"drinkwithfriends.sqlite"];
+    BOOL alreadyExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+    
+    db = [FMDatabase databaseWithPath:dbPath];
     [db open];
     
-    NSLog(@"Do you have a good connection to the database? %@", [db goodConnection] ? @"YES" : @"NO");
+    if (!alreadyExists){
+        [self createTable:BEERS_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"name char(64)",
+                           @"manf char(64)",
+                           nil]];
+        
+        [self createTable:BARS_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"name char(64)",
+                           @"phoneNumber char(64) primary key not null",
+                           @"url char(64)",
+                           @"thoroughfare char(64)",
+                           @"subThoroughfare char(64)",
+                           @"locality char(64)",
+                           @"subLocality char(64)",
+                           @"administrativeArea char(64)",
+                           @"subAdministrativeArea char(64)",
+                           @"postalCode char(64)",
+                           @"ISOcountryCode char(64)",
+                           @"country char(64)",
+                           @"int favorite",
+                           nil]];
+        
+        [self createTable:DRINKER_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"firstname char(64)",
+                           @"lastname char(64)",
+                           @"phone char(20) primary key not null",
+                           @"addrStreet char(64)",
+                           @"addrCity char(64)",
+                           @"addrState char(64)",
+                           @"addrZip char(64)",
+                           @"addrCountry char(64)",
+                           @"addrCountryCode char(64)",
+                           @"int favorite",
+                           nil]];
+        
+        [self createTable:DISTANCE_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"friendOneFirstName char(64)",
+                           @"friendOneLastName char(64)",
+                           @"friendTwoFirstName char(64)",
+                           @"friendTwoLastName char(64)",
+                           @"distanceKM real",
+                           nil]];
+        
+        [self createTable:SELLS_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"bar char(64)",
+                           @"beer char(64)",
+                           @"price real",
+                           nil]];
+        
+        [self createTable:LIKES_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"drinker char(20)",
+                           @"beer char(20)",
+                           nil]];
+        
+        [self createTable:FREQUENTS_TABLE_NAME
+        andWithParameters:[[NSArray alloc] initWithObjects:
+                           @"drinker char(20)",
+                           @"bar char(20)",
+                           nil]];
+    }
     
+    if (![db executeUpdate:@"insert into sells values ('joe bar', 'bud', 5.0);"]) {
+        NSLog(@"it didn't work!");
+    }
+}
+
+- (void) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters
+{
     
+    NSMutableString * insertStatement = [[NSMutableString alloc] initWithFormat:@"insert into %@ values (", withName];
+    
+    NSLog(@"%@", insertStatement);
+    
+    for (int i = 0; i < [parameters count]; i++) {
+        NSString * parameter = [parameters objectAtIndex:i];
+        
+        NSLog(@"%@", parameter);
+        
+        if (i < [parameters count] - 1)
+            [insertStatement appendFormat:@"\"%@\",", parameter];
+        else
+            [insertStatement appendFormat:@"\"%@\"", parameter];
+    }
+    
+    [insertStatement appendString:@");"];
+    
+    NSLog(@"Warning! Insert did not excute: %@", insertStatement);
+    
+    [db executeUpdate:insertStatement];
+        
+}
+
+- (void) createTable: (NSString *) withName andWithParameters: (NSArray *) parameters
+{
+    NSMutableString * update = [[NSMutableString alloc] initWithFormat:@"create table %@ (", withName];
+    
+    for (int i = 0; i < [parameters count]; i++) {
+        NSString * parameter = [parameters objectAtIndex:i];
+        if (i < [parameters count] - 1)
+            [update appendFormat:@"%@,", parameter];
+        else
+            [update appendFormat:@"%@", parameter];
+    }
+    
+    [update appendString:@");]"];
+    
+    if (![db executeUpdate:update])
+        NSLog(@"WARNING! Table \"%@\" was not created!", withName);
 }
 
 - (NSString *) query: (NSString *) querySQL {
@@ -94,9 +215,6 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
     
     return favoriteBars;
 }
-
-
-
 
 @end
 

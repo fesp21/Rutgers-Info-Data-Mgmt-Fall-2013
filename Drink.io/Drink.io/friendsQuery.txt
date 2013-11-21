@@ -1,4 +1,0 @@
-/*
- * This should grab all friends (drinkers) of the
- * user that ARE NOT best friends.
- */
