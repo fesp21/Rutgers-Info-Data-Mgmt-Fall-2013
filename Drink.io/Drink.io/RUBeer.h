@@ -18,4 +18,7 @@
 - (BOOL) insertIntoDatabase;
 - (BOOL) removeFromDatabase;
 
+- (BOOL) likedByUser;
+- (void) toggleLike;
+
 @end

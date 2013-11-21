@@ -8,6 +8,7 @@
 
 #import "RUDBManager.h"
 #import "RUBeer.h"
+#import "RUFriend.h"
 
 #define BARS_TABLE_NAME @"bars"
 #define BEERS_TABLE_NAME @"beers"
@@ -94,6 +95,9 @@ static RUDBManager *sharedInstance = nil;
                            @"bar char(20)",
                            nil]];
         
+        [[[RUFriend alloc] initWithFirstName:@"user" withLastName:@"name"
+                                 withNumber:@"" withStreet:@"" withCity:@"" withState:@"" andWithCountry:@""] insertIntoDatabase];
+        
         [self insertBeerWithName:@"Bud Light" andManufacturer:@"Anheuser-Busch InBev"];
         [self insertBeerWithName:@"Budweiser" andManufacturer:@"Anheuser-Busch InBev"];
         [self insertBeerWithName:@"Coors Light" andManufacturer:@"Millercoors Brewing"];
@@ -154,7 +158,6 @@ static RUDBManager *sharedInstance = nil;
 
 - (BOOL) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters
 {
-    
     NSMutableString * insertStatement = [[NSMutableString alloc] initWithFormat:@"insert into %@ values (", withName];
     
     for (int i = 0; i < [parameters count]; i++) {

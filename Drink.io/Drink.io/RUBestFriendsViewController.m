@@ -106,7 +106,7 @@
         [[people objectAtIndex:indexPath.row] removeFromDatabase];
     } else {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        [[people objectAtIndex:indexPath.row] putInDatabase];
+        [[people objectAtIndex:indexPath.row] insertIntoDatabase];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "RUBeersViewController.h"
 #import "RUDBManager.h"
+#import "RUBeer.h"
 
 @interface RUBeersViewController ()
 
@@ -43,6 +44,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[beers objectAtIndex:indexPath.row] likedByUser]) {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
+    [[beers objectAtIndex:indexPath.row] toggleLike];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -63,6 +77,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = [[beers objectAtIndex:indexPath.row] name];
+    
+    if ([[beers objectAtIndex:indexPath.row] likedByUser]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }

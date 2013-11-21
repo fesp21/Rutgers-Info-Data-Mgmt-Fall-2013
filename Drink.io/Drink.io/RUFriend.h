@@ -30,6 +30,6 @@
 - (NSString *) fullName;
 - (BOOL) removeFromDatabase;
 - (BOOL) isInDatabase;
-- (BOOL) putInDatabase;
+- (BOOL) insertIntoDatabase;
 
 @end

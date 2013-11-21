@@ -46,7 +46,7 @@
     return [rs next];
 }
 
-- (BOOL) putInDatabase
+- (BOOL) insertIntoDatabase
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
     

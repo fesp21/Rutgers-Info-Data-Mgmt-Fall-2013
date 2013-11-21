@@ -40,4 +40,32 @@
     return [db executeUpdate:delete];
 }
 
+- (BOOL) likedByUser
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * FROM likes "
+                                "WHERE drinker=\"%@\" AND beer=\"%@\";", @"user name", self.name ];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    BOOL exists = [rs next];
+    
+    NSLog(@"%@ %@", query, exists ? @"yes" : @"no");
+    
+    return exists;
+}
+
+- (void) toggleLike
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    if (![self likedByUser]) {
+        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:@"user name", self.name, nil]];
+    } else {
+        NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM likes "
+                                    "WHERE drinker=\"%@\" AND beer=\"%@\";", @"user name", self.name ];
+        [db executeUpdate:delete];
+    }
+}
+
 @end
