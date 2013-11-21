@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUBestFriendsViewController : UITableViewController
+@interface RUBestFriendsViewController : UITableViewController {
+    NSMutableArray * people;
+}
 
 @end

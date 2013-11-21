@@ -7,6 +7,7 @@
 //
 
 #import "RUBestFriendsViewController.h"
+#import <AddressBook/AddressBook.h>
 #import "RUDBManager.h"
 
 @interface RUBestFriendsViewController () {
@@ -31,9 +32,52 @@
 {
     [super viewDidLoad];
  
+    people = [[NSMutableArray alloc ] init];
     bestFriends = [[RUDBManager getSharedInstance] getBestFriends];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+    
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+            ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+        });
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+        
+        CFErrorRef *error = NULL;
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+        
+        
+        for (int i = 0; i < numberOfPeople; i++) {
+            
+            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
+            
+            NSString * firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+            NSString * lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
+            
+            ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
+            
+            
+            for (CFIndex i = 0; i < ABMultiValueGetCount(addresses); i++) {
+                CFDictionaryRef addressDict = ABMultiValueCopyValueAtIndex(addresses, i);
+                
+                NSString *city = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCityKey);
+                NSString *country = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCountryKey);
+                NSString *state = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStateKey);
+                NSString *street = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStreetKey);
+                NSString *zip = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressZIPKey);
+                
+                
+            }
+            
+        }
+    }
+    else {
+        // Send an alert telling user to change privacy setting in settings app
+    }
+    
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning

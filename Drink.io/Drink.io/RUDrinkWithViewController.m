@@ -7,7 +7,6 @@
 //
 
 #import "RUDrinkWithViewController.h"
-#import <AddressBook/AddressBook.h>
 #import "RUDBManager.h"
 
 @interface RUDrinkWithViewController () {
@@ -36,44 +35,6 @@
     bestFriends = [db getBestFriends];
     
     people = [[NSMutableArray alloc ] init];
-    
-    ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
-    
-    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-        ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-            ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-        });
-    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
-        
-        CFErrorRef *error = NULL;
-        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-        NSString * addressBookNum;
-        
-        for (int i = 0; i < numberOfPeople; i++) {
-            
-            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-            
-            NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-            NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
-            
-            NSString * fullName = [firstName stringByAppendingString:[@" " stringByAppendingString:lastName]];
-            
-            [people addObject:fullName];
-            
-            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-            
-            for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-                NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-                
-                addressBookNum = [addressBookNum stringByAppendingFormat: @":%@",phoneNumber];
-            }
-        }
-    }
-    else {
-        // Send an alert telling user to change privacy setting in settings app
-    }
 }
 
 - (void)didReceiveMemoryWarning
