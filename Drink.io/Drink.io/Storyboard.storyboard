@@ -197,9 +197,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="KR5-eb-bJg" kind="push" id="HRB-vC-xFq"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -218,6 +215,7 @@
         <!--View Controller - Friend Detail View-->
         <scene sceneID="yod-hd-zJ3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0PG-Mk-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="KR5-eb-bJg" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NuU-H6-EHv"/>
@@ -230,7 +228,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Friend Detail View" id="cwD-aE-Jtq"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0PG-Mk-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="540"/>
         </scene>
@@ -271,6 +268,7 @@
         <!--View Controller - Bar Detail View-->
         <scene sceneID="EWu-dA-PCQ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUS-zr-Gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="lrH-6I-YX3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2U2-J9-AWI"/>
@@ -283,7 +281,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bar Detail View" id="PNe-u7-Oq2"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HUS-zr-Gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="1119"/>
         </scene>

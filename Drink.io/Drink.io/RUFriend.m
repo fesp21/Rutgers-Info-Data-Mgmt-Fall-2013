@@ -33,11 +33,17 @@
     return self;
 }
 
+
+
 - (BOOL) isInDatabase
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
     
-    return false;
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from drinker where firstName = \"%@\" AND lastName = \"%@\"", self.firstName, self.lastName];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    return [rs next];
 }
 
 - (BOOL) putInDatabase
@@ -95,6 +101,20 @@
     [insert appendString:@";"];
     
     return [db executeUpdate:insert];
+}
+
+- (BOOL) removeFromDatabase
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM drinker "
+    "WHERE firstName=\"%@\" AND lastName=\"%@\";", self.firstName, self.lastName ];
+    
+    return [db executeUpdate:delete];
+}
+
+- (NSString *) fullName
+{
+    return [[NSString alloc] initWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
 - (NSArray *) getParameters

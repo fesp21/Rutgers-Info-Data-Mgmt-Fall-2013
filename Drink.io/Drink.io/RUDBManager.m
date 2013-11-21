@@ -107,6 +107,12 @@ static RUDBManager *sharedInstance = nil;
 - (BOOL) executeUpdate: (NSString *) update {
     return [db executeUpdate:update];
 }
+
+- (FMResultSet *) executeQuery: (NSString *) query
+{
+    return [db executeQuery:query];
+}
+
 - (BOOL) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters
 {
     

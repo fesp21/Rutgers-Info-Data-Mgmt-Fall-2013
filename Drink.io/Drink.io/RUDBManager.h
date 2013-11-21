@@ -19,6 +19,7 @@
 
 - (BOOL) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters;
 - (BOOL) executeUpdate: (NSString *) update;
+- (FMResultSet *) executeQuery: (NSString *) query;
 
 - (void) addFriendWithFirstName: (NSString *) firstName
                    withLastName: (NSString *) lastName

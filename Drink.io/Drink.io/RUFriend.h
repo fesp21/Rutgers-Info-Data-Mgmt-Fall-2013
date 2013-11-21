@@ -27,6 +27,8 @@
                        withState: (NSString *) state
                   andWithCountry: (NSString *) country;
 
+- (NSString *) fullName;
+- (BOOL) removeFromDatabase;
 - (BOOL) isInDatabase;
 - (BOOL) putInDatabase;
 

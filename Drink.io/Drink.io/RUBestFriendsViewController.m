@@ -74,7 +74,6 @@
             
             NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
             
-            
             RUFriend * friend = [[RUFriend alloc] initWithFirstName:firstName
                                    withLastName:lastName
                                      withNumber:phoneNumber
@@ -82,8 +81,6 @@
                                        withCity:city
                                       withState:state
                                  andWithCountry:country];
-            
-            [friend putInDatabase];
             
             [people addObject:friend];
         }
@@ -98,6 +95,19 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[people objectAtIndex:indexPath.row] isInDatabase]) {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        [[people objectAtIndex:indexPath.row] removeFromDatabase];
+    } else {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [[people objectAtIndex:indexPath.row] putInDatabase];
+    }
 }
 
 #pragma mark - Table view data source
@@ -118,10 +128,14 @@
     static NSString *CellIdentifier = @"Cell3";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [[people objectAtIndex:indexPath.row] firstName];
+    cell.textLabel.text = [[people objectAtIndex:indexPath.row] fullName];
     
+    if ([[people objectAtIndex:indexPath.row] isInDatabase]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
