@@ -104,9 +104,6 @@ static RUDBManager *sharedInstance = nil;
                            nil]];
     }
     
-    if (![db executeUpdate:@"insert into sells values ('joe bar', 'bud', 5.0);"]) {
-        NSLog(@"it didn't work!");
-    }
 }
 
 - (void) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters
@@ -129,10 +126,7 @@ static RUDBManager *sharedInstance = nil;
     
     [insertStatement appendString:@");"];
     
-    NSLog(@"Warning! Insert did not excute: %@", insertStatement);
-    
     [db executeUpdate:insertStatement];
-        
 }
 
 - (void) createTable: (NSString *) withName andWithParameters: (NSArray *) parameters

@@ -14,6 +14,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
+    [db insertIntoTable:@"sells" withParameters:[[NSArray alloc] initWithObjects:@"my bar", @"this thing", @"5.0", nil]];
 }
 
 -(IBAction)drinkTapped:(id)sender
