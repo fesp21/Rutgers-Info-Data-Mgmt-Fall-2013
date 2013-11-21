@@ -185,7 +185,7 @@
             </objects>
             <point key="canvasLocation" x="370" y="-50"/>
         </scene>
-        <!--Beers View Controller-->
+        <!--Beers View Controller - Beers-->
         <scene sceneID="8AK-f7-fP5">
             <objects>
                 <tableViewController id="W6l-5i-oPB" customClass="RUBeersViewController" sceneMemberID="viewController">
@@ -208,7 +208,13 @@
                             <outlet property="delegate" destination="W6l-5i-oPB" id="HgD-mz-bKf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="w4D-Q1-hBC"/>
+                    <navigationItem key="navigationItem" title="Beers" id="w4D-Q1-hBC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="e20-fL-RPZ">
+                            <connections>
+                                <action selector="plusTapped:" destination="W6l-5i-oPB" id="4Rz-24-9ax"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9D-lj-POw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

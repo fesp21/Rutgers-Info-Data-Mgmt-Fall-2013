@@ -87,6 +87,39 @@
     return cell;
 }
 
+#pragma mark popup 
+
+- (IBAction)plusTapped:(id)sender
+{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"New Beer"
+                                                 message:@"Enter your new beer's information!"
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                       otherButtonTitles:@"OK",
+                       nil];
+    
+    [av setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+    
+    // Alert style customization
+    [[av textFieldAtIndex:1] setSecureTextEntry:NO];
+    [[av textFieldAtIndex:0] setPlaceholder:@"Beer name"];
+    [[av textFieldAtIndex:1] setPlaceholder:@"Beer manufacturer"];
+    [av show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    RUBeer * beer = [[RUBeer alloc] initWithName:[alertView textFieldAtIndex:0].text
+                             andWithManufacturer:[alertView textFieldAtIndex:1].text];
+    
+    
+    
+    [beer insertIntoDatabase];
+    
+    [beers addObject:beer];
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation

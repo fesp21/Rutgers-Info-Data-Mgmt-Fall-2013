@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUBeersViewController : UITableViewController {
+@interface RUBeersViewController : UITableViewController<UIAlertViewDelegate> {
     NSMutableArray * beers;
 }
+
+- (IBAction)plusTapped:(id)sender;
 
 @end
