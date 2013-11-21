@@ -17,7 +17,8 @@
 
 + (RUDBManager *) getSharedInstance;
 
-- (void) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters;
+- (BOOL) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters;
+- (BOOL) executeUpdate: (NSString *) update;
 
 - (void) addFriendWithFirstName: (NSString *) firstName
                    withLastName: (NSString *) lastName

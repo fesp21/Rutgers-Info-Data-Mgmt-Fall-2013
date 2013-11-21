@@ -9,6 +9,7 @@
 #import "RUBestFriendsViewController.h"
 #import <AddressBook/AddressBook.h>
 #import "RUDBManager.h"
+#import "RUFriend.h"
 
 @interface RUBestFriendsViewController () {
     RUDBManager * db;
@@ -47,7 +48,7 @@
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
         CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
         CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-        
+        NSString * addressBookNum;
         
         for (int i = 0; i < numberOfPeople; i++) {
             
@@ -58,19 +59,33 @@
             
             ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
             
+            if (ABMultiValueGetCount(addresses) == 0)
+                break;
             
-            for (CFIndex i = 0; i < ABMultiValueGetCount(addresses); i++) {
-                CFDictionaryRef addressDict = ABMultiValueCopyValueAtIndex(addresses, i);
-                
-                NSString *city = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCityKey);
-                NSString *country = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCountryKey);
-                NSString *state = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStateKey);
-                NSString *street = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStreetKey);
-                NSString *zip = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressZIPKey);
-                
-                
-            }
+            CFDictionaryRef addressDict = ABMultiValueCopyValueAtIndex(addresses, 0);
             
+            NSString *street = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStreetKey);
+            NSString *city = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCityKey);
+            NSString *state = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStateKey);
+            NSString *zip = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressZIPKey);
+            NSString *country = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCountryKey);
+            
+            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+            
+            NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+            
+            
+            RUFriend * friend = [[RUFriend alloc] initWithFirstName:firstName
+                                   withLastName:lastName
+                                     withNumber:phoneNumber
+                                     withStreet:street
+                                       withCity:city
+                                      withState:state
+                                 andWithCountry:country];
+            
+            [friend putInDatabase];
+            
+            [people addObject:friend];
         }
     }
     else {
@@ -95,7 +110,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [bestFriends count];
+    return [people count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,7 +118,9 @@
     static NSString *CellIdentifier = @"Cell3";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [bestFriends objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[people objectAtIndex:indexPath.row] firstName];
+    
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

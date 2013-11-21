@@ -63,15 +63,14 @@ static RUDBManager *sharedInstance = nil;
         
         [self createTable:DRINKER_TABLE_NAME
         andWithParameters:[[NSArray alloc] initWithObjects:
-                           @"firstname char(64)",
-                           @"lastname char(64)",
-                           @"phone char(20) primary key not null",
-                           @"addrStreet char(64)",
-                           @"addrCity char(64)",
-                           @"addrState char(64)",
-                           @"addrZip char(64)",
-                           @"addrCountry char(64)",
-                           @"addrCountryCode char(64)",
+                           @"firstName char(64)",
+                           @"lastName char(64)",
+                           @"phone char(20)",
+                           @"street char(64)",
+                           @"city char(64)",
+                           @"state char(64)",
+                           @"zip char(64)",
+                           @"country char(64)",
                            @"int favorite",
                            nil]];
         
@@ -105,8 +104,10 @@ static RUDBManager *sharedInstance = nil;
     }
     
 }
-
-- (void) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters
+- (BOOL) executeUpdate: (NSString *) update {
+    return [db executeUpdate:update];
+}
+- (BOOL) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters
 {
     
     NSMutableString * insertStatement = [[NSMutableString alloc] initWithFormat:@"insert into %@ values (", withName];
@@ -126,7 +127,7 @@ static RUDBManager *sharedInstance = nil;
     
     [insertStatement appendString:@");"];
     
-    [db executeUpdate:insertStatement];
+    return [db executeUpdate:insertStatement];
 }
 
 - (void) createTable: (NSString *) withName andWithParameters: (NSArray *) parameters
