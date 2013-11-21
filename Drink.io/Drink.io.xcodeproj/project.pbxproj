@@ -30,6 +30,8 @@
 		274900D2183D526100846E74 /* RUDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 274900D1183D526100846E74 /* RUDBManager.m */; };
 		2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */; };
 		27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974BF183DA8E7009F1086 /* RUFriend.m */; };
+		27A974C4183E6036009F1086 /* RUBeer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C3183E6036009F1086 /* RUBeer.m */; };
+		27A974C8183E632D009F1086 /* RUBeersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C7183E632D009F1086 /* RUBeersViewController.m */; };
 		27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */; };
 		27AFC848183AE5A40042FB97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AFC847183AE5A40042FB97 /* libsqlite3.dylib */; };
 		27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */; };
@@ -88,6 +90,10 @@
 		2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDWFRootViewController.m; sourceTree = "<group>"; };
 		27A974BE183DA8E7009F1086 /* RUFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUFriend.h; sourceTree = "<group>"; };
 		27A974BF183DA8E7009F1086 /* RUFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUFriend.m; sourceTree = "<group>"; };
+		27A974C2183E6036009F1086 /* RUBeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeer.h; sourceTree = "<group>"; };
+		27A974C3183E6036009F1086 /* RUBeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeer.m; sourceTree = "<group>"; };
+		27A974C6183E632D009F1086 /* RUBeersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeersViewController.h; sourceTree = "<group>"; };
+		27A974C7183E632D009F1086 /* RUBeersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeersViewController.m; sourceTree = "<group>"; };
 		27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkWithViewController.h; sourceTree = "<group>"; };
 		27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkWithViewController.m; sourceTree = "<group>"; };
 		27AFC847183AE5A40042FB97 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -155,6 +161,7 @@
 		2716CE41183BD0CF00BCFBC4 /* Preferences and Input */ = {
 			isa = PBXGroup;
 			children = (
+				27A974C5183E6316009F1086 /* Beers */,
 				2716CE40183BD0C000BCFBC4 /* Favorite Bars */,
 				2716CE39183BD08100BCFBC4 /* Best Friends View */,
 			);
@@ -254,8 +261,36 @@
 			children = (
 				27A974BE183DA8E7009F1086 /* RUFriend.h */,
 				27A974BF183DA8E7009F1086 /* RUFriend.m */,
+				27A974C2183E6036009F1086 /* RUBeer.h */,
+				27A974C3183E6036009F1086 /* RUBeer.m */,
 			);
 			name = Structures;
+			sourceTree = "<group>";
+		};
+		27A974C1183E5A42009F1086 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				274900BF183D51C700846E74 /* FMDatabase.h */,
+				274900C0183D51C700846E74 /* FMDatabase.m */,
+				274900C1183D51C700846E74 /* FMDatabaseAdditions.h */,
+				274900C2183D51C700846E74 /* FMDatabaseAdditions.m */,
+				274900C3183D51C700846E74 /* FMDatabasePool.h */,
+				274900C4183D51C700846E74 /* FMDatabasePool.m */,
+				274900C5183D51C700846E74 /* FMDatabaseQueue.h */,
+				274900C6183D51C700846E74 /* FMDatabaseQueue.m */,
+				274900C8183D51C700846E74 /* FMResultSet.h */,
+				274900C9183D51C700846E74 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		27A974C5183E6316009F1086 /* Beers */ = {
+			isa = PBXGroup;
+			children = (
+				27A974C6183E632D009F1086 /* RUBeersViewController.h */,
+				27A974C7183E632D009F1086 /* RUBeersViewController.m */,
+			);
+			name = Beers;
 			sourceTree = "<group>";
 		};
 		27AFC853183B13970042FB97 /* Local Bars View */ = {
@@ -300,16 +335,7 @@
 			children = (
 				274900D0183D526100846E74 /* RUDBManager.h */,
 				274900D1183D526100846E74 /* RUDBManager.m */,
-				274900BF183D51C700846E74 /* FMDatabase.h */,
-				274900C0183D51C700846E74 /* FMDatabase.m */,
-				274900C1183D51C700846E74 /* FMDatabaseAdditions.h */,
-				274900C2183D51C700846E74 /* FMDatabaseAdditions.m */,
-				274900C3183D51C700846E74 /* FMDatabasePool.h */,
-				274900C4183D51C700846E74 /* FMDatabasePool.m */,
-				274900C5183D51C700846E74 /* FMDatabaseQueue.h */,
-				274900C6183D51C700846E74 /* FMDatabaseQueue.m */,
-				274900C8183D51C700846E74 /* FMResultSet.h */,
-				274900C9183D51C700846E74 /* FMResultSet.m */,
+				27A974C1183E5A42009F1086 /* FMDB */,
 				27AFC859183B1CC10042FB97 /* initializeDB.txt */,
 			);
 			name = "Database Stuff";
@@ -427,6 +453,7 @@
 				274900D2183D526100846E74 /* RUDBManager.m in Sources */,
 				274900CC183D51C700846E74 /* FMDatabasePool.m in Sources */,
 				27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */,
+				27A974C8183E632D009F1086 /* RUBeersViewController.m in Sources */,
 				274900CD183D51C700846E74 /* FMDatabaseQueue.m in Sources */,
 				2716CE38183BCE8D00BCFBC4 /* RUSQLQueryViewController.m in Sources */,
 				2716CE3C183BD0AC00BCFBC4 /* RUBestFriendsViewController.m in Sources */,
@@ -437,6 +464,7 @@
 				27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */,
 				274900CA183D51C700846E74 /* FMDatabase.m in Sources */,
 				27421F6A17FDE57E00B38156 /* RUAppDelegate.m in Sources */,
+				27A974C4183E6036009F1086 /* RUBeer.m in Sources */,
 				274900CB183D51C700846E74 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

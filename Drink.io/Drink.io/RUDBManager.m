@@ -7,10 +7,11 @@
 //
 
 #import "RUDBManager.h"
+#import "RUBeer.h"
 
 #define BARS_TABLE_NAME @"bars"
 #define BEERS_TABLE_NAME @"beers"
-#define DRINKER_TABLE_NAME @"drinker"
+#define DRINKER_TABLE_NAME @"drinkers"
 #define DISTANCE_TABLE_NAME @"distance"
 #define SELLS_TABLE_NAME @"sells"
 #define LIKES_TABLE_NAME @"likes"
@@ -74,15 +75,6 @@ static RUDBManager *sharedInstance = nil;
                            @"int favorite",
                            nil]];
         
-        [self createTable:DISTANCE_TABLE_NAME
-        andWithParameters:[[NSArray alloc] initWithObjects:
-                           @"friendOneFirstName char(64)",
-                           @"friendOneLastName char(64)",
-                           @"friendTwoFirstName char(64)",
-                           @"friendTwoLastName char(64)",
-                           @"distanceKM real",
-                           nil]];
-        
         [self createTable:SELLS_TABLE_NAME
         andWithParameters:[[NSArray alloc] initWithObjects:
                            @"bar char(64)",
@@ -101,11 +93,58 @@ static RUDBManager *sharedInstance = nil;
                            @"drinker char(20)",
                            @"bar char(20)",
                            nil]];
+        
+        [self insertBeerWithName:@"Bud Light" andManufacturer:@"Anheuser-Busch InBev"];
+        [self insertBeerWithName:@"Budweiser" andManufacturer:@"Anheuser-Busch InBev"];
+        [self insertBeerWithName:@"Coors Light" andManufacturer:@"Millercoors Brewing"];
+        [self insertBeerWithName:@"Miller Lite" andManufacturer:@"Millercoors Brewing"];
+        [self insertBeerWithName:@"Natural Light" andManufacturer:@"Anheuser-Busch InBev"];
+        [self insertBeerWithName:@"Corona Extra" andManufacturer:@"Crown Imports"];
+        [self insertBeerWithName:@"Busch Light" andManufacturer:@"Anheuser-Busch InBev"];
+        [self insertBeerWithName:@"Busch" andManufacturer:@"Anheuser-Busch InBev"];
+        [self insertBeerWithName:@"Heineken" andManufacturer:@"Heineken"];
+        [self insertBeerWithName:@"Michelob Ultra" andManufacturer:@"Anheuser-Busch InBev"];
+        [self insertBeerWithName:@"Miller High Life" andManufacturer:@"Millercoors Brewing"];
+        [self insertBeerWithName:@"Keystone Light" andManufacturer:@"Millercoors Brewing"];
+        [self insertBeerWithName:@"Natural Ice" andManufacturer:@"Anheuser Busch InBev"];
+        [self insertBeerWithName:@"Modelo Especial" andManufacturer:@"Crown Imports"];
+        [self insertBeerWithName:@"Bud Light Lime" andManufacturer:@"Anheuser Busch InBev"];
+        [self insertBeerWithName:@"Icehouse" andManufacturer:@"Millercoors Brewing"];
+        [self insertBeerWithName:@"Bud Ice" andManufacturer:@"Anheuser Busch InBev"];
+        [self insertBeerWithName:@"PBR" andManufacturer:@"Pabst Brewing Co."];
+        [self insertBeerWithName:@"Yuengling Lager" andManufacturer:@"D G Yuengling & Sons"];
+        [self insertBeerWithName:@"Corona Light" andManufacturer:@"Crown Imports"];
     }
     
 }
 - (BOOL) executeUpdate: (NSString *) update {
     return [db executeUpdate:update];
+}
+
+- (BOOL) insertBeerWithName: (NSString *) name andManufacturer: (NSString *) manf
+{
+    return [self insertIntoTable:BEERS_TABLE_NAME
+                  withParameters:[[NSArray alloc] initWithObjects:
+                                  name,
+                                  manf,
+                                  nil]];
+}
+
+- (NSMutableArray *) getBeers
+{
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from beers"];
+    NSMutableArray * response = [[NSMutableArray alloc] init];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    while ([rs next]) {
+        NSString * name = [rs stringForColumn:@"name"];
+        NSString * manf = [rs stringForColumn:@"manf"];
+        
+        [response addObject:[[RUBeer alloc] initWithName:name andWithManufacturer:manf]];
+    }
+    
+    return response;
 }
 
 - (FMResultSet *) executeQuery: (NSString *) query
@@ -118,12 +157,8 @@ static RUDBManager *sharedInstance = nil;
     
     NSMutableString * insertStatement = [[NSMutableString alloc] initWithFormat:@"insert into %@ values (", withName];
     
-    NSLog(@"%@", insertStatement);
-    
     for (int i = 0; i < [parameters count]; i++) {
         NSString * parameter = [parameters objectAtIndex:i];
-        
-        NSLog(@"%@", parameter);
         
         if (i < [parameters count] - 1)
             [insertStatement appendFormat:@"\"%@\",", parameter];

@@ -52,6 +52,7 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
 
 - (void) makeFavoriteBarWithPhone: (NSString *) phone;
 
+- (NSMutableArray *) getBeers;
 - (NSArray *) getFriends;
 - (NSArray *) getBestFriends;
 - (NSArray *) getBars;

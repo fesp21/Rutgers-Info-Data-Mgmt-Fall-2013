@@ -39,7 +39,7 @@
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
     
-    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from drinker where firstName = \"%@\" AND lastName = \"%@\"", self.firstName, self.lastName];
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from drinkers where firstName = \"%@\" AND lastName = \"%@\"", self.firstName, self.lastName];
     
     FMResultSet * rs = [db executeQuery:query];
     
@@ -50,7 +50,7 @@
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
     
-    NSMutableString * insert = [[NSMutableString alloc] initWithString:@"insert into drinker"];
+    NSMutableString * insert = [[NSMutableString alloc] initWithString:@"insert into drinkers"];
     
     NSMutableString * column = [[NSMutableString alloc] initWithString:@"("];
     NSMutableString * values = [[NSMutableString alloc] initWithString:@"VALUES ("];
@@ -106,7 +106,7 @@
 - (BOOL) removeFromDatabase
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
-    NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM drinker "
+    NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM drinkers "
     "WHERE firstName=\"%@\" AND lastName=\"%@\";", self.firstName, self.lastName ];
     
     return [db executeUpdate:delete];
