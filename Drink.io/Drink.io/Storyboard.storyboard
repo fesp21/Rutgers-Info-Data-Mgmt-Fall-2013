@@ -185,7 +185,7 @@
             </objects>
             <point key="canvasLocation" x="370" y="-50"/>
         </scene>
-        <!--Beers View Controller - Beers-->
+        <!--Beers View Controller - Choice of Beer?-->
         <scene sceneID="8AK-f7-fP5">
             <objects>
                 <tableViewController id="W6l-5i-oPB" customClass="RUBeersViewController" sceneMemberID="viewController">
@@ -208,7 +208,7 @@
                             <outlet property="delegate" destination="W6l-5i-oPB" id="HgD-mz-bKf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Beers" id="w4D-Q1-hBC">
+                    <navigationItem key="navigationItem" title="Choice of Beer?" id="w4D-Q1-hBC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e20-fL-RPZ">
                             <connections>
                                 <action selector="plusTapped:" destination="W6l-5i-oPB" id="4Rz-24-9ax"/>
@@ -220,7 +220,7 @@
             </objects>
             <point key="canvasLocation" x="-146" y="622"/>
         </scene>
-        <!--Best Friends View Controller - Friends-->
+        <!--Best Friends View Controller - Drink with Who?-->
         <scene sceneID="sb6-Z8-aoG">
             <objects>
                 <tableViewController id="Iir-VC-gbG" customClass="RUBestFriendsViewController" sceneMemberID="viewController">
@@ -243,7 +243,7 @@
                             <outlet property="delegate" destination="Iir-VC-gbG" id="tu3-se-Hhf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Friends" id="zgN-rR-d3i">
+                    <navigationItem key="navigationItem" title="Drink with Who?" id="zgN-rR-d3i">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TvY-Uy-Jkb"/>
                     </navigationItem>
                 </tableViewController>
@@ -254,7 +254,6 @@
         <!--View Controller - Friend Detail View-->
         <scene sceneID="yod-hd-zJ3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0PG-Mk-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="KR5-eb-bJg" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NuU-H6-EHv"/>
@@ -267,10 +266,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Friend Detail View" id="cwD-aE-Jtq"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0PG-Mk-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="540"/>
         </scene>
-        <!--Favorite Bars View Controller - Bars-->
+        <!--Favorite Bars View Controller - Drink Where?-->
         <scene sceneID="S5y-kG-Yc8">
             <objects>
                 <tableViewController id="1Yy-jJ-zL5" customClass="RUFavoriteBarsViewController" sceneMemberID="viewController">
@@ -286,9 +286,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="lrH-6I-YX3" kind="push" id="eWT-iR-RwG"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -296,8 +293,12 @@
                             <outlet property="delegate" destination="1Yy-jJ-zL5" id="vbZ-Ht-PPO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bars" id="Ans-tk-Qgb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Dnm-Tk-h0w"/>
+                    <navigationItem key="navigationItem" title="Drink Where?" id="Ans-tk-Qgb">
+                        <barButtonItem key="rightBarButtonItem" title="See all" id="Dnm-Tk-h0w">
+                            <connections>
+                                <action selector="seeAllTapped:" destination="1Yy-jJ-zL5" id="RJW-HR-ZO1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njL-gS-pQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +308,6 @@
         <!--View Controller - Bar Detail View-->
         <scene sceneID="EWu-dA-PCQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HUS-zr-Gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="lrH-6I-YX3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2U2-J9-AWI"/>
@@ -320,6 +320,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bar Detail View" id="PNe-u7-Oq2"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUS-zr-Gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="1119"/>
         </scene>
@@ -372,22 +373,6 @@
                     <view key="view" contentMode="scaleToFill" id="5pO-Ca-5io">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order to Pick Friends Up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEQ-Ny-q4L">
-                                <rect key="frame" x="20" y="82" width="191" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bars Ordered By Desirability" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlw-FW-gDX">
-                                <rect key="frame" x="20" y="229" width="217" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Drink!" id="ROa-Hc-cdJ"/>

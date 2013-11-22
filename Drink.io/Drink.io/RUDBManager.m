@@ -9,6 +9,7 @@
 #import "RUDBManager.h"
 #import "RUBeer.h"
 #import "RUFriend.h"
+#import "RUBar.h"
 
 #define BARS_TABLE_NAME @"bars"
 #define BEERS_TABLE_NAME @"beers"
@@ -60,7 +61,6 @@ static RUDBManager *sharedInstance = nil;
                            @"postalCode char(64)",
                            @"ISOcountryCode char(64)",
                            @"country char(64)",
-                           @"int favorite",
                            nil]];
         
         [self createTable:DRINKER_TABLE_NAME
@@ -132,6 +132,48 @@ static RUDBManager *sharedInstance = nil;
                                   name,
                                   manf,
                                   nil]];
+}
+
+- (NSMutableArray *) getBars {
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from bars"];
+    NSMutableArray * response = [[NSMutableArray alloc] init];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    NSLog(@"%@", query);
+    
+    while ([rs next]) {
+        
+        NSString * name= [rs stringForColumn:@"name"]; // @"name char(64)",
+        NSString * phoneNumber= [rs stringForColumn:@"phoneNumber"];// @"phoneNumber char(64) primary key not null",
+        NSString * url= [rs stringForColumn:@"url"];// @"url char(64)",
+        NSString * thoroughfare= [rs stringForColumn:@"thoroughfare"];// @"thoroughfare char(64)",
+        NSString * subThoroughfare= [rs stringForColumn:@"subThoroughfare"];// @"subThoroughfare char(64)",
+        NSString * locality= [rs stringForColumn:@"locality"];// @"locality char(64)",
+        NSString * subLocality= [rs stringForColumn:@"subLocality"];// @"subLocality char(64)",
+        NSString * administrativeArea= [rs stringForColumn:@"administrativeArea"];// @"administrativeArea char(64)",
+        NSString * subAdministrativeArea= [rs stringForColumn:@"subAdministrativeArea"];// @"subAdministrativeArea char(64)",
+        NSString * postalCode= [rs stringForColumn:@"postalCode"];// @"postalCode char(64)",
+        NSString * ISOcountryCode= [rs stringForColumn:@"ISOcountryCode"];// @"ISOcountryCode char(64)",
+        NSString * country= [rs stringForColumn:@"country"];// @"country char(64)",
+        
+        RUBar * bar = [[RUBar alloc] initWithName:name
+                                  withPhoneNumber:phoneNumber
+                                          withUrl:url
+                                  withThroughfare:thoroughfare
+                               withSubThroughfare:subThoroughfare
+                                     withLocality:locality
+                                  withSubLocality:subLocality
+                           withAdministrativeArea:administrativeArea
+                        withSubAdministrativeArea:subAdministrativeArea
+                                   withPostalCode:postalCode
+                               withISOcountryCode:ISOcountryCode
+                                   andWithCountry:country];
+        
+        [response addObject:bar];
+    }
+    
+    return response;
 }
 
 - (NSMutableArray *) getBeers
@@ -243,16 +285,6 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
     NSArray * bestFriends = [[NSArray alloc] initWithObjects:@"Paul Jones",@"Frank Porco", @"Tomasz Imielinski", nil];
     
     return bestFriends;
-}
-- (NSArray *) getBars {
-    NSArray * bars = [[NSArray alloc] init];
-    
-    return bars;
-}
-- (NSArray *) getFavoriteBars {
-    NSArray * favoriteBars = [[NSArray alloc] initWithObjects:@"Clydz",@"Harvest Moon", @"Stuff Yer Face", nil];
-    
-    return favoriteBars;
 }
 
 @end

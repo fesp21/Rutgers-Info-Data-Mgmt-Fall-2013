@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     db = [RUDBManager getSharedInstance];
-    favoriteBars = [db getFavoriteBars];
+    favoriteBars = [db getBars];
     
     localBars = [[NSMutableArray alloc] init];
     

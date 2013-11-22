@@ -82,3 +82,9 @@ November 21st, 2013
 	- DB insert/query for bars
 	- DB insert/query for beers
 
+Things To Do
+------------
+
+1. Add preferences for friends (frequents and likes)
+2. Add frequents for user
+3. Add sells for bar

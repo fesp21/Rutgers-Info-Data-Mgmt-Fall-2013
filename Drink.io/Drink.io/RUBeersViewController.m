@@ -99,8 +99,6 @@
                        nil];
     
     [av setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-    
-    // Alert style customization
     [[av textFieldAtIndex:1] setSecureTextEntry:NO];
     [[av textFieldAtIndex:0] setPlaceholder:@"Beer name"];
     [[av textFieldAtIndex:1] setPlaceholder:@"Beer manufacturer"];
@@ -111,12 +109,8 @@
     RUBeer * beer = [[RUBeer alloc] initWithName:[alertView textFieldAtIndex:0].text
                              andWithManufacturer:[alertView textFieldAtIndex:1].text];
     
-    
-    
     [beer insertIntoDatabase];
-    
     [beers addObject:beer];
-    
     [self.tableView reloadData];
 }
 

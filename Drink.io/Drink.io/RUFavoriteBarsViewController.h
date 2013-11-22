@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface RUFavoriteBarsViewController : UITableViewController
+@interface RUFavoriteBarsViewController : UITableViewController<CLLocationManagerDelegate> {
+    NSMutableArray * localBars;
+    BOOL seeLocal;
+}
 
 @end

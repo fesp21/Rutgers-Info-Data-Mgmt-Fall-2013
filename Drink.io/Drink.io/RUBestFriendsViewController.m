@@ -89,7 +89,7 @@
         // Send an alert telling user to change privacy setting in settings app
     }
     
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = NULL;
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,10 +8,13 @@
 
 #import "RUFavoriteBarsViewController.h"
 #import "RUDBManager.h"
+#import "RUBar.h"
 
 @interface RUFavoriteBarsViewController () {
+    CLLocationManager * locationManager;
+    UIActivityIndicatorView *activityIndicator;
     RUDBManager * db;
-    NSArray * favoriteBars;
+    NSArray * allBars;
 }
 
 @end
@@ -30,10 +33,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    favoriteBars = [[RUDBManager getSharedInstance] getFavoriteBars];
+    seeLocal = YES;
+ 
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    allBars = [[RUDBManager getSharedInstance] getBars];
+    
+    db = [RUDBManager getSharedInstance];
+    allBars = [db getBars];
+    
+    localBars = [[NSMutableArray alloc] init];
+    
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.distanceFilter = 500;
+    
+    [locationManager startUpdatingLocation];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [self.view addSubview: activityIndicator];
+    
+    [activityIndicator startAnimating];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,20 +67,75 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Location Services
+
+- (void) locationManager: (CLLocationManager *) manager didUpdateLocations: (NSArray *) locations {
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Bars";
+    CLLocation* location = [locations lastObject];
+    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    
+    [localBars removeAllObjects];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse
+                                         *response, NSError *error) {
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else {
+            for (MKMapItem *item in response.mapItems)
+            {
+                RUBar * bar = [[RUBar alloc] initWithName:item.name
+                                          withPhoneNumber:item.phoneNumber
+                                                  withUrl:item.url.scheme
+                                          withThroughfare:item.placemark.thoroughfare
+                                       withSubThroughfare:item.placemark.subThoroughfare
+                                             withLocality:item.placemark.locality
+                                          withSubLocality:item.placemark.subLocality
+                                   withAdministrativeArea:item.placemark.administrativeArea
+                                withSubAdministrativeArea:item.placemark.subAdministrativeArea
+                                           withPostalCode:item.placemark.postalCode
+                                       withISOcountryCode:item.placemark.ISOcountryCode
+                                           andWithCountry:item.placemark.country];
+                
+                [localBars addObject:bar];
+            }
+            [self.tableView reloadData];
+            [activityIndicator removeFromSuperview];
+        }
+    }];
+}
+
 #pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (seeLocal) {
+        
+        
+        
+    } else {
+        
+    }
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [favoriteBars count];
+    NSInteger numberOfRows = 0;
+    
+    if (localBars) {
+        numberOfRows = [localBars count];
+    } else {
+        numberOfRows = [allBars count];
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,8 +143,28 @@
     static NSString *CellIdentifier = @"Cell4";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [favoriteBars objectAtIndex:indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (seeLocal && localBars != NULL) {
+        cell.textLabel.text = [[localBars objectAtIndex:indexPath.row] name];
+    } else {
+        
+        if ([allBars count] == 0) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"No saved bars"
+                                                         message:@"You need to add a local bar to the database!"
+                                                        delegate:self
+                                               cancelButtonTitle:@"Okay"
+                                               otherButtonTitles:nil,
+                               nil];
+            
+            [av setAlertViewStyle:UIAlertViewStyleDefault];
+            [av show];
+            
+            seeLocal = YES;
+            [self.tableView reloadData];
+            
+        } else cell.textLabel.text = [[allBars objectAtIndex:indexPath.row] name];
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
@@ -75,6 +175,23 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
+}
+
+#pragma mark - IBActions
+
+- (IBAction)seeAllTapped:(id)sender
+{
+    seeLocal = !seeLocal;
+    
+    if (seeLocal) {
+        self.navigationItem.rightBarButtonItem.title = @"See all";
+    } else {
+        self.navigationItem.rightBarButtonItem.title = @"See local";
+        allBars = [db getBars];
+
+    }
+    
+    [self.tableView reloadData];
 }
 
 @end

@@ -32,6 +32,7 @@
 		27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974BF183DA8E7009F1086 /* RUFriend.m */; };
 		27A974C4183E6036009F1086 /* RUBeer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C3183E6036009F1086 /* RUBeer.m */; };
 		27A974C8183E632D009F1086 /* RUBeersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C7183E632D009F1086 /* RUBeersViewController.m */; };
+		27A974CB183EE2C4009F1086 /* RUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974CA183EE2C4009F1086 /* RUBar.m */; };
 		27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */; };
 		27AFC848183AE5A40042FB97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AFC847183AE5A40042FB97 /* libsqlite3.dylib */; };
 		27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC84A183AE7510042FB97 /* RUDrinkAtViewController.m */; };
@@ -94,6 +95,8 @@
 		27A974C3183E6036009F1086 /* RUBeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeer.m; sourceTree = "<group>"; };
 		27A974C6183E632D009F1086 /* RUBeersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeersViewController.h; sourceTree = "<group>"; };
 		27A974C7183E632D009F1086 /* RUBeersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeersViewController.m; sourceTree = "<group>"; };
+		27A974C9183EE2C4009F1086 /* RUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBar.h; sourceTree = "<group>"; };
+		27A974CA183EE2C4009F1086 /* RUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBar.m; sourceTree = "<group>"; };
 		27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkWithViewController.h; sourceTree = "<group>"; };
 		27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkWithViewController.m; sourceTree = "<group>"; };
 		27AFC847183AE5A40042FB97 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -263,6 +266,8 @@
 				27A974BF183DA8E7009F1086 /* RUFriend.m */,
 				27A974C2183E6036009F1086 /* RUBeer.h */,
 				27A974C3183E6036009F1086 /* RUBeer.m */,
+				27A974C9183EE2C4009F1086 /* RUBar.h */,
+				27A974CA183EE2C4009F1086 /* RUBar.m */,
 			);
 			name = Structures;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				2716CE3F183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.m in Sources */,
 				274900D2183D526100846E74 /* RUDBManager.m in Sources */,
 				274900CC183D51C700846E74 /* FMDatabasePool.m in Sources */,
+				27A974CB183EE2C4009F1086 /* RUBar.m in Sources */,
 				27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */,
 				27A974C8183E632D009F1086 /* RUBeersViewController.m in Sources */,
 				274900CD183D51C700846E74 /* FMDatabaseQueue.m in Sources */,
