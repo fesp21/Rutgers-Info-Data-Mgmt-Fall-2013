@@ -20,8 +20,9 @@
 - (BOOL) removeFromDatabase;
 
 - (BOOL) isSoldAtBar: (RUBar *) bar;
-
+- (void) toggleLikeFor: (NSString *) likersName;
 - (BOOL) likedByUser;
+- (BOOL) islikedByUserWithName: (NSString *) name;
 - (void) toggleLike;
 
 @end

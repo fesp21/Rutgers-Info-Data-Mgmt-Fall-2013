@@ -45,6 +45,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (showBeers) {
+        [[beers objectAtIndex:indexPath.row] toggleLikeFor: self.thisFriendsName];
+        
+        if ([[beers objectAtIndex:indexPath.row] islikedByUserWithName:self.thisFriendsName]) {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+    } else {
+        
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -70,7 +88,7 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        if ([[beers objectAtIndex:indexPath.row] likedByUser]) {
+        if ([[beers objectAtIndex:indexPath.row] islikedByUserWithName:self.thisFriendsName]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;

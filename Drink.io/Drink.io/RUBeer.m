@@ -65,6 +65,30 @@
     return exists;
 }
 
+- (void) toggleLikeFor: (NSString *) likersName {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    if (![self islikedByUserWithName:likersName]) {
+        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:likersName, self.name, nil]];
+    } else {
+        NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM likes "
+                                    "WHERE drinker=\"%@\" AND beer=\"%@\";", likersName, self.name ];
+        [db executeUpdate:delete];
+    }
+}
+
+- (BOOL) islikedByUserWithName: (NSString *) name {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * FROM likes "
+                               "WHERE drinker=\"%@\" AND beer=\"%@\";", name, self.name ];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    BOOL exists = [rs next];
+    
+    return exists;
+}
+
 - (void) toggleLike
 {
     RUDBManager * db = [RUDBManager getSharedInstance];

@@ -10,10 +10,12 @@
 #import <AddressBook/AddressBook.h>
 #import "RUDBManager.h"
 #import "RUFriend.h"
+#import "RUFriendDetailViewController.h"
 
 @interface RUFriendInsertViewController () {
     RUDBManager * db;
     NSArray * bestFriends;
+    NSString * currentFriend;
 }
 
 @end
@@ -103,15 +105,15 @@
     CGPoint p = [gestureRecognizer locationInView:self.tableView];
     
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"UIGestureRecognizerStateEnded");
-        //Do Whatever You want on End of Gesture
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
         if (indexPath == nil){
             
         } else if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark){
+            
+            currentFriend = [[people objectAtIndex:indexPath.row] fullName];
             
             [self performSegueWithIdentifier:@"freind_detail_view" sender:self.tableView];
         }
@@ -173,7 +175,11 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"freind_detail_view"]) {
+        RUFriendDetailViewController * fdvc = [segue destinationViewController];
+        
+        fdvc.thisFriendsName = currentFriend;
+    }
 }
 
 @end

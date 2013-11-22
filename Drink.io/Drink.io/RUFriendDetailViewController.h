@@ -10,6 +10,8 @@
 
 @interface RUFriendDetailViewController : UITableViewController
 
+@property (nonatomic, retain) NSString * thisFriendsName;
+
 - (IBAction) switchTapped:(id)sender;
 
 @end
