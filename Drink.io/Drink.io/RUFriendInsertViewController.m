@@ -96,8 +96,7 @@
     else {
         // Send an alert telling user to change privacy setting in settings app
     }
-    
-    self.navigationItem.rightBarButtonItem = NULL;
+
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -180,6 +179,17 @@
         
         fdvc.thisFriendsName = currentFriend;
     }
+}
+
+- (IBAction) helpedTapped:(id)sender {
+    UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Help With Freinds"
+                                                  message:@"This view allows you to add friends from your contacts list. Additionally, long tap a friend you have, and you can ascribe likes and frequents to this users."
+                                                 delegate:Nil
+                                        cancelButtonTitle:@"Great!"
+                                        otherButtonTitles:nil,
+                        nil];
+    
+    [av show];
 }
 
 @end

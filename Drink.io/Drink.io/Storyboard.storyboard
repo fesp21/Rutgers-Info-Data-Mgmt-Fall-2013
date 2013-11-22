@@ -188,7 +188,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Drink with Who?" id="zgN-rR-d3i">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TvY-Uy-Jkb"/>
+                        <barButtonItem key="rightBarButtonItem" title="?" id="TvY-Uy-Jkb">
+                            <connections>
+                                <action selector="helpedTapped:" destination="Iir-VC-gbG" id="zQq-Jr-lHW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="hRw-Wi-l73" kind="push" identifier="freind_detail_view" id="WEf-mc-MkG"/>

@@ -12,4 +12,6 @@
     NSMutableArray * people;
 }
 
+- (IBAction) helpedTapped:(id)sender;
+
 @end

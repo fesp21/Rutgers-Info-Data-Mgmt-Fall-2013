@@ -128,7 +128,7 @@
         if (seeLocal) {
             [[localBars objectAtIndex:indexPath.row] removeFromDatabase];
         } else {
-            [[allBars objectAtIndex:indexPath.row] removeFromDatabase];
+            [[allBars objectAtIndex:indexPath.row] toggleFrequentFor:@"user name"];
         }
         
     } else {
@@ -137,7 +137,7 @@
         if (seeLocal) {
             [[localBars objectAtIndex:indexPath.row] insertIntoDatabase];
         } else {
-            [[allBars objectAtIndex:indexPath.row] insertIntoDatabase];
+            [[allBars objectAtIndex:indexPath.row] toggleFrequentFor:@"user name"];
         }
     }
 }
@@ -195,7 +195,7 @@
         } else {
             cell.textLabel.text = [[allBars objectAtIndex:indexPath.row] name];
             
-            if ([[allBars objectAtIndex:indexPath.row] isInDatabase]) {
+            if ([[allBars objectAtIndex:indexPath.row] isFrequentedByUserWithName:@"user name"]) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             } else cell.accessoryType = UITableViewCellAccessoryNone;
         }
