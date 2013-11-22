@@ -39,6 +39,7 @@
 		27AFC84F183B0B7D0042FB97 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC84E183B0B7D0042FB97 /* default.gpx */; };
 		27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */; };
 		27AFC85A183B1CC10042FB97 /* initializeDB.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27AFC859183B1CC10042FB97 /* initializeDB.txt */; };
+		27C36D92183FAB1C00119480 /* RUFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C36D91183FAB1C00119480 /* RUFriendDetailViewController.m */; };
 		27DECA9C18200699004CDF52 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DECA9B18200699004CDF52 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		27AFC850183B138D0042FB97 /* RUDrinkNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkNowViewController.h; sourceTree = "<group>"; };
 		27AFC851183B138D0042FB97 /* RUDrinkNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDrinkNowViewController.m; sourceTree = "<group>"; };
 		27AFC859183B1CC10042FB97 /* initializeDB.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = initializeDB.txt; sourceTree = "<group>"; };
+		27C36D90183FAB1C00119480 /* RUFriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUFriendDetailViewController.h; sourceTree = "<group>"; };
+		27C36D91183FAB1C00119480 /* RUFriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUFriendDetailViewController.m; sourceTree = "<group>"; };
 		27DECA9B18200699004CDF52 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +142,8 @@
 			children = (
 				2716CE3A183BD0AC00BCFBC4 /* RUFriendInsertViewController.h */,
 				2716CE3B183BD0AC00BCFBC4 /* RUFriendInsertViewController.m */,
+				27C36D90183FAB1C00119480 /* RUFriendDetailViewController.h */,
+				27C36D91183FAB1C00119480 /* RUFriendDetailViewController.m */,
 			);
 			name = "Best Friends View";
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				274900CA183D51C700846E74 /* FMDatabase.m in Sources */,
 				27421F6A17FDE57E00B38156 /* RUAppDelegate.m in Sources */,
 				27A974C4183E6036009F1086 /* RUBeer.m in Sources */,
+				27C36D92183FAB1C00119480 /* RUFriendDetailViewController.m in Sources */,
 				274900CB183D51C700846E74 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

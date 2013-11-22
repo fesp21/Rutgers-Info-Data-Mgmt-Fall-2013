@@ -198,16 +198,16 @@
             </objects>
             <point key="canvasLocation" x="370" y="538"/>
         </scene>
-        <!--Table View Controller - Friend Likes?-->
+        <!--Friend Detail View Controller - Friend Likes?-->
         <scene sceneID="tBw-Fm-tZB">
             <objects>
-                <tableViewController id="hRw-Wi-l73" sceneMemberID="viewController">
+                <tableViewController id="hRw-Wi-l73" customClass="RUFriendDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rHG-gu-vLd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="F4S-85-XCo">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell10" id="F4S-85-XCo">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F4S-85-XCo" id="Tr9-JP-eMc">
@@ -222,7 +222,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Friend Likes?" id="Lfg-fx-JK4">
-                        <barButtonItem key="rightBarButtonItem" title="Beers" id="zDU-Rg-lUl"/>
+                        <barButtonItem key="rightBarButtonItem" title="Bars" id="zDU-Rg-lUl">
+                            <connections>
+                                <action selector="switchTapped:" destination="hRw-Wi-l73" id="xgr-Lm-xO8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IET-cO-zBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
