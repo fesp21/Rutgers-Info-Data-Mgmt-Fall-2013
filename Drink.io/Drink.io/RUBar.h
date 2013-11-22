@@ -36,4 +36,9 @@
         withISOcountryCode: (NSString *) ISOcountryCode
             andWithCountry: (NSString *) country;
 
+- (BOOL) frequentedByUser: (NSString *) fullName;
+- (BOOL) isInDatabase;
+- (BOOL) removeFromDatabase;
+- (BOOL) insertIntoDatabase;
+
 @end

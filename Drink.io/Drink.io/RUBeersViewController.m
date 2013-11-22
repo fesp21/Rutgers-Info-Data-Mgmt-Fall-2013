@@ -78,6 +78,8 @@
     
     cell.textLabel.text = [[beers objectAtIndex:indexPath.row] name];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if ([[beers objectAtIndex:indexPath.row] likedByUser]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {

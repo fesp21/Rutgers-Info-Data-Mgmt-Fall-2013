@@ -35,7 +35,10 @@
     [super viewDidLoad];
     
     seeLocal = YES;
- 
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     allBars = [[RUDBManager getSharedInstance] getBars];
@@ -109,12 +112,25 @@
 #pragma mark - Table view delegate
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (seeLocal) {
+    UITableViewCell * currentCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (currentCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        currentCell.accessoryType = UITableViewCellAccessoryNone;
         
-        
+        if (seeLocal) {
+            [[localBars objectAtIndex:indexPath.row] removeFromDatabase];
+        } else {
+            [[allBars objectAtIndex:indexPath.row] removeFromDatabase];
+        }
         
     } else {
+        currentCell.accessoryType = UITableViewCellAccessoryCheckmark;
         
+        if (seeLocal) {
+            [[localBars objectAtIndex:indexPath.row] insertIntoDatabase];
+        } else {
+            [[allBars objectAtIndex:indexPath.row] insertIntoDatabase];
+        }
     }
 }
 
@@ -129,7 +145,7 @@
 {
     NSInteger numberOfRows = 0;
     
-    if (localBars) {
+    if (seeLocal) {
         numberOfRows = [localBars count];
     } else {
         numberOfRows = [allBars count];
@@ -143,8 +159,15 @@
     static NSString *CellIdentifier = @"Cell4";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if (seeLocal && localBars != NULL) {
         cell.textLabel.text = [[localBars objectAtIndex:indexPath.row] name];
+        
+        if ([[localBars objectAtIndex:indexPath.row] isInDatabase]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else cell.accessoryType = UITableViewCellAccessoryNone;
+        
     } else {
         
         if ([allBars count] == 0) {
@@ -161,10 +184,16 @@
             seeLocal = YES;
             [self.tableView reloadData];
             
-        } else cell.textLabel.text = [[allBars objectAtIndex:indexPath.row] name];
+        } else {
+            cell.textLabel.text = [[allBars objectAtIndex:indexPath.row] name];
+            
+            if ([[allBars objectAtIndex:indexPath.row] isInDatabase]) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            } else cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    
     
     return cell;
 }
@@ -183,12 +212,12 @@
 {
     seeLocal = !seeLocal;
     
+    allBars = [db getBars];
+    
     if (seeLocal) {
         self.navigationItem.rightBarButtonItem.title = @"See all";
     } else {
         self.navigationItem.rightBarButtonItem.title = @"See local";
-        allBars = [db getBars];
-
     }
     
     [self.tableView reloadData];

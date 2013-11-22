@@ -130,6 +130,8 @@
     
     cell.textLabel.text = [[people objectAtIndex:indexPath.row] fullName];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if ([[people objectAtIndex:indexPath.row] isInDatabase]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {

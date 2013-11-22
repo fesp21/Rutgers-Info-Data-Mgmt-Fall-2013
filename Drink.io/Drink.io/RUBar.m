@@ -7,6 +7,7 @@
 //
 
 #import "RUBar.h"
+#import "RUDBManager.h"
 
 @implementation RUBar
 
@@ -39,6 +40,46 @@
     }
     
     return self;
+}
+
+- (BOOL) frequentedByUser: (NSString *) fullName {
+    
+    return NO;
+}
+
+- (BOOL) isInDatabase
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from bars where phoneNumber = \"%@\" AND name = \"%@\"",
+                               self.phoneNumber, self.name];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    return [rs next];
+}
+
+- (BOOL) removeFromDatabase {
+    
+    return NO;
+}
+- (BOOL) insertIntoDatabase {
+    
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    return [db insertIntoTable:@"bars" withParameters:[[NSArray alloc] initWithObjects: self.name,
+    self.phoneNumber,
+    self.url,
+    self.thoroughfare,
+    self.subThoroughfare,
+    self.locality,
+    self.subLocality,
+    self.administrativeArea,
+    self.subAdministrativeArea,
+    self.postalCode,
+    self.ISOcountryCode,
+    self.country,
+    nil]];
 }
 
 @end
