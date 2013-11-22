@@ -9,12 +9,14 @@
 #import "RUBarInsertViewController.h"
 #import "RUDBManager.h"
 #import "RUBar.h"
+#import "RUBarDetailViewController.h"
 
 @interface RUBarInsertViewController () {
     CLLocationManager * locationManager;
     UIActivityIndicatorView *activityIndicator;
     RUDBManager * db;
     NSArray * allBars;
+    NSInteger longPress;
 }
 
 @end
@@ -209,7 +211,10 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([[segue identifier] isEqualToString:@"bar_detail_view"]){
+        RUBarDetailViewController * detailView = [segue destinationViewController];
+        detailView.bar = [allBars objectAtIndex:longPress];
+    }
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -228,6 +233,7 @@
         } else if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
             
             [self performSegueWithIdentifier:@"bar_detail_view" sender:self.tableView];
+            longPress = indexPath.row;
         }
     }
 }

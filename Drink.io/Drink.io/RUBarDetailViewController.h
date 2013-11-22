@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RUBar.h"
 
-@interface RUBarDetailViewController : UITableViewController
+@interface RUBarDetailViewController : UITableViewController {
+}
+
+@property (nonatomic, retain) RUBar * bar;
 
 - (IBAction)questionMarkPressed:(id)sender;
 

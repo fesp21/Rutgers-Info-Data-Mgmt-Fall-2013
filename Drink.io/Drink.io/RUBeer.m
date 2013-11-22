@@ -40,6 +40,18 @@
     return [db executeUpdate:delete];
 }
 
+- (BOOL) isSoldAtBar: (RUBar *) bar {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * FROM sells "
+                               "WHERE bar=\"%@\" AND beer=\"%@\";", bar.name, self.name ];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    BOOL exists = [rs next];
+    
+    return exists;
+}
+
 - (BOOL) likedByUser
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
@@ -49,8 +61,6 @@
     FMResultSet * rs = [db executeQuery:query];
     
     BOOL exists = [rs next];
-    
-    NSLog(@"%@ %@", query, exists ? @"yes" : @"no");
     
     return exists;
 }

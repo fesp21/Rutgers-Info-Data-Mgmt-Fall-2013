@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RUBar.h"
 
 @interface RUBeer : NSObject
 
@@ -17,6 +18,8 @@
 
 - (BOOL) insertIntoDatabase;
 - (BOOL) removeFromDatabase;
+
+- (BOOL) isSoldAtBar: (RUBar *) bar;
 
 - (BOOL) likedByUser;
 - (void) toggleLike;

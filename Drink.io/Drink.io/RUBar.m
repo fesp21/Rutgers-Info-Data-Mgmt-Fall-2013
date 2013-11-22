@@ -47,6 +47,31 @@
     return NO;
 }
 
+- (BOOL) sellsBeer: (NSString *) beerName {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from sells where bar = \"%@\" AND beer = \"%@\"",
+                               self.name, beerName];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    return [rs next];
+}
+
+- (void) toggleSellsBeer: (NSString *) beerName andAtPrice: (NSString *) price
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    if (![self sellsBeer:beerName]) {
+        [db insertIntoTable:@"sells" withParameters:[[NSArray alloc]
+                                                     initWithObjects:self.name, beerName, price, nil]];
+    } else {
+        NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM sells "
+                                    "WHERE bar=\"%@\" AND beer=\"%@\";", self.name, beerName];
+        [db executeUpdate:delete];
+    }
+}
+
 - (BOOL) isInDatabase
 {
     RUDBManager * db = [RUDBManager getSharedInstance];

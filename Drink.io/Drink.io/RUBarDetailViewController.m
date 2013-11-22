@@ -7,8 +7,12 @@
 //
 
 #import "RUBarDetailViewController.h"
+#import "RUBeer.h"
+#import "RUDBManager.h"
 
-@interface RUBarDetailViewController ()
+@interface RUBarDetailViewController () {
+    NSMutableArray * beers;
+}
 
 @end
 
@@ -27,6 +31,8 @@
 {
     [super viewDidLoad];
 
+    beers = [[RUDBManager getSharedInstance] getBeers];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -40,28 +46,48 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[beers objectAtIndex:indexPath.row] isSoldAtBar: self.bar]) {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        
+    }
+    
+        [self.bar toggleSellsBeer:[tableView cellForRowAtIndexPath:indexPath].textLabel.text andAtPrice:@"5.0"];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [beers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Cell9";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [[beers objectAtIndex:indexPath.row] name];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if ([[beers objectAtIndex:indexPath.row] isSoldAtBar:self.bar]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }

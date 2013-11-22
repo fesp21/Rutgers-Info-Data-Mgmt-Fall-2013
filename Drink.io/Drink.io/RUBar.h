@@ -41,4 +41,6 @@
 - (BOOL) removeFromDatabase;
 - (BOOL) insertIntoDatabase;
 
+- (void) toggleSellsBeer: (NSString *) beerName andAtPrice: (NSString *) price;
+
 @end
