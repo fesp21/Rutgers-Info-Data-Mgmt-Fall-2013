@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface RUFavoriteBarsViewController : UITableViewController<CLLocationManagerDelegate> {
+@interface RUBarInsertViewController : UITableViewController<CLLocationManagerDelegate, UIGestureRecognizerDelegate> {
     NSMutableArray * localBars;
     BOOL seeLocal;
 }

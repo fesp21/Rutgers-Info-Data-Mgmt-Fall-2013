@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUBestFriendsViewController : UITableViewController {
+@interface RUFriendInsertViewController : UITableViewController<UIGestureRecognizerDelegate> {
     NSMutableArray * people;
 }
 

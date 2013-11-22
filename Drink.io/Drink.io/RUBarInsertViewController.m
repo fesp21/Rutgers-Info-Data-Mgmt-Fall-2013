@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Principles of Informations and Data Management. All rights reserved.
 //
 
-#import "RUFavoriteBarsViewController.h"
+#import "RUBarInsertViewController.h"
 #import "RUDBManager.h"
 #import "RUBar.h"
 
-@interface RUFavoriteBarsViewController () {
+@interface RUBarInsertViewController () {
     CLLocationManager * locationManager;
     UIActivityIndicatorView *activityIndicator;
     RUDBManager * db;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation RUFavoriteBarsViewController
+@implementation RUBarInsertViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,6 +40,12 @@
     self.tableView.delegate = self;
     
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
     
     allBars = [[RUDBManager getSharedInstance] getBars];
     
@@ -204,6 +210,26 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
+}
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"UIGestureRecognizerStateEnded");
+        //Do Whatever You want on End of Gesture
+    }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        if (indexPath == nil){
+            
+        } else if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+            
+            [self performSegueWithIdentifier:@"bar_detail_view" sender:self.tableView];
+        }
+    }
 }
 
 #pragma mark - IBActions

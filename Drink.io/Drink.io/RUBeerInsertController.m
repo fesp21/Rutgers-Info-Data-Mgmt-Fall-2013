@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Principles of Informations and Data Management. All rights reserved.
 //
 
-#import "RUBeersViewController.h"
+#import "RUBeerInsertController.h"
 #import "RUDBManager.h"
 #import "RUBeer.h"
 
-@interface RUBeersViewController ()
+@interface RUBeerInsertController ()
 
 @end
 
-@implementation RUBeersViewController
+@implementation RUBeerInsertController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

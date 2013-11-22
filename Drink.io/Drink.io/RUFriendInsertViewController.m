@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 Principles of Informations and Data Management. All rights reserved.
 //
 
-#import "RUBestFriendsViewController.h"
+#import "RUFriendInsertViewController.h"
 #import <AddressBook/AddressBook.h>
 #import "RUDBManager.h"
 #import "RUFriend.h"
 
-@interface RUBestFriendsViewController () {
+@interface RUFriendInsertViewController () {
     RUDBManager * db;
     NSArray * bestFriends;
 }
 
 @end
 
-@implementation RUBestFriendsViewController
+@implementation RUFriendInsertViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,7 +32,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+    
     people = [[NSMutableArray alloc ] init];
     bestFriends = [[RUDBManager getSharedInstance] getBestFriends];
     
@@ -75,12 +81,12 @@
             NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
             
             RUFriend * friend = [[RUFriend alloc] initWithFirstName:firstName
-                                   withLastName:lastName
-                                     withNumber:phoneNumber
-                                     withStreet:street
-                                       withCity:city
-                                      withState:state
-                                 andWithCountry:country];
+                                                       withLastName:lastName
+                                                         withNumber:phoneNumber
+                                                         withStreet:street
+                                                           withCity:city
+                                                          withState:state
+                                                     andWithCountry:country];
             
             [people addObject:friend];
         }
@@ -90,6 +96,26 @@
     }
     
     self.navigationItem.rightBarButtonItem = NULL;
+}
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"UIGestureRecognizerStateEnded");
+        //Do Whatever You want on End of Gesture
+    }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        if (indexPath == nil){
+            
+        } else if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark){
+            
+            [self performSegueWithIdentifier:@"freind_detail_view" sender:self.tableView];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,7 +164,6 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    
     return cell;
 }
 
@@ -148,7 +173,7 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    
 }
 
 @end

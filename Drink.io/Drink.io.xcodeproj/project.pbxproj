@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2716CE38183BCE8D00BCFBC4 /* RUSQLQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716CE37183BCE8D00BCFBC4 /* RUSQLQueryViewController.m */; };
-		2716CE3C183BD0AC00BCFBC4 /* RUBestFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716CE3B183BD0AC00BCFBC4 /* RUBestFriendsViewController.m */; };
-		2716CE3F183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716CE3E183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.m */; };
+		2716CE3C183BD0AC00BCFBC4 /* RUFriendInsertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716CE3B183BD0AC00BCFBC4 /* RUFriendInsertViewController.m */; };
+		2716CE3F183BD0BC00BCFBC4 /* RUBarInsertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716CE3E183BD0BC00BCFBC4 /* RUBarInsertViewController.m */; };
 		27421F5A17FDE57E00B38156 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27421F5917FDE57E00B38156 /* Foundation.framework */; };
 		27421F5C17FDE57E00B38156 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27421F5B17FDE57E00B38156 /* CoreGraphics.framework */; };
 		27421F5E17FDE57E00B38156 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27421F5D17FDE57E00B38156 /* UIKit.framework */; };
@@ -29,9 +28,10 @@
 		274900CF183D51C700846E74 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 274900C9183D51C700846E74 /* FMResultSet.m */; };
 		274900D2183D526100846E74 /* RUDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 274900D1183D526100846E74 /* RUDBManager.m */; };
 		2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */; };
+		278E3CE8183F189B00E70764 /* RUBarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E3CE7183F189B00E70764 /* RUBarDetailViewController.m */; };
 		27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974BF183DA8E7009F1086 /* RUFriend.m */; };
 		27A974C4183E6036009F1086 /* RUBeer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C3183E6036009F1086 /* RUBeer.m */; };
-		27A974C8183E632D009F1086 /* RUBeersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C7183E632D009F1086 /* RUBeersViewController.m */; };
+		27A974C8183E632D009F1086 /* RUBeerInsertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974C7183E632D009F1086 /* RUBeerInsertController.m */; };
 		27A974CB183EE2C4009F1086 /* RUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A974CA183EE2C4009F1086 /* RUBar.m */; };
 		27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFC842183AD6980042FB97 /* RUDrinkWithViewController.m */; };
 		27AFC848183AE5A40042FB97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AFC847183AE5A40042FB97 /* libsqlite3.dylib */; };
@@ -53,12 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2716CE36183BCE8D00BCFBC4 /* RUSQLQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUSQLQueryViewController.h; sourceTree = "<group>"; };
-		2716CE37183BCE8D00BCFBC4 /* RUSQLQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUSQLQueryViewController.m; sourceTree = "<group>"; };
-		2716CE3A183BD0AC00BCFBC4 /* RUBestFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBestFriendsViewController.h; sourceTree = "<group>"; };
-		2716CE3B183BD0AC00BCFBC4 /* RUBestFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBestFriendsViewController.m; sourceTree = "<group>"; };
-		2716CE3D183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUFavoriteBarsViewController.h; sourceTree = "<group>"; };
-		2716CE3E183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUFavoriteBarsViewController.m; sourceTree = "<group>"; };
+		2716CE3A183BD0AC00BCFBC4 /* RUFriendInsertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUFriendInsertViewController.h; sourceTree = "<group>"; };
+		2716CE3B183BD0AC00BCFBC4 /* RUFriendInsertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUFriendInsertViewController.m; sourceTree = "<group>"; };
+		2716CE3D183BD0BC00BCFBC4 /* RUBarInsertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBarInsertViewController.h; sourceTree = "<group>"; };
+		2716CE3E183BD0BC00BCFBC4 /* RUBarInsertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBarInsertViewController.m; sourceTree = "<group>"; };
 		27421F5617FDE57E00B38156 /* Drink.io.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drink.io.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27421F5917FDE57E00B38156 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27421F5B17FDE57E00B38156 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,12 +87,14 @@
 		274900D1183D526100846E74 /* RUDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDBManager.m; sourceTree = "<group>"; };
 		2786D1BD18395C3E009E8F92 /* RUDWFRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDWFRootViewController.h; sourceTree = "<group>"; };
 		2786D1BE18395C3E009E8F92 /* RUDWFRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUDWFRootViewController.m; sourceTree = "<group>"; };
+		278E3CE6183F189B00E70764 /* RUBarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBarDetailViewController.h; sourceTree = "<group>"; };
+		278E3CE7183F189B00E70764 /* RUBarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBarDetailViewController.m; sourceTree = "<group>"; };
 		27A974BE183DA8E7009F1086 /* RUFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUFriend.h; sourceTree = "<group>"; };
 		27A974BF183DA8E7009F1086 /* RUFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUFriend.m; sourceTree = "<group>"; };
 		27A974C2183E6036009F1086 /* RUBeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeer.h; sourceTree = "<group>"; };
 		27A974C3183E6036009F1086 /* RUBeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeer.m; sourceTree = "<group>"; };
-		27A974C6183E632D009F1086 /* RUBeersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeersViewController.h; sourceTree = "<group>"; };
-		27A974C7183E632D009F1086 /* RUBeersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeersViewController.m; sourceTree = "<group>"; };
+		27A974C6183E632D009F1086 /* RUBeerInsertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeerInsertController.h; sourceTree = "<group>"; };
+		27A974C7183E632D009F1086 /* RUBeerInsertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeerInsertController.m; sourceTree = "<group>"; };
 		27A974C9183EE2C4009F1086 /* RUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBar.h; sourceTree = "<group>"; };
 		27A974CA183EE2C4009F1086 /* RUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBar.m; sourceTree = "<group>"; };
 		27AFC841183AD6980042FB97 /* RUDrinkWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDrinkWithViewController.h; sourceTree = "<group>"; };
@@ -134,20 +134,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2716CE35183BCE7700BCFBC4 /* SQL Query */ = {
-			isa = PBXGroup;
-			children = (
-				2716CE36183BCE8D00BCFBC4 /* RUSQLQueryViewController.h */,
-				2716CE37183BCE8D00BCFBC4 /* RUSQLQueryViewController.m */,
-			);
-			name = "SQL Query";
-			sourceTree = "<group>";
-		};
 		2716CE39183BD08100BCFBC4 /* Best Friends View */ = {
 			isa = PBXGroup;
 			children = (
-				2716CE3A183BD0AC00BCFBC4 /* RUBestFriendsViewController.h */,
-				2716CE3B183BD0AC00BCFBC4 /* RUBestFriendsViewController.m */,
+				2716CE3A183BD0AC00BCFBC4 /* RUFriendInsertViewController.h */,
+				2716CE3B183BD0AC00BCFBC4 /* RUFriendInsertViewController.m */,
 			);
 			name = "Best Friends View";
 			sourceTree = "<group>";
@@ -155,8 +146,10 @@
 		2716CE40183BD0C000BCFBC4 /* Favorite Bars */ = {
 			isa = PBXGroup;
 			children = (
-				2716CE3D183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.h */,
-				2716CE3E183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.m */,
+				2716CE3D183BD0BC00BCFBC4 /* RUBarInsertViewController.h */,
+				2716CE3E183BD0BC00BCFBC4 /* RUBarInsertViewController.m */,
+				278E3CE6183F189B00E70764 /* RUBarDetailViewController.h */,
+				278E3CE7183F189B00E70764 /* RUBarDetailViewController.m */,
 			);
 			name = "Favorite Bars";
 			sourceTree = "<group>";
@@ -218,7 +211,6 @@
 			children = (
 				27A974BD183DA8D4009F1086 /* Structures */,
 				2716CE41183BD0CF00BCFBC4 /* Preferences and Input */,
-				2716CE35183BCE7700BCFBC4 /* SQL Query */,
 				27AFC858183B13DE0042FB97 /* Database Stuff */,
 				2716CE42183BD0E700BCFBC4 /* Drink!  */,
 				27421F6B17FDE57E00B38156 /* Images.xcassets */,
@@ -292,8 +284,8 @@
 		27A974C5183E6316009F1086 /* Beers */ = {
 			isa = PBXGroup;
 			children = (
-				27A974C6183E632D009F1086 /* RUBeersViewController.h */,
-				27A974C7183E632D009F1086 /* RUBeersViewController.m */,
+				27A974C6183E632D009F1086 /* RUBeerInsertController.h */,
+				27A974C7183E632D009F1086 /* RUBeerInsertController.m */,
 			);
 			name = Beers;
 			sourceTree = "<group>";
@@ -454,15 +446,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */,
-				2716CE3F183BD0BC00BCFBC4 /* RUFavoriteBarsViewController.m in Sources */,
+				2716CE3F183BD0BC00BCFBC4 /* RUBarInsertViewController.m in Sources */,
 				274900D2183D526100846E74 /* RUDBManager.m in Sources */,
 				274900CC183D51C700846E74 /* FMDatabasePool.m in Sources */,
 				27A974CB183EE2C4009F1086 /* RUBar.m in Sources */,
 				27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */,
-				27A974C8183E632D009F1086 /* RUBeersViewController.m in Sources */,
+				27A974C8183E632D009F1086 /* RUBeerInsertController.m in Sources */,
 				274900CD183D51C700846E74 /* FMDatabaseQueue.m in Sources */,
-				2716CE38183BCE8D00BCFBC4 /* RUSQLQueryViewController.m in Sources */,
-				2716CE3C183BD0AC00BCFBC4 /* RUBestFriendsViewController.m in Sources */,
+				278E3CE8183F189B00E70764 /* RUBarDetailViewController.m in Sources */,
+				2716CE3C183BD0AC00BCFBC4 /* RUFriendInsertViewController.m in Sources */,
 				274900CF183D51C700846E74 /* FMResultSet.m in Sources */,
 				2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */,
 				27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */,

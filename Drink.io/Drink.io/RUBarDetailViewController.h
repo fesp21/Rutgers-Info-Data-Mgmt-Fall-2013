@@ -1,5 +1,5 @@
 //
-//  RUBeersViewController.h
+//  RUBarDetailViewController.h
 //  Drink.io
 //
 //  Created by Paul Jones on 11/21/13.
@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUBeersViewController : UITableViewController<UIAlertViewDelegate> {
-    NSMutableArray * beers;
-}
+@interface RUBarDetailViewController : UITableViewController
 
-- (IBAction)plusTapped:(id)sender;
+- (IBAction)questionMarkPressed:(id)sender;
 
 @end
