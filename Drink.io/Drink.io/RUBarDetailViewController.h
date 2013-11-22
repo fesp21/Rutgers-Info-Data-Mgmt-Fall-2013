@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RUBar.h"
 
-@interface RUBarDetailViewController : UITableViewController {
+@interface RUBarDetailViewController : UITableViewController<UIAlertViewDelegate> {
 }
 
 @property (nonatomic, retain) RUBar * bar;

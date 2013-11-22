@@ -12,6 +12,7 @@
 
 @interface RUBarDetailViewController () {
     NSMutableArray * beers;
+    NSIndexPath * currentIndex;
 }
 
 @end
@@ -52,12 +53,32 @@
 {
     if ([[beers objectAtIndex:indexPath.row] isSoldAtBar: self.bar]) {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        [self.bar toggleSellsBeer:[tableView cellForRowAtIndexPath:indexPath].textLabel.text andAtPrice:@""];
     } else {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"For how much?"
+                                                      message:@"How much does this bar sell this beer for?"
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Finish",
+                            nil];
+        
+        av.alertViewStyle = UIAlertViewStylePlainTextInput;
+        
+        currentIndex = indexPath;
+        
+        [[av textFieldAtIndex:0] setPlaceholder:@"Beer price"];
+        
+        [av show];
     }
     
-        [self.bar toggleSellsBeer:[tableView cellForRowAtIndexPath:indexPath].textLabel.text andAtPrice:@"5.0"];
+
+}
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.bar toggleSellsBeer:[self.tableView cellForRowAtIndexPath:currentIndex].textLabel.text
+                   andAtPrice:[alertView textFieldAtIndex:0].text];
 }
 
 #pragma mark - Table view data source
