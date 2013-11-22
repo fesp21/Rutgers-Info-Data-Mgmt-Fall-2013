@@ -84,6 +84,30 @@
     return [rs next];
 }
 
+- (void) toggleFrequentFor: (NSString *) frequentersName {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    if (![self isFrequentedByUserWithName:frequentersName]) {
+        [db insertIntoTable:@"frequents" withParameters:[[NSArray alloc] initWithObjects:frequentersName, self.name, nil]];
+    } else {
+        NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM frequents "
+                                    "WHERE drinker=\"%@\" AND bar=\"%@\";", frequentersName, self.name ];
+        [db executeUpdate:delete];
+    }
+}
+
+- (BOOL) isFrequentedByUserWithName: (NSString *) name {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * FROM frequents "
+                               "WHERE drinker=\"%@\" AND bar=\"%@\";", name, self.name ];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    BOOL exists = [rs next];
+    
+    return exists;
+}
+
 - (BOOL) removeFromDatabase {
     
     return NO;

@@ -60,6 +60,14 @@
         
     } else {
         
+        [[bars objectAtIndex:indexPath.row] toggleFrequentFor: self.thisFriendsName];
+        
+        if ([[bars objectAtIndex:indexPath.row] isFrequentedByUserWithName:self.thisFriendsName]) {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        }
+        
     }
 }
 
@@ -82,11 +90,10 @@
 {
     static NSString *CellIdentifier = @"Cell10";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (showBeers) {
         cell.textLabel.text = [[beers objectAtIndex:indexPath.row] name];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if ([[beers objectAtIndex:indexPath.row] islikedByUserWithName:self.thisFriendsName]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -95,6 +102,12 @@
         }
     } else {
         cell.textLabel.text = [[bars objectAtIndex:indexPath.row] name];
+        
+        if ([[bars objectAtIndex:indexPath.row] isFrequentedByUserWithName:self.thisFriendsName]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
     return cell;

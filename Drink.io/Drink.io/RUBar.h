@@ -40,7 +40,8 @@
 - (BOOL) isInDatabase;
 - (BOOL) removeFromDatabase;
 - (BOOL) insertIntoDatabase;
-
+- (void) toggleFrequentFor: (NSString *) frequentersName;
+- (BOOL) isFrequentedByUserWithName: (NSString *) name;
 - (void) toggleSellsBeer: (NSString *) beerName andAtPrice: (NSString *) price;
 
 @end
