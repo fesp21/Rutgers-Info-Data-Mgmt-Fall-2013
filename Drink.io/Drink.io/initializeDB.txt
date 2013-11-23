@@ -43,7 +43,9 @@ addrState char(128),
 addrZip char(128),
 addrCountry char(128),
 addrCountryCode char(128),
-int favorite = 0
+favorite int,
+gender int,
+ageGroup int
 );
 
 create table likes (
