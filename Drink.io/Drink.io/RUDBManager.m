@@ -73,7 +73,9 @@ static RUDBManager *sharedInstance = nil;
                            @"state char(64)",
                            @"zip char(64)",
                            @"country char(64)",
-                           @"int favorite",
+                           @"favorite int",
+                           @"gender int",
+                           @"ageGroup int",
                            nil]];
         
         [self createTable:SELLS_TABLE_NAME

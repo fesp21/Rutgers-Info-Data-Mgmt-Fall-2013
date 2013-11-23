@@ -16,7 +16,7 @@ subAdministrativeArea char(128),
 postalCode char(128),
 ISOcountryCode char(128),
 country char(128),
-int favorite = 0
+favorite int
 );
 
 create table distance (
@@ -43,7 +43,7 @@ addrState char(128),
 addrZip char(128),
 addrCountry char(128),
 addrCountryCode char(128),
-favorite int,
+favorite real,
 gender int,
 ageGroup int
 );
