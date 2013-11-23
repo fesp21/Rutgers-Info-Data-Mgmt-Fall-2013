@@ -99,7 +99,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="oUO-C4-DYy" customClass="RUPatternsViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="mWN-A9-drV"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vwQ-30-uPR">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -147,7 +147,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deq-nU-Jyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="824" y="-1192"/>
+            <point key="canvasLocation" x="824" y="-1198"/>
         </scene>
         <!--Bar Pattern View Controller - Bars-->
         <scene sceneID="JuI-BH-KCT">

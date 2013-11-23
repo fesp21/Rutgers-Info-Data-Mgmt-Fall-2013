@@ -1,0 +1,7 @@
+ SELECT   gender, COUNT(gender) AS gender_occurrence
+ FROM     drinkers d, frequents f
+ WHERE    d.firstName || ' ' || d.lastName = f.drinker
+ AND      f.bar = "Clydz"
+ GROUP BY gender
+ ORDER BY gender_occurrence DESC
+ LIMIT    1
