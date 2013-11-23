@@ -28,12 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     beers = [[RUDBManager getSharedInstance] getBeers];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -89,7 +89,7 @@
     return cell;
 }
 
-#pragma mark popup 
+#pragma mark popup
 
 - (IBAction)plusTapped:(id)sender
 {
@@ -108,12 +108,17 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    RUBeer * beer = [[RUBeer alloc] initWithName:[alertView textFieldAtIndex:0].text
-                             andWithManufacturer:[alertView textFieldAtIndex:1].text];
     
-    [beer insertIntoDatabase];
-    [beers addObject:beer];
-    [self.tableView reloadData];
+    if (![[alertView textFieldAtIndex:0].text isEqualToString:@""] &&
+        ![[alertView textFieldAtIndex:1].text isEqualToString:@""]) {
+        
+        RUBeer * beer = [[RUBeer alloc] initWithName:[alertView textFieldAtIndex:0].text
+                                 andWithManufacturer:[alertView textFieldAtIndex:1].text];
+        
+        [beer insertIntoDatabase];
+        [beers addObject:beer];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Navigation
