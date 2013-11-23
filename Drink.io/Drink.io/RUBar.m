@@ -113,22 +113,74 @@
     return NO;
 }
 - (BOOL) insertIntoDatabase {
-    
     RUDBManager * db = [RUDBManager getSharedInstance];
     
-    return [db insertIntoTable:@"bars" withParameters:[[NSArray alloc] initWithObjects: self.name,
-    self.phoneNumber,
-    self.url,
-    self.thoroughfare,
-    self.subThoroughfare,
-    self.locality,
-    self.subLocality,
-    self.administrativeArea,
-    self.subAdministrativeArea,
-    self.postalCode,
-    self.ISOcountryCode,
-    self.country,
-    nil]];
+    NSMutableString * insert = [[NSMutableString alloc] initWithString:@"insert into bars"];
+    
+    NSMutableString * column = [[NSMutableString alloc] initWithString:@"("];
+    NSMutableString * values = [[NSMutableString alloc] initWithString:@"VALUES ("];
+    
+    if (self.name) {
+        [column appendString:@"name,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.name]];
+    }
+    
+    if (self.phoneNumber) {
+        [column appendString:@"phoneNumber,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.phoneNumber]];
+    }
+    if (self.url){
+        [column appendString:@"url,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.url]];
+    }
+    if (self.thoroughfare){
+        [column appendString:@"thoroughfare,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.thoroughfare]];
+    }
+    if (self.subThoroughfare){
+        [column appendString:@"subThoroughfare,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.subThoroughfare]];
+    }
+    if (self.locality){
+        [column appendString:@"locality,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.locality]];
+    }
+    if (self.subLocality){
+        [column appendString:@"subLocality,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.subLocality]];
+    }
+    if (self.administrativeArea){
+        [column appendString:@"administrativeArea,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.administrativeArea]];
+    }
+    if (self.subAdministrativeArea){
+        [column appendString:@"subAdministrativeArea,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.subAdministrativeArea]];
+    }
+    if (self.postalCode){
+        [column appendString:@"postalCode,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.postalCode]];
+    }
+    if (self.ISOcountryCode){
+        [column appendString:@"ISOcountryCode,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.ISOcountryCode]];
+    }
+    if (self.country){
+        [column appendString:@"country,"];
+        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.country]];
+    }
+    
+    [column deleteCharactersInRange:NSMakeRange([column length] - 1, 1)];
+    [values deleteCharactersInRange:NSMakeRange([values length] - 1, 1)];
+    
+    [column appendString:@")"];
+    [values appendString:@")"];
+    
+    [insert appendString:column];
+    [insert appendString:values];
+    [insert appendString:@";"];
+    
+    return [db executeUpdate:insert];
 }
 
 @end
