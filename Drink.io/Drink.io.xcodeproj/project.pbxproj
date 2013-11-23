@@ -21,6 +21,11 @@
 		27421F7517FDE57E00B38156 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27421F5D17FDE57E00B38156 /* UIKit.framework */; };
 		27421F7D17FDE57F00B38156 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27421F7B17FDE57F00B38156 /* InfoPlist.strings */; };
 		27421F7F17FDE57F00B38156 /* Drink_ioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27421F7E17FDE57F00B38156 /* Drink_ioTests.m */; };
+		2742868218410ADB0014CB46 /* RUPatternsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742868118410ADB0014CB46 /* RUPatternsViewController.m */; };
+		2742868518410C5F0014CB46 /* RUBarPatternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742868418410C5F0014CB46 /* RUBarPatternViewController.m */; };
+		2742868818410C6F0014CB46 /* RUBeerPatternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742868718410C6F0014CB46 /* RUBeerPatternViewController.m */; };
+		2742868B18410C810014CB46 /* RUPatternDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742868A18410C810014CB46 /* RUPatternDetailViewController.m */; };
+		2742868E18410C980014CB46 /* RUFriendPatternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742868D18410C980014CB46 /* RUFriendPatternViewController.m */; };
 		274900CA183D51C700846E74 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 274900C0183D51C700846E74 /* FMDatabase.m */; };
 		274900CB183D51C700846E74 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 274900C2183D51C700846E74 /* FMDatabaseAdditions.m */; };
 		274900CC183D51C700846E74 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 274900C4183D51C700846E74 /* FMDatabasePool.m */; };
@@ -74,6 +79,16 @@
 		27421F7A17FDE57E00B38156 /* Drink.ioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Drink.ioTests-Info.plist"; sourceTree = "<group>"; };
 		27421F7C17FDE57F00B38156 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27421F7E17FDE57F00B38156 /* Drink_ioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Drink_ioTests.m; sourceTree = "<group>"; };
+		2742868018410ADB0014CB46 /* RUPatternsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUPatternsViewController.h; sourceTree = "<group>"; };
+		2742868118410ADB0014CB46 /* RUPatternsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUPatternsViewController.m; sourceTree = "<group>"; };
+		2742868318410C5F0014CB46 /* RUBarPatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBarPatternViewController.h; sourceTree = "<group>"; };
+		2742868418410C5F0014CB46 /* RUBarPatternViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBarPatternViewController.m; sourceTree = "<group>"; };
+		2742868618410C6F0014CB46 /* RUBeerPatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUBeerPatternViewController.h; sourceTree = "<group>"; };
+		2742868718410C6F0014CB46 /* RUBeerPatternViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUBeerPatternViewController.m; sourceTree = "<group>"; };
+		2742868918410C810014CB46 /* RUPatternDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUPatternDetailViewController.h; sourceTree = "<group>"; };
+		2742868A18410C810014CB46 /* RUPatternDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUPatternDetailViewController.m; sourceTree = "<group>"; };
+		2742868C18410C980014CB46 /* RUFriendPatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUFriendPatternViewController.h; sourceTree = "<group>"; };
+		2742868D18410C980014CB46 /* RUFriendPatternViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUFriendPatternViewController.m; sourceTree = "<group>"; };
 		274900BF183D51C700846E74 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		274900C0183D51C700846E74 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		274900C1183D51C700846E74 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -214,6 +229,7 @@
 		27421F5F17FDE57E00B38156 /* Drink.io */ = {
 			isa = PBXGroup;
 			children = (
+				2742867F184109660014CB46 /* Patterns */,
 				27A974BD183DA8D4009F1086 /* Structures */,
 				2716CE41183BD0CF00BCFBC4 /* Preferences and Input */,
 				27AFC858183B13DE0042FB97 /* Database Stuff */,
@@ -254,6 +270,23 @@
 				27421F7B17FDE57F00B38156 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2742867F184109660014CB46 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				2742868018410ADB0014CB46 /* RUPatternsViewController.h */,
+				2742868118410ADB0014CB46 /* RUPatternsViewController.m */,
+				2742868318410C5F0014CB46 /* RUBarPatternViewController.h */,
+				2742868418410C5F0014CB46 /* RUBarPatternViewController.m */,
+				2742868618410C6F0014CB46 /* RUBeerPatternViewController.h */,
+				2742868718410C6F0014CB46 /* RUBeerPatternViewController.m */,
+				2742868918410C810014CB46 /* RUPatternDetailViewController.h */,
+				2742868A18410C810014CB46 /* RUPatternDetailViewController.m */,
+				2742868C18410C980014CB46 /* RUFriendPatternViewController.h */,
+				2742868D18410C980014CB46 /* RUFriendPatternViewController.m */,
+			);
+			name = Patterns;
 			sourceTree = "<group>";
 		};
 		27A974BD183DA8D4009F1086 /* Structures */ = {
@@ -451,10 +484,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AFC843183AD6980042FB97 /* RUDrinkWithViewController.m in Sources */,
+				2742868B18410C810014CB46 /* RUPatternDetailViewController.m in Sources */,
 				2716CE3F183BD0BC00BCFBC4 /* RUBarInsertViewController.m in Sources */,
 				274900D2183D526100846E74 /* RUDBManager.m in Sources */,
+				2742868E18410C980014CB46 /* RUFriendPatternViewController.m in Sources */,
 				274900CC183D51C700846E74 /* FMDatabasePool.m in Sources */,
+				2742868518410C5F0014CB46 /* RUBarPatternViewController.m in Sources */,
 				27A974CB183EE2C4009F1086 /* RUBar.m in Sources */,
+				2742868818410C6F0014CB46 /* RUBeerPatternViewController.m in Sources */,
 				27A974C0183DA8E7009F1086 /* RUFriend.m in Sources */,
 				27A974C8183E632D009F1086 /* RUBeerInsertController.m in Sources */,
 				274900CD183D51C700846E74 /* FMDatabaseQueue.m in Sources */,
@@ -462,6 +499,7 @@
 				2716CE3C183BD0AC00BCFBC4 /* RUFriendInsertViewController.m in Sources */,
 				274900CF183D51C700846E74 /* FMResultSet.m in Sources */,
 				2786D1BF18395C3E009E8F92 /* RUDWFRootViewController.m in Sources */,
+				2742868218410ADB0014CB46 /* RUPatternsViewController.m in Sources */,
 				27AFC84B183AE7510042FB97 /* RUDrinkAtViewController.m in Sources */,
 				27421F6617FDE57E00B38156 /* main.m in Sources */,
 				27AFC852183B138D0042FB97 /* RUDrinkNowViewController.m in Sources */,

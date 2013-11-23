@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="-115" y="-50"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Patterns View Controller-->
         <scene sceneID="UTc-SE-MWP">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="oUO-C4-DYy" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="oUO-C4-DYy" customClass="RUPatternsViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="mWN-A9-drV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vwQ-30-uPR">
@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="370" y="-647"/>
         </scene>
-        <!--Table View Controller - Item-->
+        <!--Beer Pattern View Controller - Beers-->
         <scene sceneID="RK8-Jj-urf">
             <objects>
-                <tableViewController id="9O4-j8-M6a" sceneMemberID="viewController">
+                <tableViewController id="9O4-j8-M6a" customClass="RUBeerPatternViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sV1-Oh-hGf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +138,7 @@
                             <outlet property="delegate" destination="9O4-j8-M6a" id="gvq-r2-DYh"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="F6F-wK-Yqo"/>
+                    <tabBarItem key="tabBarItem" title="Beers" id="F6F-wK-Yqo"/>
                     <navigationItem key="navigationItem" id="M28-Q9-JV4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="824" y="-1192"/>
         </scene>
-        <!--Table View Controller - Item-->
+        <!--Bar Pattern View Controller - Bars-->
         <scene sceneID="JuI-BH-KCT">
             <objects>
-                <tableViewController id="XmB-F6-KbC" sceneMemberID="viewController">
+                <tableViewController id="XmB-F6-KbC" customClass="RUBarPatternViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SK3-DO-MTT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +175,7 @@
                             <outlet property="delegate" destination="XmB-F6-KbC" id="bR0-tB-02g"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="HRK-m2-Kaa"/>
+                    <tabBarItem key="tabBarItem" title="Bars" id="HRK-m2-Kaa"/>
                     <navigationItem key="navigationItem" id="gdU-Tj-Die"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="824" y="-1746"/>
         </scene>
-        <!--View Controller-->
+        <!--Pattern Detail View Controller-->
         <scene sceneID="UQu-GG-UYd">
             <objects>
-                <viewController id="W5g-yr-Pfj" sceneMemberID="viewController">
+                <viewController id="W5g-yr-Pfj" customClass="RUPatternDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vWG-Eq-Hfd"/>
                         <viewControllerLayoutGuide type="bottom" id="Gbp-0H-Jv2"/>
@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="1363" y="-1484"/>
         </scene>
-        <!--Table View Controller - Item-->
+        <!--Friend Pattern View Controller - Best Friends-->
         <scene sceneID="gj2-dT-3ZO">
             <objects>
-                <tableViewController id="UO7-Db-RDW" sceneMemberID="viewController">
+                <tableViewController id="UO7-Db-RDW" customClass="RUFriendPatternViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="F9J-Z4-sCW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,7 +225,7 @@
                             <outlet property="delegate" destination="UO7-Db-RDW" id="Zhj-Xq-AdF"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="6iC-ur-5hx"/>
+                    <tabBarItem key="tabBarItem" title="Best Friends" id="6iC-ur-5hx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxA-Y9-9fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
