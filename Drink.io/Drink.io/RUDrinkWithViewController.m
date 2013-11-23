@@ -51,14 +51,14 @@
     if (selectedCell.accessoryType == UITableViewCellAccessoryCheckmark) {
         selectedCell.accessoryType = UITableViewCellAccessoryNone;
         
-        // taking out of current excursion
+        [[people objectAtIndex:indexPath.row] decrementDrinkCount];
         
     } else if (selectedCell.accessoryType == UITableViewCellAccessoryNone) {
         selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
         
         // the contact is not yet in the DB, so put it in
         
-        // the contact is in the DB, so retrieve
+        [[people objectAtIndex:indexPath.row] incrementDrinkCount];
     }
 }
 

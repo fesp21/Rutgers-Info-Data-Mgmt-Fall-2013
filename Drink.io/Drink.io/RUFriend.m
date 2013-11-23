@@ -38,6 +38,22 @@
     return [rs next];
 }
 
+- (BOOL) incrementDrinkCount {
+    NSString * query = [[NSString alloc] initWithFormat:@"UPDATE drinkers"
+                        " SET goneOutWith = goneOutWith + 1 WHERE firstName = '%@' AND lastName = '%@' ;",
+                        self.firstName, self.lastName];
+    return [[RUDBManager getSharedInstance] executeUpdate: query];
+}
+
+- (BOOL) decrementDrinkCount {
+    NSString * query = [[NSString alloc] initWithFormat:@"UPDATE drinkers"
+                        "  SET goneOutWith = goneOutWith - 1 WHERE firstName = '%@' AND lastName = '%@';",
+                        self.firstName, self.lastName];
+    
+    return [[RUDBManager getSharedInstance] executeUpdate: query];
+}
+
+
 - (BOOL) insertIntoDatabase
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
@@ -66,6 +82,9 @@
         [column appendString:@"ageGroup,"];
         [values appendString:[NSString stringWithFormat: @"\"%i\",", self.age]];
     }
+    
+    [column appendString:@"goneOutWith,"];
+    [values appendString:[NSString stringWithFormat: @"\"%i\",", 0]];
     
     [column deleteCharactersInRange:NSMakeRange([column length] - 1, 1)];
     [values deleteCharactersInRange:NSMakeRange([values length] - 1, 1)];

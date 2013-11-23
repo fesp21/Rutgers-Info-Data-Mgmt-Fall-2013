@@ -25,5 +25,7 @@
 - (BOOL) removeFromDatabase;
 - (BOOL) isInDatabase;
 - (BOOL) insertIntoDatabase;
+- (BOOL) incrementDrinkCount;
+- (BOOL) decrementDrinkCount;
 
 @end
