@@ -293,7 +293,7 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
 - (NSMutableArray *) getBestFriends {
     NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * "
                                " FROM drinkers d"
-                               " WHERE goneOutWith IS NOT NULL"
+                               " WHERE goneOutWith IS NOT NULL AND goneOutWith <> 0"
                                " ORDER BY goneOutWith DESC"];
     
     NSMutableArray * bestFriends = [[NSMutableArray alloc] init];

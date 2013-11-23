@@ -78,14 +78,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Drink With Friends" id="RAU-2h-bhH">
-                        <barButtonItem key="rightBarButtonItem" title="SQL" id="lpg-UR-fd0">
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="sqlTapped:" destination="8Uj-sW-eEM" id="U4F-WP-Dr4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Drink With Friends" id="RAU-2h-bhH"/>
                     <connections>
                         <segue destination="6wX-M1-ilw" kind="push" identifier="drink_with" id="hnX-mN-M5c"/>
                     </connections>
