@@ -67,13 +67,7 @@ static RUDBManager *sharedInstance = nil;
         andWithParameters:[[NSArray alloc] initWithObjects:
                            @"firstName char(64)",
                            @"lastName char(64)",
-                           @"phone char(20)",
-                           @"street char(64)",
-                           @"city char(64)",
-                           @"state char(64)",
-                           @"zip char(64)",
-                           @"country char(64)",
-                           @"favorite int",
+                           @"goneOutWith int",
                            @"gender int",
                            @"ageGroup int",
                            nil]];
@@ -97,8 +91,7 @@ static RUDBManager *sharedInstance = nil;
                            @"bar char(20)",
                            nil]];
         
-        [[[RUFriend alloc] initWithFirstName:@"user" withLastName:@"name"
-                                 withNumber:@"" withStreet:@"" withCity:@"" withState:@"" andWithCountry:@""] insertIntoDatabase];
+        [[[RUFriend alloc] initWithFirstName:@"user" withLastName:@"name" withGender:0 andWithAge:0] insertIntoDatabase];
         
         [self insertBeerWithName:@"Bud Light" andManufacturer:@"Anheuser-Busch InBev"];
         [self insertBeerWithName:@"Budweiser" andManufacturer:@"Anheuser-Busch InBev"];

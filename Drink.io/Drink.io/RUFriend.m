@@ -13,27 +13,19 @@
 
 - (RUFriend *) initWithFirstName: (NSString *) firstName
                     withLastName: (NSString *) lastName
-                      withNumber: (NSString *) number
-                      withStreet: (NSString *) street
-                        withCity: (NSString *) city
-                       withState: (NSString *) state
-                  andWithCountry: (NSString *) country
+                      withGender: (NSInteger) gender
+                      andWithAge: (NSInteger) age
 {
     
     if (self = [super init]) {
         self.firstName = firstName;
         self.lastName = lastName;
-        self.number = number;
-        self.street = street;
-        self.city = city;
-        self.state = state;
-        self.country = country;
+        self.gender = gender;
+        self.age = age;
     }
     
     return self;
 }
-
-
 
 - (BOOL) isInDatabase
 {
@@ -65,29 +57,14 @@
         [values appendString:[NSString stringWithFormat: @"\"%@\",", self.lastName]];
     }
     
-    if (self.number) {
-        [column appendString:@"phone,"];
-        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.number]];
+    if (self.lastName) {
+        [column appendString:@"gender,"];
+        [values appendString:[NSString stringWithFormat: @"\"%i\",", self.gender]];
     }
     
-    if (self.street) {
-        [column appendString:@"street,"];
-        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.street]];
-    }
-    
-    if (self.city) {
-        [column appendString:@"city,"];
-        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.city]];
-    }
-    
-    if (self.state) {
-        [column appendString:@"state,"];
-        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.state]];
-    }
-    
-    if (self.country) {
-        [column appendString:@"country,"];
-        [values appendString:[NSString stringWithFormat: @"\"%@\",", self.country]];
+    if (self.lastName) {
+        [column appendString:@"ageGroup,"];
+        [values appendString:[NSString stringWithFormat: @"\"%i\",", self.age]];
     }
     
     [column deleteCharactersInRange:NSMakeRange([column length] - 1, 1)];
@@ -119,8 +96,7 @@
 
 - (NSArray *) getParameters
 {
-    return [[NSArray alloc] initWithObjects:self.firstName, self.lastName, self.number,
-    self.street, self.city, self.state, self.country, nil];
+    return [[NSArray alloc] init];
 }
 
 @end

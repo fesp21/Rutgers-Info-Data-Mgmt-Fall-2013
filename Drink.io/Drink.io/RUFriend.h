@@ -12,20 +12,14 @@
 
 @property (strong, nonatomic) NSString * firstName;
 @property (strong, nonatomic) NSString * lastName;
-@property (strong, nonatomic) NSString * number;
-@property (strong, nonatomic) NSString * street;
-@property (strong, nonatomic) NSString * city;
-@property (strong, nonatomic) NSString * state;
-@property (strong, nonatomic) NSString * zip;
-@property (strong, nonatomic) NSString * country;
+@property (nonatomic, assign) NSInteger gender;
+@property (nonatomic, assign) NSInteger age;
 
 - (RUFriend *) initWithFirstName: (NSString *) firstName
                     withLastName: (NSString *) lastName
-                      withNumber: (NSString *) number
-                      withStreet: (NSString *) street
-                        withCity: (NSString *) city
-                       withState: (NSString *) state
-                  andWithCountry: (NSString *) country;
+                      withGender: (NSInteger) gender
+                      andWithAge: (NSInteger) age;
+
 
 - (NSString *) fullName;
 - (BOOL) removeFromDatabase;

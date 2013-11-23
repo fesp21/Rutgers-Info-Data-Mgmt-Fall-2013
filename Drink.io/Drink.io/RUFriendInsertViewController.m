@@ -65,30 +65,18 @@
             NSString * firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
             NSString * lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
             
-            ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
+            int gender = arc4random() % 2;
+            int ageGroup = arc4random() % 4;
             
-            if (ABMultiValueGetCount(addresses) == 0)
-                break;
-            
-            CFDictionaryRef addressDict = ABMultiValueCopyValueAtIndex(addresses, 0);
-            
-            NSString *street = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStreetKey);
-            NSString *city = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCityKey);
-            NSString *state = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressStateKey);
-            NSString *zip = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressZIPKey);
-            NSString *country = (NSString *)CFDictionaryGetValue(addressDict, kABPersonAddressCountryKey);
-            
-            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-            
-            NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+            NSInteger nsGender = gender;
+            NSInteger nsAgeGroup = ageGroup;
             
             RUFriend * friend = [[RUFriend alloc] initWithFirstName:firstName
                                                        withLastName:lastName
-                                                         withNumber:phoneNumber
-                                                         withStreet:street
-                                                           withCity:city
-                                                          withState:state
-                                                     andWithCountry:country];
+                                                         withGender:nsGender
+                                                         andWithAge:nsAgeGroup];
+            
+            //[friend insertIntoDatabase];
             
             [people addObject:friend];
         }

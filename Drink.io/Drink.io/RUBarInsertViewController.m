@@ -213,7 +213,7 @@
 {
     if ([[segue identifier] isEqualToString:@"bar_detail_view"]){
         RUBarDetailViewController * detailView = [segue destinationViewController];
-        detailView.bar = [allBars objectAtIndex:longPress];
+        detailView.bar = [allBars objectAtIndex: longPress];
     }
 }
 
@@ -223,17 +223,22 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"UIGestureRecognizerStateEnded");
-        //Do Whatever You want on End of Gesture
-    }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
-        if (indexPath == nil){
-            
-        } else if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
-            
-            [self performSegueWithIdentifier:@"bar_detail_view" sender:self.tableView];
-            longPress = indexPath.row;
+    if (!seeLocal) {
+    
+        longPress = indexPath.row;
+        
+        if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+            NSLog(@"UIGestureRecognizerStateEnded");
+            //Do Whatever You want on End of Gesture
+        }
+        else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
+            if (indexPath == nil){
+                
+            } else {
+                
+                [self performSegueWithIdentifier:@"bar_detail_view" sender:self.tableView];
+                
+            }
         }
     }
 }
