@@ -34,7 +34,7 @@
 - (BOOL) removeFromDatabase
 {
     RUDBManager * db = [RUDBManager getSharedInstance];
-    NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM beer "
+    NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM beers "
                                 "WHERE name=\"%@\" AND manf=\"%@\";", self.name, self.manf ];
     
     return [db executeUpdate:delete];

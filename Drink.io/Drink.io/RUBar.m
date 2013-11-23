@@ -109,8 +109,11 @@
 }
 
 - (BOOL) removeFromDatabase {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    NSMutableString * delete = [[NSMutableString alloc] initWithFormat:@"DELETE FROM bars "
+                                "WHERE name=\"%@\" AND phoneNumber=\"%@\";", self.name, self.phoneNumber ];
     
-    return NO;
+    return [db executeUpdate:delete];
 }
 - (BOOL) insertIntoDatabase {
     RUDBManager * db = [RUDBManager getSharedInstance];
