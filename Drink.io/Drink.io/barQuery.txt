@@ -1,7 +1,31 @@
- SELECT   gender, COUNT(gender) AS gender_occurrence
- FROM     drinkers d, frequents f
- WHERE    d.firstName || ' ' || d.lastName = f.drinker
- AND      f.bar = "Clydz"
- GROUP BY gender
- ORDER BY gender_occurrence DESC
- LIMIT    1
+SELECT   gender, COUNT(gender) AS gender_occurrence
+FROM     drinkers d, frequents f
+WHERE    d.firstName || ' ' || d.lastName = f.drinker
+AND      f.bar = "Clydz"
+GROUP BY gender
+ORDER BY gender_occurrence DESC
+LIMIT    1
+
+SELECT   gender, COUNT(gender) AS gender_occurrence
+FROM     drinkers d, likes l
+WHERE    d.firstName || ' ' || d.lastName = l.drinker
+AND      l.beer = "Bud Light"
+GROUP BY gender
+ORDER BY gender_occurrence DESC
+LIMIT    1
+
+SELECT   ageGroup, COUNT(ageGroup) AS ageGroup_occurrence
+FROM     drinkers d, frequents f
+WHERE    d.firstName || ' ' || d.lastName = f.drinker
+AND      f.bar = "Clydz"
+GROUP BY ageGroup
+ORDER BY ageGroup_occurrence DESC
+LIMIT    1
+
+SELECT   ageGroup, COUNT(ageGroup) AS ageGroup_occurrence
+FROM     drinkers d, likes l
+WHERE    d.firstName || ' ' || d.lastName = l.drinker
+AND      l.beer = "Bud Light"
+GROUP BY ageGroup
+ORDER BY ageGroup_occurrence DESC
+LIMIT    1
