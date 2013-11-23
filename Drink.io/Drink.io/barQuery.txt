@@ -1,3 +1,4 @@
+// gets most common gender for Clydz
 SELECT   gender, COUNT(gender) AS gender_occurrence
 FROM     drinkers d, frequents f
 WHERE    d.firstName || ' ' || d.lastName = f.drinker
@@ -6,6 +7,7 @@ GROUP BY gender
 ORDER BY gender_occurrence DESC
 LIMIT    1
 
+// gets most common gender for Bud Light
 SELECT   gender, COUNT(gender) AS gender_occurrence
 FROM     drinkers d, likes l
 WHERE    d.firstName || ' ' || d.lastName = l.drinker
@@ -14,6 +16,7 @@ GROUP BY gender
 ORDER BY gender_occurrence DESC
 LIMIT    1
 
+// gets most common age group for Clydz
 SELECT   ageGroup, COUNT(ageGroup) AS ageGroup_occurrence
 FROM     drinkers d, frequents f
 WHERE    d.firstName || ' ' || d.lastName = f.drinker
@@ -22,6 +25,7 @@ GROUP BY ageGroup
 ORDER BY ageGroup_occurrence DESC
 LIMIT    1
 
+// gets most common age group for Bud Light
 SELECT   ageGroup, COUNT(ageGroup) AS ageGroup_occurrence
 FROM     drinkers d, likes l
 WHERE    d.firstName || ' ' || d.lastName = l.drinker
@@ -29,3 +33,9 @@ AND      l.beer = "Bud Light"
 GROUP BY ageGroup
 ORDER BY ageGroup_occurrence DESC
 LIMIT    1
+
+// gets list of friends ordered by times they've gone out (i.e. best)
+SELECT *
+FROM drinkers d
+WHERE goneOutWith IS NOT NULL
+ORDER BY goneOutWith DESC
