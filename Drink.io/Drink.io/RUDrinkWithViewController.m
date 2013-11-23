@@ -8,10 +8,11 @@
 
 #import "RUDrinkWithViewController.h"
 #import "RUDBManager.h"
+#import "RUFriend.h"
 
 @interface RUDrinkWithViewController () {
     RUDBManager * db;
-    NSArray * bestFriends;
+    NSMutableArray * friends;
 }
 
 @end
@@ -32,9 +33,8 @@
     [super viewDidLoad];
     
     db = [RUDBManager getSharedInstance];
-    bestFriends = [db getBestFriends];
     
-    people = [[NSMutableArray alloc ] init];
+    people = [db getFriends];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,35 +66,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([bestFriends count] > 0) {
-        return 2;
-    } else {
-        return 1;
-    }
-}
-
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString * titleForHeader;
-    
-    if (section == 0 && [bestFriends count] > 0) {
-        titleForHeader = @"Best Friends";
-    } else {
-        titleForHeader = @"Contacts";
-    }
-    
-    return titleForHeader;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfRows;
     
-    if (section == 0 && [bestFriends count] > 0) {
-        numberOfRows = [bestFriends count];
-    } else {
-        numberOfRows = [people count];
-    }
+    numberOfRows = [people count];
     
     return numberOfRows;
 }
@@ -104,11 +83,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0 && [bestFriends count] > 0) {
-        cell.textLabel.text = [bestFriends objectAtIndex:indexPath.row];
-    } else {
-        cell.textLabel.text = [people objectAtIndex:indexPath.row];
-    }
+    cell.textLabel.text = [[people objectAtIndex:indexPath.row] fullName];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

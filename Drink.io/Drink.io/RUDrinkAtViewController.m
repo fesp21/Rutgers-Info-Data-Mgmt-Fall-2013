@@ -13,7 +13,7 @@
     CLLocationManager * locationManager;
     UIActivityIndicatorView *activityIndicator;
     RUDBManager * db;
-    NSArray * favoriteBars;
+    NSArray * bars;
 }
 
 @end
@@ -34,58 +34,12 @@
     [super viewDidLoad];
     
     db = [RUDBManager getSharedInstance];
-    favoriteBars = [db getBars];
-    
-    localBars = [[NSMutableArray alloc] init];
-    
-    if (nil == locationManager)
-        locationManager = [[CLLocationManager alloc] init];
-    
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    locationManager.distanceFilter = 500;
-    
-    [locationManager startUpdatingLocation];
-    
-    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
-    [self.view addSubview: activityIndicator];
-    
-    [activityIndicator startAnimating];
-    
+    bars = [db getBars];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-#pragma mark - Location Services 
-
-- (void) locationManager: (CLLocationManager *) manager didUpdateLocations: (NSArray *) locations {
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"Bars";
-    CLLocation* location = [locations lastObject];
-    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
-    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-    
-    [localBars removeAllObjects];
-    
-    [search startWithCompletionHandler:^(MKLocalSearchResponse
-                                         *response, NSError *error) {
-        if (response.mapItems.count == 0)
-            NSLog(@"No Matches");
-        else {
-            for (MKMapItem *item in response.mapItems)
-            {
-                NSLog(@"%@ %@", item.placemark.thoroughfare, item.placemark.title);
-                
-                [localBars addObject:item.name];
-            }
-            [self.tableView reloadData];
-            [activityIndicator removeFromSuperview];
-        }
-    }];
 }
 
 #pragma mark - Table view delegate
@@ -104,42 +58,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSInteger numberOfSections;
-    
-    if ([favoriteBars count] > 0) {
-        numberOfSections = 2;
-    } else {
-        numberOfSections = 1;
-    }
-    
-    return numberOfSections;
+    return 1;
 }
-
-- (NSString *) tableView: (UITableView *) tableView titleForHeaderInSection: (NSInteger) section
-{
-    NSString * titleForHeader;
-    
-    if (section == 0 && [favoriteBars count] > 0) {
-        titleForHeader = @"Favorites";
-    } else {
-        titleForHeader = @"Local";
-    }
-    
-    return titleForHeader;
-}
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows;
-    
-    if (section == 0 && [favoriteBars count] > 0) {
-        numberOfRows = [favoriteBars count];
-    } else {
-        numberOfRows = [localBars count];
-    }
-    
-    return numberOfRows;
+    return [bars count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -147,12 +71,7 @@
     static NSString *CellIdentifier = @"Cell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0 && [favoriteBars count] > 0) {
-        cell.textLabel.text = [favoriteBars objectAtIndex:indexPath.row];
-    } else {
-        cell.textLabel.text = [localBars objectAtIndex:indexPath.row];
-    }
-    
+    cell.textLabel.text = [[bars objectAtIndex:indexPath.row] name];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

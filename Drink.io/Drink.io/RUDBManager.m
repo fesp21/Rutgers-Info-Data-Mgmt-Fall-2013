@@ -279,9 +279,22 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
 }
 
 - (NSArray *) getFriends {
-    NSArray * friends = [[NSArray alloc] init];
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from drinkers"];
+    NSMutableArray * response = [[NSMutableArray alloc] init];
     
-    return friends;
+    FMResultSet * rs = [db executeQuery:query];
+    
+    while ([rs next]) {
+        RUFriend * friend = [[RUFriend alloc] init];
+        
+        friend.firstName = [rs stringForColumn:@"firstName"];
+        friend.lastName = [rs stringForColumn:@"lastName"];
+        
+        if (![[friend fullName] isEqualToString:@"user name"])
+            [response addObject:friend];
+    }
+    
+    return response;
 }
 - (NSArray *) getBestFriends {
     NSArray * bestFriends = [[NSArray alloc] initWithObjects:@"Paul Jones",@"Frank Porco", @"Tomasz Imielinski", nil];
