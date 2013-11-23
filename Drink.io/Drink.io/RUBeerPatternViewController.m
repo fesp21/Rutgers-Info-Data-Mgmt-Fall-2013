@@ -7,8 +7,14 @@
 //
 
 #import "RUBeerPatternViewController.h"
+#import "RUBeer.h"
+#import "RUDBManager.h"
+#import "RUPatternDetailViewController.h"
 
-@interface RUBeerPatternViewController ()
+@interface RUBeerPatternViewController () {
+    NSMutableArray * beers;
+    RUBeer * selectedBeer;
+}
 
 @end
 
@@ -26,12 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    beers = [[RUDBManager getSharedInstance] getBeers];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,28 +42,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedBeer = [beers objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"detail_pattern" sender:self];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Woo Drink with Friends!";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [beers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Cell60";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [[beers objectAtIndex:indexPath.row] name];
     
     return cell;
 }
@@ -105,16 +117,18 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"detail_pattern"]) {
+        RUPatternDetailViewController * pdvc = [segue destinationViewController];
+        pdvc.gender = [selectedBeer isMostCommonGenderMale] ? 1 : 0;
+        pdvc.ageGroup = [selectedBeer getAgeGroup];
+    }
 }
 
- */
 
 @end

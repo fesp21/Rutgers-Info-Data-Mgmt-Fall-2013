@@ -24,5 +24,7 @@
 - (BOOL) likedByUser;
 - (BOOL) islikedByUserWithName: (NSString *) name;
 - (void) toggleLike;
+- (BOOL) isMostCommonGenderMale;
+- (NSInteger) getAgeGroup;
 
 @end

@@ -36,6 +36,8 @@
         withISOcountryCode: (NSString *) ISOcountryCode
             andWithCountry: (NSString *) country;
 
+- (BOOL) isMostCommonGenderMale;
+- (NSInteger) getAgeGroup;
 - (BOOL) frequentedByUser: (NSString *) fullName;
 - (BOOL) isInDatabase;
 - (BOOL) removeFromDatabase;

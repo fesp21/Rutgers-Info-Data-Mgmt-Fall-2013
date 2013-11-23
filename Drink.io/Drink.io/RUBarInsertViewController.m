@@ -110,6 +110,8 @@
                                            andWithCountry:item.placemark.country];
                 
                 [localBars addObject:bar];
+                
+                [bar isMostCommonGenderMale];
             }
             [self.tableView reloadData];
             [activityIndicator removeFromSuperview];

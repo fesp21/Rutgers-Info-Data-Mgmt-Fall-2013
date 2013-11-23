@@ -116,6 +116,7 @@ static RUDBManager *sharedInstance = nil;
     }
     
 }
+
 - (BOOL) executeUpdate: (NSString *) update {
     return [db executeUpdate:update];
 }
@@ -289,8 +290,25 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
     
     return response;
 }
-- (NSArray *) getBestFriends {
-    NSArray * bestFriends = [[NSArray alloc] initWithObjects:@"Paul Jones",@"Frank Porco", @"Tomasz Imielinski", nil];
+- (NSMutableArray *) getBestFriends {
+    NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * "
+                               " FROM drinkers d"
+                               " WHERE goneOutWith IS NOT NULL"
+                               " ORDER BY goneOutWith DESC"];
+    
+    NSMutableArray * bestFriends = [[NSMutableArray alloc] init];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    while ([rs next]) {
+        RUFriend * friend = [[RUFriend alloc] init];
+        
+        friend.firstName = [rs stringForColumn:@"firstName"];
+        friend.lastName = [rs stringForColumn:@"lastName"];
+        
+        if (![[friend fullName] isEqualToString:@"user name"])
+            [bestFriends addObject:friend];
+    }
     
     return bestFriends;
 }

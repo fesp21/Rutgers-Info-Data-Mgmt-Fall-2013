@@ -10,4 +10,10 @@
 
 @interface RUPatternDetailViewController : UIViewController
 
+@property IBOutlet UILabel * ageLabel;
+@property IBOutlet UILabel * genderLable;
+
+@property (assign, nonatomic) NSInteger ageGroup;
+@property (assign, nonatomic) NSInteger gender;
+
 @end

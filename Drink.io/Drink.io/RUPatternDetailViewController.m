@@ -27,6 +27,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSLog(@"%i %i", self.ageGroup, self.gender);
+    
+    if (self.ageGroup == 0) {
+        self.ageLabel.text = @"21 - 29";
+    } else if (self.ageGroup == 1) {
+        self.ageLabel.text = @"30 - 39";
+    } else if (self.ageGroup == 2) {
+        self.ageLabel.text = @"40 - 49";
+    } else if (self.ageGroup == 3) {
+        self.ageLabel.text = @">50";
+    }
+    
+    if (self.gender == 0) {
+        self.genderLable.text = @"Female";
+    } else {
+        self.genderLable.text = @"Male";
+    }
 }
 
 - (void)didReceiveMemoryWarning

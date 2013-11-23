@@ -108,24 +108,24 @@
                     <connections>
                         <segue destination="XmB-F6-KbC" kind="relationship" relationship="viewControllers" id="qEW-4A-cYw"/>
                         <segue destination="9O4-j8-M6a" kind="relationship" relationship="viewControllers" id="LnF-AX-cI5"/>
-                        <segue destination="UO7-Db-RDW" kind="relationship" relationship="viewControllers" id="Uih-4h-Rq9"/>
+                        <segue destination="UO7-Db-RDW" kind="relationship" relationship="viewControllers" id="P2z-f4-u9V"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfU-w6-UQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="370" y="-647"/>
         </scene>
-        <!--Beer Pattern View Controller - Beers-->
+        <!--Beer Pattern View Controller - Beer Patterns-->
         <scene sceneID="RK8-Jj-urf">
             <objects>
-                <tableViewController id="9O4-j8-M6a" customClass="RUBeerPatternViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sV1-Oh-hGf">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="9O4-j8-M6a" customClass="RUBeerPatternViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="60" sectionFooterHeight="22" id="sV1-Oh-hGf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rL5-8f-EUR">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell60" id="rL5-8f-EUR">
+                                <rect key="frame" x="0.0" y="124" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rL5-8f-EUR" id="SEF-zi-Y1y">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -139,17 +139,17 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Beers" id="F6F-wK-Yqo"/>
-                    <navigationItem key="navigationItem" id="M28-Q9-JV4"/>
+                    <navigationItem key="navigationItem" title="Beer Patterns" id="M28-Q9-JV4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="W5g-yr-Pfj" kind="push" id="Lds-1c-pVH"/>
+                        <segue destination="W5g-yr-Pfj" kind="push" identifier="detail_pattern" id="Lds-1c-pVH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deq-nU-Jyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="824" y="-1198"/>
         </scene>
-        <!--Bar Pattern View Controller - Bars-->
+        <!--Bar Pattern View Controller - Bar Patterns-->
         <scene sceneID="JuI-BH-KCT">
             <objects>
                 <tableViewController id="XmB-F6-KbC" customClass="RUBarPatternViewController" sceneMemberID="viewController">
@@ -158,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S17-vL-NTj">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell50" id="S17-vL-NTj">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S17-vL-NTj" id="vzn-bJ-swz">
@@ -166,7 +166,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="W5g-yr-Pfj" kind="push" id="jlq-bC-AY3"/>
+                                    <segue destination="W5g-yr-Pfj" kind="push" identifier="detail_pattern" id="jlq-bC-AY3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -176,7 +176,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Bars" id="HRK-m2-Kaa"/>
-                    <navigationItem key="navigationItem" id="gdU-Tj-Die"/>
+                    <navigationItem key="navigationItem" title="Bar Patterns" id="gdU-Tj-Die"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFx-Lb-OhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,9 +194,41 @@
                     <view key="view" contentMode="scaleToFill" id="hSw-Yf-khI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Most Common Age Group:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMV-Vi-gL0">
+                                <rect key="frame" x="20" y="229" width="241" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Most Common Gender:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3v-zw-O6b">
+                                <rect key="frame" x="20" y="100" width="205" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Female" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGZ-z3-t76">
+                                <rect key="frame" x="246" y="100" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="21-29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eq9-JZ-bhp">
+                                <rect key="frame" x="246" y="229" width="68" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="e1o-BR-LuB"/>
+                    <connections>
+                        <outlet property="ageLabel" destination="eq9-JZ-bhp" id="xWz-rE-usl"/>
+                        <outlet property="genderLable" destination="aGZ-z3-t76" id="kgs-Hg-3jn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6W-DS-CaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -205,14 +237,14 @@
         <!--Friend Pattern View Controller - Best Friends-->
         <scene sceneID="gj2-dT-3ZO">
             <objects>
-                <tableViewController id="UO7-Db-RDW" customClass="RUFriendPatternViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="F9J-Z4-sCW">
+                <tableViewController title="Best Friends" id="UO7-Db-RDW" customClass="RUFriendPatternViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="60" sectionFooterHeight="22" id="F9J-Z4-sCW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Xiq-8i-VrE">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell70" id="Xiq-8i-VrE">
+                                <rect key="frame" x="0.0" y="124" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xiq-8i-VrE" id="h91-VO-uov">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>

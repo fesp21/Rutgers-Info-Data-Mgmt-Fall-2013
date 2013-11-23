@@ -54,7 +54,7 @@ withSubAdministrativeArea: (NSString *) subAdministrativeArea
 
 - (NSMutableArray *) getBeers;
 - (NSArray *) getFriends;
-- (NSArray *) getBestFriends;
+- (NSMutableArray *) getBestFriends;
 - (NSMutableArray *) getBars;
 
 - (NSString *) query: (NSString *) querySQL;

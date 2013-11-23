@@ -84,6 +84,30 @@
     return [rs next];
 }
 
+- (BOOL) isMostCommonGenderMale
+{
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    NSString * query = [[NSString alloc] initWithFormat:
+                        @"SELECT   gender, COUNT(gender) AS gender_occurrence"
+                        "FROM     drinkers d, frequents f"
+                        "WHERE    d.firstName || ' ' || d.lastName = f.drinker"
+                        "AND      f.bar = \"%@\""
+                        "GROUP BY gender"
+                        "ORDER BY gender_occurrence DESC"
+                        "LIMIT    1", self.name];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    NSLog(@"kjnkjnkjnkjn: %@", [rs stringForColumn:@"gender_occurrence"]);
+    
+    return YES;
+}
+
+- (NSInteger) getAgeGroup {
+    return 4;
+}
+
 - (void) toggleFrequentFor: (NSString *) frequentersName {
     RUDBManager * db = [RUDBManager getSharedInstance];
     

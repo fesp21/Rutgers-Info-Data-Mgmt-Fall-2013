@@ -77,6 +77,49 @@
     }
 }
 
+- (NSInteger) getAgeGroup {
+    
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    NSString * query = [[NSString alloc] initWithFormat:
+                        @" SELECT   ageGroup, COUNT(ageGroup) AS ageGroup_occurrence"
+                        " FROM     drinkers d, likes l"
+                        " WHERE    d.firstName || ' ' || d.lastName = l.drinker"
+                        " AND      l.beer = \"%@\""
+                        " GROUP BY ageGroup"
+                        " ORDER BY ageGroup_occurrence DESC"
+                        " LIMIT    1",
+                        self.name];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    [rs next];
+    
+    return [[rs stringForColumn:@"ageGroup"] integerValue];
+}
+
+- (BOOL) isMostCommonGenderMale {
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    NSString * query = [[NSString alloc] initWithFormat:
+                        @" SELECT   gender, COUNT(gender) AS gender_occurrence"
+                        " FROM     drinkers d, likes l"
+                        " WHERE    d.firstName || ' ' || d.lastName = l.drinker"
+                        " AND      l.beer = \"%@\""
+                        " GROUP BY gender"
+                        " ORDER BY gender_occurrence DESC"
+                        " LIMIT    1",
+                        self.name];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    [rs next];
+    
+    NSLog(@"%@", [rs stringForColumn:@"gender_occurrence"]);
+    
+    return [[rs stringForColumn:@"gender"] integerValue];
+}
+
 - (BOOL) islikedByUserWithName: (NSString *) name {
     RUDBManager * db = [RUDBManager getSharedInstance];
     NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"SELECT * FROM likes "
