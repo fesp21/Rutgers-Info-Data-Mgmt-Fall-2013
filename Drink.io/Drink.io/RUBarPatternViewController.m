@@ -9,9 +9,11 @@
 #import "RUBarPatternViewController.h"
 #import "RUDBManager.h"
 #import "RUBar.h"
+#import "RUPatternDetailViewController.h"
 
 @interface RUBarPatternViewController () {
     NSMutableArray * allBars;
+    RUBar * selectedBar;
 }
 
 @end
@@ -48,6 +50,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    selectedBar = [allBars objectAtIndex:indexPath.row];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -78,8 +86,11 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"detail_pattern"]) {
+        RUPatternDetailViewController * pdvc = [segue destinationViewController];
+        pdvc.gender = [selectedBar isMostCommonGenderMale] ? 1 : 0;
+        pdvc.ageGroup = [selectedBar getAgeGroup];
+    }
 }
 
 @end

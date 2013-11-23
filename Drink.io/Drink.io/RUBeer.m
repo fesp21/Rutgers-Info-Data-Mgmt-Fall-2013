@@ -93,9 +93,11 @@
     
     FMResultSet * rs = [db executeQuery:query];
     
-    [rs next];
-    
-    return [[rs stringForColumn:@"ageGroup"] integerValue];
+    if ([rs next]) {
+        return [[rs stringForColumn:@"ageGroup"] integerValue];
+    } else {
+        return 5;
+    }
 }
 
 - (BOOL) isMostCommonGenderMale {
@@ -114,8 +116,6 @@
     FMResultSet * rs = [db executeQuery:query];
     
     [rs next];
-    
-    NSLog(@"%@", [rs stringForColumn:@"gender_occurrence"]);
     
     return [[rs stringForColumn:@"gender"] integerValue];
 }

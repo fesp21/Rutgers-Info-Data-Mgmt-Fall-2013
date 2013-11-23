@@ -89,23 +89,43 @@
     RUDBManager * db = [RUDBManager getSharedInstance];
     
     NSString * query = [[NSString alloc] initWithFormat:
-                        @"SELECT   gender, COUNT(gender) AS gender_occurrence"
-                        "FROM     drinkers d, frequents f"
-                        "WHERE    d.firstName || ' ' || d.lastName = f.drinker"
-                        "AND      f.bar = \"%@\""
-                        "GROUP BY gender"
-                        "ORDER BY gender_occurrence DESC"
-                        "LIMIT    1", self.name];
+                        @" SELECT   gender, COUNT(gender) AS gender_occurrence"
+                        " FROM     drinkers d, frequents f"
+                        " WHERE    d.firstName || ' ' || d.lastName = f.drinker"
+                        " AND      f.bar = \"%@\""
+                        " GROUP BY gender"
+                        " ORDER BY gender_occurrence DESC"
+                        " LIMIT    1",
+                        self.name];
     
     FMResultSet * rs = [db executeQuery:query];
     
-    NSLog(@"kjnkjnkjnkjn: %@", [rs stringForColumn:@"gender_occurrence"]);
-    
-    return YES;
+    if ([rs next])
+        return ([[rs stringForColumn:@"gender"] integerValue] == 1) ? YES : NO;
+    else
+        return NO;
 }
 
 - (NSInteger) getAgeGroup {
-    return 4;
+    RUDBManager * db = [RUDBManager getSharedInstance];
+    
+    NSString * query = [[NSString alloc] initWithFormat:
+                        @" SELECT   ageGroup, COUNT(ageGroup) AS ageGroup_occurrence"
+                        " FROM     drinkers d, frequents f"
+                        " WHERE    d.firstName || ' ' || d.lastName = f.drinker"
+                        " AND      f.bar = \"%@\""
+                        " GROUP BY ageGroup"
+                        " ORDER BY ageGroup_occurrence DESC"
+                        " LIMIT    1",
+                        self.name];
+    
+    FMResultSet * rs = [db executeQuery:query];
+    
+    if ([rs next]) {
+        return [[rs stringForColumn:@"ageGroup"] integerValue];
+    } else {
+        return 5;
+    }
 }
 
 - (void) toggleFrequentFor: (NSString *) frequentersName {
