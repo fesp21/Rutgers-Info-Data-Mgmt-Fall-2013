@@ -12,6 +12,7 @@
 #import "RUFriend.h"
 #import "RUFriendDetailViewController.h"
 #import "RUBeer.h"
+#import "RUBar.h"
 
 @interface RUFriendInsertViewController () {
     RUDBManager * db;
@@ -95,35 +96,43 @@
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Bud Light", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Miller Lite", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Corona Extra", nil]];
+                        [[bars objectAtIndex:0] toggleFrequentFor:[friend fullName]];
                     } else if (ageGroup == 1) {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Heineken", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Michelob Ultra", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Keystone Light", nil]];
+                        [[bars objectAtIndex:1] toggleFrequentFor:[friend fullName]];
                     } else if (ageGroup == 2) {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Modelo Especial", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Icehouse", nil]];
+                        [[bars objectAtIndex:2] toggleFrequentFor:[friend fullName]];
                     } else {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Bud Ice", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Yuengling Lager", nil]];
+                        [[bars objectAtIndex:3] toggleFrequentFor:[friend fullName]];
                     }
                 } else {
                     if ( ageGroup == 0) {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Coors Light", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Natural Light", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Busch Light", nil]];
+                        [[bars objectAtIndex:4] toggleFrequentFor:[friend fullName]];
                     } else if (ageGroup == 1) {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Busch", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Miller High Life", nil]];
+                        [[bars objectAtIndex:5] toggleFrequentFor:[friend fullName]];
                     } else if (ageGroup == 2) {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Natural Ice", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Bud Light Lime", nil]];
+                        [[bars objectAtIndex:6] toggleFrequentFor:[friend fullName]];
                     } else {
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"PBR", nil]];
                         [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Corona Light", nil]];
+                        [[bars objectAtIndex:7] toggleFrequentFor:[friend fullName]];
                     }
                 }
                 
-                if (goneOutWith < 5) {
+                if (goneOutWith < 7) {
                     for (int i = 0; i < goneOutWith; i++) {
                         [friend incrementDrinkCount];
                     }
