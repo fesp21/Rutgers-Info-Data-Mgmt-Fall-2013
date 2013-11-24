@@ -20,7 +20,6 @@
 - (BOOL) insertIntoTable: (NSString *) withName withParameters: (NSArray *) parameters;
 - (BOOL) executeUpdate: (NSString *) update;
 - (FMResultSet *) executeQuery: (NSString *) query;
-g
 
 - (void) makeBestFriendWithFirstName: (NSString *) firstName
                         withLastName: (NSString *) lastName
