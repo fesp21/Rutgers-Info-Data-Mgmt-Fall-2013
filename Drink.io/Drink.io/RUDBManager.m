@@ -230,48 +230,6 @@ static RUDBManager *sharedInstance = nil;
         NSLog(@"WARNING! Table \"%@\" was not created!", withName);
 }
 
-- (NSString *) query: (NSString *) querySQL {
-    return @"Interesting";
-}
-
-- (void) addFriendWithFirstName: (NSString *) firstName
-                   withLastName: (NSString *) lastName
-                      withPhone: (NSString *) phone
-                     withStreet: (NSString *) street
-                       withCity: (NSString *) city
-                      withState: (NSString *) state
-                        withZip: (NSString *) zip
-                    withCountry: (NSString *) country
-                withCountryCode: (NSString *) countryCode
-                andWithFavorite: (NSInteger) favorite {
-    
-}
-
-- (void)   addBarWithName: (NSString *) bar
-          withPhoneNumber: (NSString *) phoneNumber
-                  withURL: (NSString *) URL
-         withThoroughfare: (NSString *) thoroughfare
-      withSubThoroughfare: (NSString *) subThoroughfare
-             withLocality: (NSString *) locality
-          withSubLocality: (NSString *) subLocality
-   withAdministrativeArea: (NSString *) administrativeArea
-withSubAdministrativeArea: (NSString *) subAdministrativeArea
-           withPostalCode: (NSString *) postalCode
-       withISOcountryCode: (NSString *) ISOcountryCode
-              withCountry: (NSString *) country
-          andWithFavorite: (NSInteger) favorite {
-    
-}
-
-
-- (void) makeBestFriendWithFirstName: (NSString *) firstName
-                        withLastName: (NSString *) lastName
-                        andWithPhone: (NSString *) phone {
-}
-
-- (void) makeFavoriteBarWithPhone: (NSString *) phone {
-}
-
 - (NSArray *) getFriends {
     NSMutableString * query = [[NSMutableString alloc] initWithFormat:@"select * from drinkers"];
     NSMutableArray * response = [[NSMutableArray alloc] init];
