@@ -84,15 +84,43 @@
             if (self.generate) {
                 [friend insertIntoDatabase];
                 
+                db = [RUDBManager getSharedInstance];
+                
                 NSMutableArray * beers = [db getBeers];
                 NSMutableArray * bars = [db getBars];
                 NSInteger goneOutWith = arc4random() % 8;
                 
-                if (gender == 1) {
-                    [[beers objectAtIndex:0] toggleLikeFor:[friend fullName]];
-                    [[beers objectAtIndex:1] toggleLikeFor:[friend fullName]];
-                    [[beers objectAtIndex:2] toggleLikeFor:[friend fullName]];
-                    [[beers objectAtIndex:3] toggleLikeFor:[friend fullName]];
+                if (gender == 0) {
+                    if ( ageGroup == 0) {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Bud Light", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Miller Lite", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Corona Extra", nil]];
+                    } else if (ageGroup == 1) {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Heineken", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Michelob Ultra", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Keystone Light", nil]];
+                    } else if (ageGroup == 2) {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Modelo Especial", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Icehouse", nil]];
+                    } else {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Bud Ice", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Yuengling Lager", nil]];
+                    }
+                } else {
+                    if ( ageGroup == 0) {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Coors Light", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Natural Light", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Busch Light", nil]];
+                    } else if (ageGroup == 1) {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Busch", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Miller High Life", nil]];
+                    } else if (ageGroup == 2) {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Natural Ice", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Bud Light Lime", nil]];
+                    } else {
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"PBR", nil]];
+                        [db insertIntoTable:@"likes" withParameters:[[NSArray alloc] initWithObjects:[friend fullName], @"Corona Light", nil]];
+                    }
                 }
                 
                 if (goneOutWith < 5) {
@@ -108,7 +136,7 @@
     else {
         // Send an alert telling user to change privacy setting in settings app
     }
-
+    
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
