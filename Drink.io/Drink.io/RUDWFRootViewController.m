@@ -8,6 +8,7 @@
 
 #import "RUDWFRootViewController.h"
 #import "RUDBManager.h"
+#import "RUFriendInsertViewController.h"
 
 @implementation RUDWFRootViewController
 
@@ -21,5 +22,17 @@
     [self performSegueWithIdentifier:@"drink_with" sender:self];
 }
 
+- (IBAction)generateTapped:(id)sender {
+    generate = true;
+    [self performSegueWithIdentifier:@"drink_with_people" sender:self];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString: @"drink_with_people"] && generate) {
+        RUFriendInsertViewController * dest = [segue destinationViewController];
+        dest.generate = true;
+    }
+}
 
 @end

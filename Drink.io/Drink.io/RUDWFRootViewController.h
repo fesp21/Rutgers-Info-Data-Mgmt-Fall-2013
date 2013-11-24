@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUDWFRootViewController : UIViewController 
+@interface RUDWFRootViewController : UIViewController {
+    BOOL generate;
+}
 
 - (IBAction) drinkTapped: (id) sender;
-- (IBAction) sqlTapped: (id) sender;
+- (IBAction) generateTapped: (id) sender;
 
 @end

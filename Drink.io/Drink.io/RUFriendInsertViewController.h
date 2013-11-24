@@ -12,6 +12,8 @@
     NSMutableArray * people;
 }
 
+@property (nonatomic, assign) BOOL generate;
+
 - (IBAction) helpedTapped:(id)sender;
 
 @end

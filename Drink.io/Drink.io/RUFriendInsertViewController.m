@@ -11,6 +11,7 @@
 #import "RUDBManager.h"
 #import "RUFriend.h"
 #import "RUFriendDetailViewController.h"
+#import "RUBeer.h"
 
 @interface RUFriendInsertViewController () {
     RUDBManager * db;
@@ -76,9 +77,32 @@
                                                          withGender:nsGender
                                                          andWithAge:nsAgeGroup];
             
-            //[friend insertIntoDatabase];
+            
             
             [people addObject:friend];
+            
+            if (self.generate) {
+                [friend insertIntoDatabase];
+                
+                NSMutableArray * beers = [db getBeers];
+                NSMutableArray * bars = [db getBars];
+                NSInteger goneOutWith = arc4random() % 8;
+                
+                if (gender == 1) {
+                    [[beers objectAtIndex:0] toggleLikeFor:[friend fullName]];
+                    [[beers objectAtIndex:1] toggleLikeFor:[friend fullName]];
+                    [[beers objectAtIndex:2] toggleLikeFor:[friend fullName]];
+                    [[beers objectAtIndex:3] toggleLikeFor:[friend fullName]];
+                }
+                
+                if (goneOutWith < 5) {
+                    for (int i = 0; i < goneOutWith; i++) {
+                        [friend incrementDrinkCount];
+                    }
+                }
+                
+                
+            }
         }
     }
     else {
